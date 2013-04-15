@@ -49,7 +49,7 @@ export class ConfiguPage {
 
   salir(){
 
-    this.navCtrl.push(LoginPage,{'fondo':this.fondo,'boton':this.boton,'boton1':this.boton1,'titulo':this.titulo});
+    this.navCtrl.push(LoginPage,{'fondo':this.fondo,'boton':this.boton,'boton1':this.boton1,'titulo':this.titulo,'Size':this.Size,'Font':this.Font});
   }
 
   guardar(){

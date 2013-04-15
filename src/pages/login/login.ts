@@ -28,6 +28,8 @@ export class LoginPage {
   boton="botonProfesional";
   boton1="botonProfesional1";
   titulo="tituloProfesional";
+  Size="";
+  Font="";
   
 
   public correo:string
@@ -61,6 +63,9 @@ export class LoginPage {
       this.boton = this.navParams.get('boton');
       this.boton1 = this.navParams.get('boton1');
       this.titulo = this.navParams.get('titulo');
+      this.Size = this.navParams.get('Size');
+      this.Font = this.navParams.get('Font');
+      
     
     }
   }

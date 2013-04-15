@@ -71,8 +71,27 @@ background-color: #EECD90;
      width: 90%;
      height: 15%;
      right: 5%;
-     top:70%;
+     top:60%;
      
+    }
+    .botonGrande {
+        height: $button-Grande-height;
+    }
+    .botonMediano {
+        height: $button-Mediano-height;
+    }
+    
+    .botonPequeño {
+        height: $button-Pequeño-height;
+    }
+    .FontGrande {
+        font-size: $font-size-Grande;
+    }
+    .FontMediano {
+        font-size: $font-size-Mediano;
+    }
+    .FontPequeño {
+        font-size: $font-size-Pequeño;
     }
 
 .botonArgentina {
@@ -80,9 +99,28 @@ background-color: #EECD90;
      position:absolute;
      width: 90%;
      height: 15%;
-     top:70%;
+     top:60%;
      left:5%;
-     border-radius: 43px;
+     border-radius: 80%;
+    }
+    .botonGrande {
+        height: $button-Grande-height;
+    }
+    .botonMediano {
+        height: $button-Mediano-height;
+    }
+    
+    .botonPequeño {
+        height: $button-Pequeño-height;
+    }
+    .FontGrande {
+        font-size: $font-size-Grande;
+    }
+    .FontMediano {
+        font-size: $font-size-Mediano;
+    }
+    .FontPequeño {
+        font-size: $font-size-Pequeño;
     }
 
 .botonNaif {
@@ -90,9 +128,28 @@ background-color: #EECD90;
      position:absolute;
      width: 90%;
      height: 20%;
-     top:70%;
+     top:60%;
      left:5%;
      border-radius: 20px;
+    }
+    .botonGrande {
+        height: $button-Grande-height;
+    }
+    .botonMediano {
+        height: $button-Mediano-height;
+    }
+    
+    .botonPequeño {
+        height: $button-Pequeño-height;
+    }
+    .FontGrande {
+        font-size: $font-size-Grande;
+    }
+    .FontMediano {
+        font-size: $font-size-Mediano;
+    }
+    .FontPequeño {
+        font-size: $font-size-Pequeño;
     }
 
  

@@ -38,7 +38,16 @@ page-configu {
         
         .botonPequeño {
             height: $button-Pequeño-height;
-        }   
+        }
+        .FontGrande {
+            font-size: $font-size-Grande;
+        }
+        .FontMediano {
+            font-size: $font-size-Mediano;
+        }
+        .FontPequeño {
+            font-size: $font-size-Pequeño;
+        } 
 
            
          
@@ -51,7 +60,7 @@ page-configu {
          height: $button-Argentina-height;
          top:$button-Argentina-top;
          left:$button-Argentina-left;      
-         border-radius: 90px 90px 90px 90px;
+         border-radius: 80%;
         }
         .botonGrande {
             height: $button-Grande-height;
@@ -62,7 +71,16 @@ page-configu {
         
         .botonPequeño {
             height: $button-Pequeño-height;
-        }   
+        }
+        .FontGrande {
+            font-size: $font-size-Grande;
+        }
+        .FontMediano {
+            font-size: $font-size-Mediano;
+        }
+        .FontPequeño {
+            font-size: $font-size-Pequeño;
+        }    
     
      
     .botonNaif {
@@ -85,6 +103,15 @@ page-configu {
         
         .botonPequeño {
             height: $button-Pequeño-height;
+        }
+        .FontGrande {
+            font-size: $font-size-Grande;
+        }
+        .FontMediano {
+            font-size: $font-size-Mediano;
+        }
+        .FontPequeño {
+            font-size: $font-size-Pequeño;
         }   
     
      

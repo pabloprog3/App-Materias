@@ -5,6 +5,9 @@
             <img (click)="salir()" class="imagen" src="assets/icon/salir1.png">
           </button>
         </ion-buttons>
+        <ion-buttons right>
+          <button ion-button full color="dark" (click)="api()">API</button>
+        </ion-buttons>
         <ion-title class="{{titulo}}">
            Inicio
         </ion-title>
@@ -41,9 +44,9 @@
     </ion-list>
 
 
-      <button ion-button class="{{boton}}" (click)="login()">INGRESAR</button>
+      <button ion-button class="{{boton}} {{Size}} {{Font}}" (click)="login()">INGRESAR</button>
 
-      <button ion-button full color="dark" (click)="api()">API</button>
+      
 
       <!--button ion-button class="{{boton}}" round color="primary" (click)="crearAlumno()">NUEVO ALUMNO</button-->
 
