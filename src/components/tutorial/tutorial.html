@@ -1,0 +1,75 @@
+<ion-list class="fondo">
+    <ion-item *ngIf="perfil=='alumno'" color="dark"  (click)=irLoginTut()>
+      <h2 ion-text ngClass="titulo">Inicio de sesión</h2>
+      <p ion-text color="danger">¿Github o Correo?</p>
+      <!--button ion-button clear item-end>Ver</button-->
+    </ion-item>
+
+    <ion-item *ngIf="perfil=='alumno' || perfil=='profesor'" color="dark"  (click)=irQrTut()>
+        <h2 ngClass="titulo">Información de materias</h2>
+        <!--button ion-button clear item-end>Ver</button-->
+    </ion-item>
+
+    <ion-item *ngIf="perfil=='administrador'" color="dark"  (click)=irQrAdminTut()>
+            <h2 ngClass="titulo">Ver información / Generar QR para alumno o profesor </h2>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <img width="100px" height="50px" src="assets/tutoriales/alumno/qr_selected.png" alt="qr_bar">
+            <!--button ion-button clear item-end>Ver</button-->
+    </ion-item>
+
+    <ion-item color="dark"  (click)=irPerfilTut()>
+        <h2 ngClass="titulo">Perfil</h2>
+        <p ion-text color="danger">Podrá cambiar su foto de perfil</p>
+        <!--button ion-button clear item-end>Ver</button-->
+    </ion-item>
+
+    <ion-item *ngIf="perfil=='profesor' || perfil=='administrador' || perfil=='administrativo' " color="dark">
+            <h2 ngClass="titulo">Sección Alumnos</h2>
+            <p ion-text color="danger">Listado, ABM, Carga desde Excel</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <img width="30px" height="30px" src="assets/tutoriales/profesor/prof_icon.png">
+            <ion-list>
+                    <ion-item color="dark" text-center (click)=irAltaAlumno()>
+                        <p ion-text color="primary">Dar de alta <small>(individual)</small></p>&nbsp;&nbsp;&nbsp;
+                        <img width="30px" height="30px" src="assets/tutoriales/profesor/alta.png" alt="alta">
+                    </ion-item>
+                    <ion-item color="dark" text-center>
+                            <p ion-text color="primary">Cargar listado <small>(desde archivo Excel)</small></p>&nbsp;&nbsp;&nbsp;
+                            <img width="30px" height="30px" src="assets/tutoriales/profesor/excel_icon.png" alt="exc">
+                            <p ion-text color="primary"><small>Busque y seleccione el archivo para cargar sus alumnos según el día</small></p>
+                    </ion-item>
+                    <ion-item color="dark" text-center>
+                            <p ion-text color="primary">Baja y modificación </p>&nbsp;&nbsp;&nbsp;
+                            <img width="100px" height="60px" src="assets/tutoriales/profesor/listado_alumnos.png" alt="list">
+                            <p ion-text color="primary"><small>Seleccione el alumno y será dirigido al sub-menú de baja/modificación</small></p>
+                            <img width="100px" height="60px" src="assets/tutoriales/profesor/abm.png" alt="abm">
+                    </ion-item>
+            </ion-list>
+            <!--button ion-button clear item-end>Ver</button-->
+    </ion-item>
+
+
+    
+    <ion-item *ngIf="perfil=='administrador' || perfil=='administrativo' " color="dark">
+            <h2 ngClass="titulo">Sección Profesores</h2>
+            <p ion-text color="danger">Alta, Baja y Modificación de Profesores</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <img width="30px" height="30px" src="assets/tutoriales/administrador/icon_abm_prof.png">
+            <ion-list>
+                    <ion-item color="dark" text-center (click)=irAltaProfesor()>
+                        <p ion-text color="primary">Dar de alta</p>&nbsp;&nbsp;&nbsp;
+                        <p ion-text color="light">Icono:</p> <img width="30px" height="30px" src="assets/tutoriales/profesor/alta.png" alt="alta">
+                    </ion-item>
+                    <ion-item color="dark" text-center>
+                            <p ion-text color="primary">Listado </p>&nbsp;&nbsp;&nbsp;
+                            <img width="100px" height="60px" src="assets/tutoriales/administrador/lista.png" alt="list">
+                            <p ion-text color="primary">Seleccione el profesor y será dirigido al sub-menú de baja/modificación</p>
+                            <img width="140px" height="60px" src="assets/tutoriales/administrador/abm_profesor.png" alt="abm">
+                    </ion-item>
+            </ion-list>
+            <!--button ion-button clear item-end>Ver</button-->
+    </ion-item>
+
+
+
+</ion-list>
