@@ -10,10 +10,10 @@ import { IonicPage, NavController, NavParams, ModalController,ViewController } f
 })
 export class ConsultarBajaModifPage {
 
-  private profesor:any;
-  private alumno:any;
-  private nombre:string="";
-  private foto:string="";
+  public profesor:any;
+  public alumno:any;
+  public nombre:string="";
+  public foto:string="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl:ModalController,public view:ViewController

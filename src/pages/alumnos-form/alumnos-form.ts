@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 
 import { PersonasServiceProvider } from "../../providers/personas-service/personas-service";
 import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-service";
+import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 
 import { Alumno } from "../../clases/alumno";
 
@@ -19,23 +20,27 @@ import { Alumno } from "../../clases/alumno";
   templateUrl: 'alumnos-form.html',
 })
 export class AlumnosFormPage {
-  private legajo:string;
-  private nombre:string;
-  private correo:string;
-  private foto:string;
-  private listaMaterias:Array<string>;
-  private materiaCheck:Array<string>;
-  private alumno:Alumno;
-  private passw:string;
+  public legajo:string;
+  public nombre:string;
+  public correo:string;
+  public foto:string;
+  public listaMaterias:Array<string>;
+  public materiaCheck:Array<string>;
+  public alumno:Alumno;
+  public passw:string;
+  public profesores;
+  public dataAlertMaterias:Array<any>;
 
   private storageRef = firebase.storage().ref();
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private camera:Camera, private dbPersonas:PersonasServiceProvider,
-              public alertCtrl:AlertController, private dbAlumnos:AlumnoServiceProvider
+              public alertCtrl:AlertController, private dbAlumnos:AlumnoServiceProvider,
+              private dbProfesores:ProfesorServiceProvider
   ) {}
 
   ionViewDidLoad() {
+    this.dataAlertMaterias = new Array<any>();
     this.foto="";
     this.listaMaterias = new Array<string>();
     this.dbAlumnos.traerListadoMaterias().subscribe(lista=>{
@@ -55,7 +60,8 @@ export class AlumnosFormPage {
     this.alumno.setPassword(this.passw);
     this.alumno.setCorreo(this.correo);
     console.log('alumno form: ', this.alumno);
-    this.dbAlumnos.guardarAlumno(this.alumno);
+    console.log('materias asignadas: ', this.dataAlertMaterias);
+    this.dbAlumnos.guardarAlumno(this.alumno, this.dataAlertMaterias);
   }
 
   marcarOpcion(valor){
@@ -65,7 +71,7 @@ export class AlumnosFormPage {
 
   sacarFoto(){
     let options:CameraOptions ={
-      quality: 100,
+      quality: 50,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType:this.camera.EncodingType.JPEG,
       mediaType:this.camera.MediaType.PICTURE,
@@ -88,7 +94,34 @@ export class AlumnosFormPage {
         });
   }
 
+  asignarMaterias(){
+    let arrayMateriasAsignadas:Array<any> = new Array<any>();
+    let asign = this.alertCtrl.create();
+    asign.setTitle("Seleccionar materia");
+    this.dbProfesores.traerListadoMaterias().subscribe(materias=>{
+      console.log(materias);
+      materias.forEach(mat => {
+        let name:string = mat.nombre;
+        let aula:string = mat.aula;
+        asign.addInput({
+          type:'checkbox',
+          label:name.toUpperCase() + ' - ' + aula.toUpperCase(),
+          value:this.nombre + ' - ' + aula,
+          checked:false
+        });
+      });
+    });
 
+    asign.addButton('Cancelar');
+    asign.addButton({
+      text:'Confirmar',
+      handler: data=>{
+        this.dataAlertMaterias = data;
+      }
+    });
+    asign.present();
+
+  }
 
 
 

@@ -10,9 +10,9 @@
 
 <ion-content class="fondo" padding>
 
-  <img *ngIf="foto" [src]="foto" width="100" height="130">
+  <!--img *ngIf="foto" [src]="foto" width="100" height="130">
   <p>Presione en la camara para sacar una foto &nbsp;&nbsp;<img width="40" height="40" (click)="sacarFoto()" src="assets/icon/camara.png">
-  </p>
+  </p-->
   <!--<ion-icon ios="ios-camera" md="md-camera" (click)="sacarFoto()"></ion-icon>-->
   <!--ion-item class="fondo1">
     <ion-label>Foto perfil</ion-label>
@@ -38,22 +38,14 @@
       <ion-label>Contraseña:</ion-label>
       <ion-input type="password" [(ngModel)]="passw"></ion-input>
   </ion-item>
+  <br>
+  <ion-item class="fondo" text-center>
+    <button [disabled]="!nombre" ion-button color="primary" (click)="asignarMaterias()">Asignar materias</button>
+  </ion-item>
 
-<!--ion-list>
-  <ion-item class="fondo1">
-      <ion-label>Materias a cursar: </ion-label>
-  </ion-item>
-  <ion-item class="fondo1">
-      <ion-select (ionChange)="marcarOpcion($event)" [(ngModel)]="materiaCheck" multiple="true" cancelText="Cancelar" okText="Aceptar">
-          <ion-option *ngFor="let materia of listaMaterias" value={{materia.nombre}}>
-            <ion-label>{{materia.nombre | uppercase}}</ion-label>
-          </ion-option>
-      </ion-select>
-  </ion-item>
-</ion-list-->
 
 <button ion-button class="btnAlumno" block (click)="ingresarAlumno()">
-  REGISTRARSE
+  REGISTRAR
 </button>
 
 

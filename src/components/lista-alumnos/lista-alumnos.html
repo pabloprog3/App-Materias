@@ -17,7 +17,7 @@
         </ion-grid>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="fondo">
         <ion-label>Elegir profesor día actual: {{dia}}</ion-label>
         <ion-select [(ngModel)]="profesorSelect" (ngModelChange)="seleccionarProfesor($event)" >
           <ion-option *ngFor="let profesor of listadoProfesores">

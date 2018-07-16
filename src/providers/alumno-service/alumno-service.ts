@@ -44,12 +44,13 @@ export class AlumnoServiceProvider {
     return this.listaMaterias;
   }
 
-  public guardarAlumno(alumno:Alumno):void{
+  public guardarAlumno(alumno:Alumno, materias:Array<any>):void{
     alumno.setPerfil('alumno');
     console.log('alumno service: ', alumno);
     //this.db.app.database().ref('/alumnos').child(alumno.getLegajo()).push(alumno);
     this.db.app.database().ref('/alumnos/'+alumno.getLegajo()).set(alumno);
     this.db.app.database().ref('/usuarios').child(alumno.getLegajo()).set(alumno);
+    this.db.app.database().ref('/ListadoMaterias').child(alumno.getLegajo()).set(materias);
     this.auth.auth.createUserWithEmailAndPassword(alumno.getCorreo(), alumno.getPassword());
   }
 
