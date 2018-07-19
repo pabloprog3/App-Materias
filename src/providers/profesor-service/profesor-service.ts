@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 
-import { AngularFireDatabase, FirebaseListObservable, AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth'
 
 import { Profesor } from "../../clases/profesor";
@@ -44,7 +44,7 @@ export class ProfesorServiceProvider {
 
 
   public getMateriasProfesorPorCorreo(id:string){
-    let lista:FirebaseListObservable<any[]>;
+    //let lista:FirebaseListObservable<any[]>;
     let listaMaterias:any[];
     this.db.list('/profesores').subscribe(profesores=>{
       profesores.forEach(profesor => {
@@ -107,68 +107,37 @@ export class ProfesorServiceProvider {
 
   public getProfesoresPorDia(){
     let profesorMateris:Array<any> = new Array<any>();
+    let materiasPorDia:Array<any> = new Array<any>();
     let dia:string=this.getDiaSemana();
-    console.log(dia);
-    this.db.list('/profesores').subscribe(lista=>{
-      console.log(lista);
-      lista.forEach(profesor => {
-        console.log(profesor);
-        if (profesor.materias) {
+    //console.log(dia);
+   
+    this.db.list('/materias').subscribe(materias=>{
+      console.log(materias);
+      materias.forEach(materia => {
+        console.log(materia);
+        let _horario:string = materia.horarios;
+        console.log(_horario);
+        let _horario_dia:string = _horario.substring(0, _horario.indexOf(' ')); 
+        console.log(_horario_dia);
+        if (_horario_dia.toLowerCase() == dia.toLowerCase()) {
+          materiasPorDia.push(materia.nombre);
+        }
+      });
+
+      this.db.list('/profesores').subscribe(profesores=>{
+        profesores.forEach(profesor => {
           profesor.materias.forEach(materia => {
             console.log(materia);
-            this.db.list('/materias').subscribe(listaMaterias=>{
-              listaMaterias.forEach(_materia => {
-                //console.log(_materia);
-                //console.log( _materia.turnos);
-                //console.log( _materia.turnos.mañana); //ok
-                //console.log( _materia.turnos.noche); //ok
-                let turnoMañanaStr:string =  _materia.turnos.mañana
-                let turnoMañanaArray:string[] = turnoMañanaStr.split(" ");
-                let turnoTardeStr:string =  _materia.turnos.noche;
-  
-                let turnoTardeArray:string[];
-  
-                if (turnoTardeStr != undefined) {
-                  turnoTardeArray  = turnoTardeStr.split(" ");
-  
-                }
-                turnoMañanaStr = turnoMañanaArray[0].toLowerCase();
-                if (turnoTardeStr != undefined) {
-                  turnoTardeStr = turnoTardeArray[0].toLowerCase();
-  
-                }
-  
-                let diaMan:string[] = turnoMañanaStr.split(" ");
-                let diaSplitMan = diaMan[0];
-  
-                let diaTar:string[]
-                let diaSplitTar
-                if (turnoTardeStr != undefined) {
-                  diaTar = turnoTardeStr.split(" ");
-                  diaSplitTar = diaTar[0];
-  
-                }
-                console.log(materia);
-                console.log(_materia.nombre);
-                console.log(dia, diaSplitMan, diaSplitTar);
-                if (materia == _materia.nombre && (dia == diaSplitMan || dia == diaSplitTar)) {
-                  console.log(materia);
-                  console.log(_materia.nombre)
-                  let obj = {
-                    'profesor': profesor.nombre,
-                    'materia' : materia
-                  }
-                  profesorMateris.push(obj);//(profesor.nombre);
-                  console.log(profesorMateris);
-  
-                }
-              });
-            })
+            let _materia:string = materia;
+            if (materiasPorDia.includes(_materia)) {
+              profesorMateris.push(profesor.nombre + '-' + _materia);
+            }
           });
-        }
+        });// /profesores
+      })
 
-      });
-    })
+    }); // /materias
+    console.log(profesorMateris); //
     return profesorMateris;
   }
 

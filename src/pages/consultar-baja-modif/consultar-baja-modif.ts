@@ -28,11 +28,14 @@ export class ConsultarBajaModifPage {
     }else{
      this.alumno = this.navParams.get('alumno');
      this.nombre = this.alumno.nombre;
-     this.alumno.fotos.forEach(foto => {
-       if (foto.activa) {
-         this.foto = foto.foto;
-       }
-     });;
+     if (this.alumno.fotos) {
+      this.alumno.fotos.forEach(foto => {
+        if (foto.activa) {
+          this.foto = foto.foto;
+        }
+      });;
+     }
+
     }
 
   }

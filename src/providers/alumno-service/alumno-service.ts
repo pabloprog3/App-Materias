@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { AngularFireDatabase, FirebaseListObservable, AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth'
 
 import { Alumno } from "../../clases/alumno";
@@ -44,7 +43,7 @@ export class AlumnoServiceProvider {
     return this.listaMaterias;
   }
 
-  public guardarAlumno(alumno:Alumno, materias:Array<any>):void{
+  public guardarAlumno(alumno:Alumno, materias?:Array<any>):void{
     alumno.setPerfil('alumno');
     console.log('alumno service: ', alumno);
     //this.db.app.database().ref('/alumnos').child(alumno.getLegajo()).push(alumno);

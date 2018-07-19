@@ -32,6 +32,11 @@
 
 <br><br>
 
+<br>
+<ion-item class="fondo" text-center>
+  <button [disabled]="!nombre" ion-button color="primary" (click)="asignarMaterias()">Asignar materias</button>
+</ion-item>
+
 <button ion-button class="btn" full color="light" (click)="cancelarOpe()">
   Cancelar
 </button>

@@ -1,17 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { IonicPage, NavController, NavParams, ModalController, ModalOptions, AlertController, PopoverController } from 'ionic-angular';
+import {  NavController, NavParams, ModalController, AlertController, 
+         PopoverController, ToastController } from 'ionic-angular';
 
 import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-service";
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 
-import { File,FileEntry } from "@ionic-native/file";
+import { File } from "@ionic-native/file";
 import { FilePath } from "@ionic-native/file-path";
 import { FileChooser } from "@ionic-native/file-chooser";
 
 import { Alumno } from "../../clases/alumno";
 
-import { ConsultarBajaModifPage } from "../../pages/consultar-baja-modif/consultar-baja-modif";
+
 
 
 @Component({
@@ -22,6 +23,7 @@ export class ListaAlumnosComponent implements OnInit {
 
   public foto:string;
 public  listado:Array<string>;
+public dataMaterias:Array<any>;
 public  listadoProfesores:Array<string>;
 public  date:number = new Date().getDay();
 public  dia:string = '';
@@ -37,12 +39,13 @@ public  dia:string = '';
     private alumnoDB:AlumnoServiceProvider, public modalCtrl:ModalController,
     public file:File, public fileChooser:FileChooser, public filePath:FilePath,
     public alertCtrl:AlertController, public popoverCtrl:PopoverController,
-    private profesorDB:ProfesorServiceProvider
+    private profesorDB:ProfesorServiceProvider, public toast:ToastController
 
   ) {}
 
 
   ngOnInit(){
+    this.dataMaterias = new Array<any>();
     console.log(this.profesorSelect);
     switch (this.date) {
       case 1:
@@ -78,23 +81,16 @@ public  dia:string = '';
     this.foto="";
     this.alumnoDB.getAlumnosLista().subscribe(lista=>{
       this.listado = lista;
-      console.log('lista alumnos: ', this.listado);
     });
     this.listadoProfesores = this.profesorDB.getProfesoresPorDia();
 
     console.log(this.listadoProfesores);
-    console.log(this.correo);
-    console.log(this.nombre);
-    console.log(this.perfil);
   }
 
 
   abrirModalView(alumno){
-    console.log(alumno);
     let consultaView = this.modalCtrl.create('ConsultarBajaModifPage', {'alumno':alumno});
-    console.log(alumno);
     consultaView.present();
-    //this.navCtrl.push(ConsultarBajaModifPage, {'alumno':alumno});
   }
 
   addNuevoAlumno(){
@@ -103,20 +99,20 @@ public  dia:string = '';
 
 
   seleccionarProfesor(value){
-    console.log(value);
-    console.log(this.profesorSelect);
-    console.log(this.devolverMateria());
+
   }
 
   private cargarArchivos(){
+    if (this.profesorSelect=='') {
+      let toast = this.toast.create({
+        message: 'Necesita seleccionar un profesor antes de continuar',
+        duration: 1000,
+        position: 'middle'
+      });
+      toast.present();
+    }
       if (this.perfil=='administrador' || this.perfil=='administrativo') {
           if (this.profesorSelect == '') {
-            let alerta = this.alertCtrl.create({
-                title:'Error',
-                message: 'Seleccione un profesor y materia para cargar el listado'
-            });
-            alerta.present();
-
           }else {
             this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
@@ -146,7 +142,7 @@ public  dia:string = '';
               let campoNombre:string='';
               let campoHorario:string='';
 
-              let arrayListado:Array<string> = new Array<string>();
+              //let arrayListado:Array<string> = new Array<string>();
 
               let cont:number = 0;
 
@@ -163,6 +159,7 @@ public  dia:string = '';
                       break;
                       case 1:
                               campoNombre += _texto[i];
+                             
                       break;
                       case 2:
                               campoHorario += _texto[i];
@@ -171,14 +168,14 @@ public  dia:string = '';
                       case 3:
                           let alumno:Alumno = new Alumno();
                           let materia:Array<string> = new Array<string>();
-                          materia.push(this.devolverMateria().trim());
+                          materia.push(this.getMateriaAsignar(this.profesorSelect));
                           alumno.setNombre(campoNombre);
                           alumno.setLegajo(campoLegajo);
                           alumno.setHorario(campoHorario);
                           alumno.setPerfil('alumno');
                           alumno.setMateria(materia);
-
-                          this.alumnoDB.guardarAlumno(alumno);
+                          this.dataMaterias.push(campoNombre + '-' + this.getMateriaAsignar(this.profesorSelect));
+                          this.alumnoDB.guardarAlumno(alumno, this.dataMaterias);
 
                           cont = 0;
                           campoLegajo = '';
@@ -225,5 +222,13 @@ public  dia:string = '';
 
             return materiaSelectStr;
           }
+
+
+          private getMateriaAsignar(info:string):string{
+            let materia:string = info.substring(info.indexOf('-')+1);
+            //console.log(materia);
+            return materia.toLowerCase().trim();
+          }
+
 
 }

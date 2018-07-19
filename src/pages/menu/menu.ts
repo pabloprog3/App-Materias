@@ -30,13 +30,11 @@ export class MenuPage {
               public alertCtrl:AlertController,public loadingCtrl:LoadingController,
 
               public file:File, public filePath:FilePath, public fileChooser:FileChooser,
-              private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider
+              private alumnoDB:AlumnoServiceProvider
 
   ) { }
 
   ionViewWillEnter(){
-    //this.segment = 'tutorial';
-    
     this.datos = this.navParams.data;
     console.log(this.datos);
     this.perfil = this.datos['perfil'];
@@ -51,31 +49,8 @@ export class MenuPage {
   }
 
 
- /* private irAPerfil():void{
-
-    const loading = this.loadingCtrl.create({
-      content: 'Ingresando. Espere...',
-      dismissOnPageChange: true,
-      spinner:"bubbles"
-    });
-    loading.present();
-
-    if (this.datos["loginSocial"]==true) {
-      this.navCtrl.push("PerfilPage", {"correo" : this.datos["correo"], "perfil":this.datos["perfil"], "nombre":this.datos["nombre"], "foto":this.datos["foto"], "isLoginSocial":this.datos["loginSocial"]});
-    }else{
-      this.navCtrl.push("PerfilPage", {"correo" : this.datos["correo"], "perfil":this.datos["perfil"], "nombre":this.datos["nombre"], "foto":this.datos["foto"], "isLoginSocial":this.datos["loginSocial"]});
-    }
-
-  }*/
 
   private irAFormAlumnos(){
-    /*const loading = this.loadingCtrl.create({
-      content: 'Ingresando. Espere...',
-      dismissOnPageChange: true,
-      spinner:"bubbles"
-    });
-    loading.present();*/
-
     this.navCtrl.push("AlumnosFormPage");
   }
 
@@ -90,31 +65,8 @@ export class MenuPage {
   }
 
   private irAListaAlumnos(){
-   /* const loading = this.loadingCtrl.create({
-      content: 'Ingresando. Espere...',
-      dismissOnPageChange: true,
-      spinner:"bubbles"
-    });
-    loading.present();
-    */
     this.navCtrl.push('ListadoAlumnosPage');
   }
-
-
-  /*private irAFormAlumnosQrPage(){
-
-    const loading = this.loadingCtrl.create({
-      content: 'Ingresando. Espere...',
-      dismissOnPageChange: true,
-      spinner:"bubbles"
-    });
-    loading.present();
-
-    console.log(this.datos["correo"]);
-    console.log(this.datos["perfil"]);
-    this.navCtrl.push('FormAlumnosQrPage', {'correo':this.datos["correo"], 'perfil':this.datos["perfil"]});
-}*/
-
 
   irABMPEncuestas()
   {

@@ -2,12 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Camera, CameraOptions } from "@ionic-native/camera";
-
-import {AngularFireDatabase} from 'angularfire2/database';
-import {storage, initializeApp}  from 'firebase';
 import * as firebase from 'firebase';
 
-import { PersonasServiceProvider } from "../../providers/personas-service/personas-service";
+//import { PersonasServiceProvider } from "../../providers/personas-service/personas-service";
 import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-service";
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 
@@ -34,7 +31,7 @@ export class AlumnosFormPage {
   private storageRef = firebase.storage().ref();
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              private camera:Camera, private dbPersonas:PersonasServiceProvider,
+              private camera:Camera, //private dbPersonas:PersonasServiceProvider,
               public alertCtrl:AlertController, private dbAlumnos:AlumnoServiceProvider,
               private dbProfesores:ProfesorServiceProvider
   ) {}
@@ -83,7 +80,7 @@ export class AlumnosFormPage {
     };
 
     this.camera.getPicture(options).then((imagen)=>{
-          let imagenData = 'data:image/jpeg;base64,'+ imagen;
+          //let imagenData = 'data:image/jpeg;base64,'+ imagen;
           let upload = this.storageRef.child('alumnos/' + this.legajo + '.jpg').putString(imagen, 'base64');
 
           upload.then((snapshot=>{
@@ -99,7 +96,7 @@ export class AlumnosFormPage {
     let asign = this.alertCtrl.create();
     asign.setTitle("Seleccionar materia");
     this.dbProfesores.traerListadoMaterias().subscribe(materias=>{
-      console.log(materias);
+      //console.log(materias);
       materias.forEach(mat => {
         let name:string = mat.nombre;
         let aula:string = mat.aula;
