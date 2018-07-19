@@ -1,6 +1,189 @@
 page-alumnos-form {
 
-    ion-title {
+    .fondoProfesional {
+
+        background-color: $background-Profesional;
+        
+        }    
+     
+.fondoArgentina {
+         
+        background-color: $background-Argentina;
+
+        }
+     
+.fondoNaif {
+    
+        background-color: $background-Naif;
+    
+        }
+     
+.fondoCustom {
+    
+        background-color: $background-Custom;
+    
+        }
+     
+.botonProfesional {
+     
+         background-color: $button-Profesional;
+         position:absolute;
+         width: 90%;
+         height: 15%;
+         right: 5%;
+         top:70%;
+         
+        }
+
+.botonProfesional1 {
+     
+         background-color: $button-Profesional1;
+         position:absolute;
+         width: 90%;
+         height: 15%;
+         top:40%;
+                
+        }
+     
+.botonArgentina {
+         background-color: $button-Argentina;
+         position:absolute;
+         width: 90%;
+         height: 15%;
+         top:70%;
+         left:5%;
+         border-radius: 43px;
+        }
+
+.botonArgentina1 {
+         background-color: $button-Argentina1;
+         position:absolute;
+         width: 90%;
+         height: 15%;
+         top:40%;
+         left:5%;
+         border-radius: 43px;
+        }
+     
+.botonNaif {
+         background-color: $button-Naif;
+         position:absolute;
+         width: 90%;
+         height: 20%;
+         top:70%;
+         left:5%;
+         border-radius: 20px;
+        }
+.botonNaif1 {
+        background-color: $button-Naif;
+        position:absolute;
+        width: 90%;
+        height: 20%;
+        top:40%;
+        left:5%;
+        border-radius: 20px;
+        }
+     
+.botonCustom {
+        background-color: $button-Custom;
+        position:absolute;
+        width: 90%;
+        height: 30%;
+        top:70%;
+        left:5%;
+        border-bottom-left-radius: 80%;
+        border-bottom-right-radius: 80%;
+        border-top-left-radius: 80%;
+        border-top-right-radius: 80%;
+        }
+.botonCustom1 {
+        background-color: $button-Custom;
+        position:absolute;
+        width: 90%;
+        height: 30%;
+        top:40%;
+        left:5%;
+        border-bottom-left-radius: 80%;
+        border-bottom-right-radius: 80%;
+        border-top-left-radius: 80%;
+        border-top-right-radius: 80%;
+        }
+.tituloProfesional {
+         
+        background-color: $titulo-Profesional;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 90px 1px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-family: $font-family-Profesional;
+        font-size: $font-size-Profesional;
+        }
+        
+.tituloArgentina {
+            
+        background-color: $titulo-Argentina;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 90px 1px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-family: $font-family-Argentina;
+        font-size: $font-size-Argentina;
+        }
+        
+.tituloNaif {
+                
+        background-color: $titulo-Naif;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 90px 1px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-family: $font-family-Naif;
+        font-size: $font-size-Naif;
+        }
+        
+.tituloCustom  {
+                    
+        background-color: $titulo-Custom;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 90px 1px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-family: $font-family-Custom;
+        font-size: $font-size-Custom;
+        }
+
+.itemProfesional {
+
+        background-color: $itemProfesional;
+        color: black;
+                               
+        }
+               
+.itemArgentina {
+                   
+        background-color: $itemArgentina;
+        color: black;
+        }
+               
+.itemNaif {
+                   
+        background-color: $itemNaif;
+        color: black;
+        }
+
+ion-title {
         background-color:#EECD90;
         position: absolute;
         top: 0;
@@ -12,19 +195,19 @@ page-alumnos-form {
         
     }
 
-    .fondo {
+.fondo {
         
-                background-color:lightgreen;
+        background-color:lightgreen;
                 
-            }
+    }
 
-    .fondo1 {
+.fondo1 {
                 
-                background-color:#EECD90;
+        background-color:#EECD90;
                         
-            }
+        }
 
-    .btnAlumno {
+.btnAlumno {
                 background: #34d955;
                 background-image: -webkit-linear-gradient(top, #34d955, #ceebc8);
                 background-image: -moz-linear-gradient(top, #34d955, #ceebc8);

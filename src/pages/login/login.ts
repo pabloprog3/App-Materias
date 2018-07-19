@@ -11,6 +11,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from "firebase";
 
 import { MenuPage } from "../menu/menu";
+import { AlumnosFormPage } from '../alumnos-form/alumnos-form';
+import { ConfiguPage } from '../configu/configu';
+import { ConfigProvider } from "../../providers/config/config";
 //import { TestPage } from '../test/test';
 
 @IonicPage()
@@ -19,6 +22,11 @@ import { MenuPage } from "../menu/menu";
   templateUrl: 'login.html',
 })
 export class LoginPage {
+
+  fondo="fondoProfesional";
+  boton="botonProfesional";
+  boton1="botonProfesional1";
+  titulo="tituloProfesional";
 
   public correo:string
   public passw: any;
@@ -37,13 +45,22 @@ export class LoginPage {
   constructor(public navCtrl: NavController,public toastCtrl: ToastController, public navParams: NavParams,
               public alertCtrl:AlertController, public loadingCtrl:LoadingController,
               private auth:LoginServiceProvider, private servicioDB:PersonasServiceProvider,
-              public platform:Platform, public authe:AngularFireAuth
+              public platform:Platform, public authe:AngularFireAuth,
+              private config:ConfigProvider
   ) {}
 
   ionViewDidLoad() {
     this.correo = "";
     this.passw = null;
     this.loginUsuario = new Usuario();
+
+    if (this.navParams.get('fondo') != undefined || this.navParams.get('fondo') != null) {
+      this.fondo = this.navParams.get('fondo');
+      this.boton = this.navParams.get('boton');
+      this.boton1 = this.navParams.get('boton1');
+      this.titulo = this.navParams.get('titulo');
+    
+    }
   }
   toastOk(x) {
     let toast = this.toastCtrl.create({

@@ -5,19 +5,19 @@
             <img (click)="salir()" class="imagen" src="assets/icon/salir1.png">
           </button>
         </ion-buttons>
-        <ion-title>
+        <ion-title class="{{titulo}}">
            Inicio
         </ion-title>
     </ion-navbar>
 </ion-header>
 
 
-<ion-content class="fondo" padding>
+<ion-content class="fondo" padding class="{{fondo}}">
 
-    <ion-list inset>
-        <ion-item class="item">
+    <ion-list inset class="{{fondo}}">
+        <ion-item class="{{fondo}}" >
         <ion-icon color="primary" name="ios-folder-open" item-left></ion-icon>
-          <ion-label >Seleccionar</ion-label>
+          <ion-label class="{{fondo}}">Seleccionar</ion-label>
           <ion-select (ionChange)="writePassw()"  [(ngModel)]="correo" cancelText="Cancelar" okText="Elegir" interface="alert">
             <ion-option value="admin@admin.com">Administrador</ion-option>
             <ion-option value="alumno@alumno.com.ar">Alumno</ion-option>
@@ -28,22 +28,22 @@
 
         <br><br>
 
-        <ion-item color="primary2">
-          <ion-label floating>Correo</ion-label>
+        <ion-item class="{{item}}">
+          <ion-label class="{{fondo}}" floating>Correo</ion-label>
           <ion-input color="input1" type="text"  [(ngModel)]="correo" minlength="5" maxlength="40" required></ion-input>
         </ion-item>
 
-        <ion-item color="primary2">
-          <ion-label floating>Password</ion-label>
+        <ion-item class="{{item}}">
+          <ion-label class="{{fondo}}" floating>Password</ion-label>
           <ion-input  color="input1" type="password" (ionChange)="validarCantDigitos($event)" (keypress)="validarNum($event)" [(ngModel)]="passw" required></ion-input>
         </ion-item>
 
     </ion-list>
 
 
-      <button ion-button class= "btnIngresar" color="secondary" (click)="login()">INGRESAR</button>
+      <button ion-button class="{{boton1}}" color="secondary" (click)="login()">INGRESAR</button>
 
-      <button ion-button class= "btnAlumno" round color="primary" (click)="crearAlumno()">NUEVO ALUMNO</button>
+      <button ion-button class="{{boton}}" round color="primary" (click)="crearAlumno()">NUEVO ALUMNO</button>
 
 
       <button *ngIf="datosLoginGitHub!=undefined" ion-button block color="secondary">

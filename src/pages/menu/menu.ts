@@ -9,9 +9,10 @@ import { FilePath } from "@ionic-native/file-path";
 import { FileChooser } from "@ionic-native/file-chooser";
 //import { FileOpener } from "@ionic-native/file-opener";
 import { Alumno } from "../../clases/alumno";
+import {LoginPage} from '../../pages/login/login';
 
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
-
+import { ConfigProvider } from "../../providers/config/config";
 
 @IonicPage()
 @Component({
@@ -24,13 +25,19 @@ export class MenuPage {
   public perfil:string='';
   public segmentAlumno:string = 'tutorial';
   public segment:string;
+  fondo;
+  boton;
+  boton1;
+  titulo;
+  private logueo:string;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public alertCtrl:AlertController,public loadingCtrl:LoadingController,
 
               public file:File, public filePath:FilePath, public fileChooser:FileChooser,
-              private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider
+              private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider,
+              private config:ConfigProvider
 
   ) { }
 
@@ -45,6 +52,21 @@ export class MenuPage {
     }
 
   ionViewDidLoad() {
+
+    this.datos = JSON.parse(this.navParams.data);
+    console.log(this.datos);
+    this.perfil = this.datos["perfil"];
+    let correo =  this.datos["correo"];
+    console.log(correo);
+   this.config.traerEstiloPorCorreo(correo).subscribe(res=>{
+     console.log(res);
+     this.boton=res[0].estiloBtn;
+     this.boton1=res[0].estiloBtn1;
+     this.fondo=res[0].estiloFondo;
+     this.titulo=res[0].estilotitulo;
+
+     console.log(this.fondo);
+   })
 
     //console.log(this.perfil);
     //console.log(this.profesorDB.getProfesoresPorDia());
@@ -216,8 +238,9 @@ export class MenuPage {
 
   }
 
+  salir(){
 
-
-
+    this.navCtrl.push(LoginPage,{'fondo':this.fondo,'boton':this.boton,'boton1':this.boton1,'titulo':this.titulo});
+  }
 
 }

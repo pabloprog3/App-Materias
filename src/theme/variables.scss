@@ -5,6 +5,16 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
+$font-family-Profesional:'Arial';
+$font-family-Argentina:'sans-serif';
+$font-family-Naif:'Helvetica';
+$font-family-Custom:'Verdana';
+
+$font-size-Profesional: 1px;
+$font-size-Argentina: 20px;
+$font-size-Naif: 40px;
+$font-size-Custom: 80px;
+
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -41,8 +51,15 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  verdeclaro: lightgreen,
-  piel:       #EECD90
+  verde:      green,
+  celeste:    lightblue,
+  rosa:       pink,
+  marron:     brown,
+  naranja:    orange,
+  camel:      #AE863D,
+  cemento:    #E7D6D6,
+  muro:       #A4A0A0
+
 );
 
 
@@ -57,14 +74,38 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$button-Profesional: color($colors,naranja);
+$button-Profesional1: color($colors,naranja);
+$button-Argentina: color($colors,light);
+$button-Argentina1: color($colors,light);
+$button-Naif: color($colors,muro);
+$button-Naif1: color($colors,muro);
+$button-Custom: color($colors,verde);
+$button-Custom1: color($colors,verde);
 
+
+$titulo-Profesional: color($colors,naranja);
+$titulo-Argentina: color($colors,light);
+$titulo-Naif: color($colors,muro);
+$titulo-Custom: color($colors,verde);
+
+$itemProfesional: color($colors,verde);
+$itemArgentina: color($colors,celeste);
+$itemNaif: color($colors,cemento);
+$itemCustom: color($colors,verde);
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
+$background-Profesional: color($colors, verde);
 
+$background-Argentina: color($colors, celeste);
+
+$background-Naif: color($colors, rosa);
+
+$background-Custom: color($colors, marron);
 
 
 // App Theme
