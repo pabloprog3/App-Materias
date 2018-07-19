@@ -1,7 +1,12 @@
 
 <ion-header >
+
+    <button ion-button round icon-only (click)="salir()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+    </button>  
+    
   <ion-toolbar >
-    <ion-segment name="segment" class="fondoSegment" [(ngModel)]="segmentAlumno" color="secondary" (ionChange)="segmentChanged($event)">
+    <ion-segment class="{{titulo}}" name="segment" class="fondoSegment" [(ngModel)]="segmentAlumno" color="secondary" (ionChange)="segmentChanged($event)">
       
       <ion-segment-button value="tutorial">
         <img src="assets/icon/tutorialIcon.png" width="40" height="40">
@@ -32,7 +37,7 @@
 </ion-header>
 
 
-<ion-content class="fondoMenu" padding>
+<ion-content class="{{fondo}}" padding>
 
 
 <div [ngSwitch]="segmentAlumno"   >

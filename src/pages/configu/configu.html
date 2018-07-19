@@ -1,0 +1,75 @@
+<!--
+  Generated template for the ConfiguPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="{{titulo}}">Configuracion</ion-title>
+    <button ion-button round icon-only (click)="salir()">
+      <ion-icon name="md-arrow-back"></ion-icon>
+    </button> 
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="{{fondo}}">
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Color de Fondo</ion-label>
+      <ion-select [(ngModel)]="fondo" okText="Aceptar" cancelText="Cancelar">
+        <ion-option value="fondoProfesional">Profesional</ion-option>
+        <ion-option value="fondoArgentina">Argentina</ion-option>
+        <ion-option value="fondoNaif">Naif</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+ 
+
+  <ion-list>
+      <ion-item>
+        <ion-label>Tipo de letra</ion-label>
+        <ion-select [(ngModel)]="titulo" okText="Aceptar" cancelText="Cancelar">
+          <ion-option value="tituloProfesional">Profesional</ion-option>
+          <ion-option value="tituloArgentina">Argentina</ion-option>
+          <ion-option value="tituloNaif">Naif</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <ion-list>
+      <ion-item>
+        <ion-label>Tipo de botón Primario</ion-label>
+        <ion-select [(ngModel)]="boton" okText="Aceptar" cancelText="Cancelar">
+          <ion-option value="botonProfesional">Profesional</ion-option>
+          <ion-option value="botonArgentina">Argentina</ion-option>
+          <ion-option value="botonNaif">Naif</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Tipo de botón Secundario</ion-label>
+      <ion-select [(ngModel)]="boton1" okText="Aceptar" cancelText="Cancelar">
+        <ion-option value="botonProfesional1">Profesional</ion-option>
+        <ion-option value="botonArgentina1">Argentina</ion-option>
+        <ion-option value="botonNaif1">Naif</ion-option>
+      </ion-select>
+    </ion-item>
+</ion-list>
+
+<label>Correo:</label>{{logeo}}
+
+  <button ion-button full round class="{{boton}}">Primario</button>
+  <button ion-button full round class="{{boton1}}">Secundario</button>
+  <button ion-button full round class="botonguardar" (click)="guardar()">GUARDAR</button>
+
+</ion-content>
+
+

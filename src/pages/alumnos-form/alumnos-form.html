@@ -3,12 +3,15 @@
 
   <ion-navbar>
     <ion-title text-center>Alta de Alumno</ion-title>
+    <button ion-button round icon-only (click)="salir()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+    </button> 
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content class="fondo" padding>
+<ion-content class="{{fondo}}" padding>
 
   <!--img *ngIf="foto" [src]="foto" width="100" height="130">
   <p>Presione en la camara para sacar una foto &nbsp;&nbsp;<img width="40" height="40" (click)="sacarFoto()" src="assets/icon/camara.png">
@@ -19,32 +22,32 @@
 
   </ion-item-->
 
-  <ion-item class="fondo">
+  <ion-item class="¨{{fondo}}">
       <ion-label>Legajo:</ion-label>
       <ion-input type="text" [(ngModel)]="legajo"></ion-input>
   </ion-item>
 
-  <ion-item class="fondo">
+  <ion-item class="{{fondo}}">
       <ion-label>Nombre:</ion-label>
       <ion-input type="text" [(ngModel)]="nombre"></ion-input>
   </ion-item>
 
-  <ion-item class="fondo">
+  <ion-item class="{{fondo}}">
       <ion-label>Correo:</ion-label>
       <ion-input type="text" [(ngModel)]="correo"></ion-input>
   </ion-item>
 
-  <ion-item class="fondo">
+  <ion-item class="{{fondo}}">
       <ion-label>Contraseña:</ion-label>
       <ion-input type="password" [(ngModel)]="passw"></ion-input>
   </ion-item>
   <br>
-  <ion-item class="fondo" text-center>
+  <ion-item class="{{fondo}}" text-center>
     <button [disabled]="!nombre" ion-button color="primary" (click)="asignarMaterias()">Asignar materias</button>
   </ion-item>
 
 
-<button ion-button class="btnAlumno" block (click)="ingresarAlumno()">
+<button ion-button class="{{boton}}" class="btnAlumno" block (click)="ingresarAlumno()">
   REGISTRAR
 </button>
 

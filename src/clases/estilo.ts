@@ -1,14 +1,18 @@
 export class Estilo{
 
     private estiloBtn:string;
+    private estiloBtn1:string;
     private estiloFondo:string;
+    private estilotitulo:string;
     private correo:string;
 
   
     constructor(){
         this.correo = '';
         this.estiloBtn = '';
+        this.estiloBtn1 = '';
         this.estiloFondo = '';
+        this.estilotitulo = '';
     }
 
     public getCorreo(){
@@ -17,6 +21,10 @@ export class Estilo{
 
     public getEstiloBtn(){
         return this.estiloBtn;
+    }
+
+    public setEstiloBtn1(estilo:string):void{
+        this.estiloBtn1 = estilo;
     }
 
     public getEstiloFondo(){
@@ -34,6 +42,10 @@ export class Estilo{
 
     public setEstiloFondo(estilo:string):void{
         this.estiloFondo = estilo;
+    }
+
+    public setEstiloTitulo(estilo:string):void{
+        this.estilotitulo = estilo;
     }
 
   
