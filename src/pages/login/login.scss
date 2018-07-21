@@ -75,16 +75,6 @@ background-color: #EECD90;
      
     }
 
-.botonProfesional1 {
- 
-     background-color: $button-Profesional1;
-     position:absolute;
-     width: 90%;
-     height: 15%;
-     top:40%;
-            
-    }
- 
 .botonArgentina {
      background-color: $button-Argentina;
      position:absolute;
@@ -95,16 +85,6 @@ background-color: #EECD90;
      border-radius: 43px;
     }
 
-.botonArgentina1 {
-     background-color: $button-Argentina1;
-     position:absolute;
-     width: 90%;
-     height: 15%;
-     top:40%;
-     left:5%;
-     border-radius: 43px;
-    }
- 
 .botonNaif {
      background-color: $button-Naif;
      position:absolute;
@@ -114,15 +94,7 @@ background-color: #EECD90;
      left:5%;
      border-radius: 20px;
     }
-.botonNaif1 {
-    background-color: $button-Naif;
-    position:absolute;
-    width: 90%;
-    height: 20%;
-    top:40%;
-    left:5%;
-    border-radius: 20px;
-    }
+
  
 .botonCustom {
      background-color: $button-Custom;
@@ -136,18 +108,7 @@ background-color: #EECD90;
      border-top-left-radius: 80%;
      border-top-right-radius: 80%;
     }
-.botonCustom1 {
-    background-color: $button-Custom;
-    position:absolute;
-    width: 90%;
-    height: 30%;
-    top:40%;
-    left:5%;
-    border-bottom-left-radius: 80%;
-    border-bottom-right-radius: 80%;
-    border-top-left-radius: 80%;
-    border-top-right-radius: 80%;
-    }
+
 .tituloProfesional {
      
         background-color: $titulo-Profesional;

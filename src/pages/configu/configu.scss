@@ -23,82 +23,50 @@ page-configu {
          font-family: $font-family-Profesional;
          font-size: 20px;
          position:absolute;
-         width: 50%;
-         height: 10%;
-         top:60%;
-         left:40%;
-        }
-
-    .botonguardar {
-     
-        background-color: darkgrey;
-        font-family: sans-serif;
-        font-size: 15px;
-        position:absolute;
-        width: 25%;
-        height: 10%;
-        top:60%;
-        left:5%;
-        }
         
-    .botonProfesional1 {
-     
-        background-color: $button-Profesional;
-        font-family: $font-family-Profesional;
-        font-size: 20px;
-        position:absolute;
-        width: 50%;
-        height: 10%;
-        top:75%;
-        left:40%;
-           }
+           width: $button-Profesional-width;
+           height: $button-Profesional-height;
+           top:$button-Profesional-top;
+           left:$button-Profesional-left;
+        
+    
 
-     
+    }
+
+           
+         
     .botonArgentina {
          background-color: $button-Argentina;
          font-family: $font-family-Argentina;
          font-size: 30px;
          position:absolute;
-         width: 50%;
-         height: 10%;
-         top:53%;
-         left:40%;
-         border-radius: 43px;
+
+         
+            width: $button-Argentina-width;
+            height: $button-Argentina-height;
+            top:$button-Argentina-top;
+            left:$button-Argentina-left;
+         
+         
+         border-radius: 60px 60px 60px 60px;
         }
-    .botonArgentina1 {
-            background-color: $button-Argentina;
-            font-family: $font-family-Argentina;
-            font-size: 30px;
-            position:absolute;
-            width: 50%;
-            height: 10%;
-            top:75%;
-            left:40%;
-            border-radius: 43px;
-           }
+    
      
     .botonNaif {
          background-color: $button-Naif;
          font-family: $font-family-Naif;
          font-size: 15px;
          position:absolute;
-         width: 50%;
-         height: 10%;
-         top:53%;
-         left:40%;
+        
+            width: $button-Naif-width;
+            height: $button-Naif-height;
+            top:$button-Naif-top;
+            left:$button-Naif-left;
+         
+         
          border-radius: 20px;
         }
-    .botonNaif1 {
-            background-color: $button-Naif;
-            font-family: $font-family-Naif;
-            font-size: 15px;
-            position:absolute;
-            width: 50%;
-            height: 10%;
-            top:75%;
-            left:40%;
-            border-radius: 20px;
-           }
+    
      
         
     .botongrilla {

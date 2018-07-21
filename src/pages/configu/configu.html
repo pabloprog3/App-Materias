@@ -22,9 +22,9 @@
     <ion-item>
       <ion-label>Color de Fondo</ion-label>
       <ion-select [(ngModel)]="fondo" okText="Aceptar" cancelText="Cancelar">
-        <ion-option value="fondoProfesional">Profesional</ion-option>
-        <ion-option value="fondoArgentina">Argentina</ion-option>
-        <ion-option value="fondoNaif">Naif</ion-option>
+        <ion-option value="fondoProfesional">Verde</ion-option>
+        <ion-option value="fondoArgentina">Celeste</ion-option>
+        <ion-option value="fondoNaif">Rosa</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
@@ -35,9 +35,9 @@
       <ion-item>
         <ion-label>Tipo de letra</ion-label>
         <ion-select [(ngModel)]="titulo" okText="Aceptar" cancelText="Cancelar">
-          <ion-option value="tituloProfesional">Profesional</ion-option>
-          <ion-option value="tituloArgentina">Argentina</ion-option>
-          <ion-option value="tituloNaif">Naif</ion-option>
+          <ion-option value="tituloProfesional">Arial</ion-option>
+          <ion-option value="tituloArgentina">San-Serif</ion-option>
+          <ion-option value="tituloNaif">Helvética</ion-option>
         </ion-select>
       </ion-item>
   </ion-list>
@@ -46,29 +46,27 @@
       <ion-item>
         <ion-label>Tipo de botón Primario</ion-label>
         <ion-select [(ngModel)]="boton" okText="Aceptar" cancelText="Cancelar">
-          <ion-option value="botonProfesional">Profesional</ion-option>
-          <ion-option value="botonArgentina">Argentina</ion-option>
-          <ion-option value="botonNaif">Naif</ion-option>
+          <ion-option value="botonProfesional">Cuadrado</ion-option>
+          <ion-option value="botonArgentina">Oval</ion-option>
+          <ion-option value="botonNaif">Borde redondeado</ion-option>
         </ion-select>
       </ion-item>
   </ion-list>
 
   <ion-list>
     <ion-item>
-      <ion-label>Tipo de botón Secundario</ion-label>
+      <ion-label>Tamaño del botón</ion-label>
       <ion-select [(ngModel)]="boton1" okText="Aceptar" cancelText="Cancelar">
-        <ion-option value="botonProfesional1">Profesional</ion-option>
-        <ion-option value="botonArgentina1">Argentina</ion-option>
-        <ion-option value="botonNaif1">Naif</ion-option>
+        <ion-option value="botonProfesional1">Grande</ion-option>
+        <ion-option value="botonArgentina1">Mediano</ion-option>
+        <ion-option value="botonNaif1">Pequeño</ion-option>
       </ion-select>
     </ion-item>
 </ion-list>
 
 <label>Correo:</label>{{logeo}}
 
-  <button ion-button full round class="{{boton}}">Primario</button>
-  <button ion-button full round class="{{boton1}}">Secundario</button>
-  <button ion-button full round class="botonguardar" (click)="guardar()">GUARDAR</button>
+  <button ion-button full round class="{{boton}}" (click)="guardar()">GUARDAR</button>
 
 </ion-content>
 
