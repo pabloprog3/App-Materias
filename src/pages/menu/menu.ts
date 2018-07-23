@@ -13,6 +13,7 @@ import {LoginPage} from '../../pages/login/login';
 
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 import { ConfigProvider } from "../../providers/config/config";
+import { ConfiguPage } from '../configu/configu';
 
 @IonicPage()
 @Component({
@@ -25,6 +26,7 @@ export class MenuPage {
   public perfil:string='';
   public segmentAlumno:string = 'tutorial';
   public segment:string;
+  private correo:string='';
   fondo;
   boton;
   boton1;
@@ -42,16 +44,12 @@ export class MenuPage {
   ) { }
 
   ionViewWillEnter(){
-    this.datos = this.navParams.data;
-    console.log(this.datos);
-    this.perfil = this.datos['perfil'];
-    console.log(this.perfil);
-    console.log(this.datos['correo']);
+    
     }
 
   ionViewDidLoad() {
 
-    this.datos = JSON.parse(this.navParams.data);
+    this.datos = this.navParams.data;
     console.log(this.datos);
     this.perfil = this.datos["perfil"];
     let correo =  this.datos["correo"];
@@ -194,5 +192,11 @@ export class MenuPage {
 
     this.navCtrl.push(LoginPage,{'fondo':this.fondo,'boton':this.boton,'boton1':this.boton1,'titulo':this.titulo});
   }
+
+  conf(){
+          this.navCtrl.push('ConfiguPage',{logeo:this.correo});
+        }
+   
+  
 
 }

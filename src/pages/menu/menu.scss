@@ -1,220 +1,198 @@
 page-menu {
 
 
-.fondoProfesional {
+        .fondoProfesional {
 
-        background-color: $background-Profesional;
-        
-        }    
-     
-.fondoArgentina {
-         
-        background-color: $background-Argentina;
-
-        }
-     
-.fondoNaif {
-    
-        background-color: $background-Naif;
-    
-        }
-     
-.fondoCustom {
-    
-        background-color: $background-Custom;
-    
-        }
-     
-.botonProfesional {
-     
-         background-color: $button-Profesional;
-         position:absolute;
-         width: 90%;
-         height: 15%;
-         right: 5%;
-         top:70%;
-         
-        }
-
-.botonProfesional1 {
-     
-         background-color: $button-Profesional1;
-         position:absolute;
-         width: 90%;
-         height: 15%;
-         top:40%;
+                background-color: $background-Profesional;
                 
-        }
-     
-.botonArgentina {
-         background-color: $button-Argentina;
-         position:absolute;
-         width: 90%;
-         height: 15%;
-         top:70%;
-         left:5%;
-         border-radius: 43px;
-        }
-
-.botonArgentina1 {
-         background-color: $button-Argentina1;
-         position:absolute;
-         width: 90%;
-         height: 15%;
-         top:40%;
-         left:5%;
-         border-radius: 43px;
-        }
-     
-.botonNaif {
-         background-color: $button-Naif;
-         position:absolute;
-         width: 90%;
-         height: 20%;
-         top:70%;
-         left:5%;
-         border-radius: 20px;
-        }
-.botonNaif1 {
-        background-color: $button-Naif;
-        position:absolute;
-        width: 90%;
-        height: 20%;
-        top:40%;
-        left:5%;
-        border-radius: 20px;
-        }
-     
-.botonCustom {
-         background-color: $button-Custom;
-         position:absolute;
-         width: 90%;
-         height: 30%;
-         top:70%;
-         left:5%;
-         border-bottom-left-radius: 80%;
-         border-bottom-right-radius: 80%;
-         border-top-left-radius: 80%;
-         border-top-right-radius: 80%;
-        }
-.botonCustom1 {
-        background-color: $button-Custom;
-        position:absolute;
-        width: 90%;
-        height: 30%;
-        top:40%;
-        left:5%;
-        border-bottom-left-radius: 80%;
-        border-bottom-right-radius: 80%;
-        border-top-left-radius: 80%;
-        border-top-right-radius: 80%;
-        }
-.tituloProfesional {
-         
-            background-color: $titulo-Profesional;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 0 90px 1px;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            font-family: $font-family-Profesional;
-            font-size: $font-size-Profesional;
-        }
+                }    
+             
+        .fondoArgentina {
+                 
+                background-color: $background-Argentina;
         
-.tituloArgentina {
-            
-                background-color: $titulo-Argentina;
-                position: absolute;
-                top: 0;
-                left: 0;
-                padding: 0 90px 1px;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-                font-family: $font-family-Argentina;
-                font-size: $font-size-Argentina;
-            }
-        
-.tituloNaif {
-                
-            background-color: $titulo-Naif;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 0 90px 1px;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            font-family: $font-family-Naif;
-            font-size: $font-size-Naif;
-            }
-        
-.tituloCustom  {
-                    
-            background-color: $titulo-Custom;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 0 90px 1px;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            font-family: $font-family-Custom;
-            font-size: $font-size-Custom;
-            }
-
-.itemProfesional {
-
-            background-color: $itemProfesional;
-            color: black;
-                               
-            }
-               
-.itemArgentina {
-                   
-                background-color: $itemArgentina;
-                color: black;
                 }
-               
-.itemNaif {
-                   
-            background-color: $itemNaif;
-            color: black;
-          }
+             
+        .fondoNaif {
+            
+                background-color: $background-Naif;
+            
+                }
+             
+        .fondoCustom {
+            
+                background-color: $background-Custom;
+            
+                }
+             
+        .botonProfesional {
+             
+                 background-color: $button-Profesional;
+                 position:absolute;
+                 width: 90%;
+                 height: 15%;
+                 right: 5%;
+                 top:70%;
+                 
+                }
+        
+        
+             
+        .botonArgentina {
+                 background-color: $button-Argentina;
+                 position:absolute;
+                 width: 90%;
+                 height: 15%;
+                 top:70%;
+                 left:5%;
+                 border-radius: 43px;
+                }
+        
+        
+             
+        .botonNaif {
+                 background-color: $button-Naif;
+                 position:absolute;
+                 width: 90%;
+                 height: 20%;
+                 top:70%;
+                 left:5%;
+                 border-radius: 20px;
+                }
+       
+             
+        .botonCustom {
+                 background-color: $button-Custom;
+                 position:absolute;
+                 width: 90%;
+                 height: 30%;
+                 top:70%;
+                 left:5%;
+                 border-bottom-left-radius: 80%;
+                 border-bottom-right-radius: 80%;
+                 border-top-left-radius: 80%;
+                 border-top-right-radius: 80%;
+                }
+        
+        .tituloProfesional {
+                 
+                    background-color: $titulo-Profesional;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 0 90px 1px;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    font-family: $font-family-Profesional;
+                    font-size: $font-size-Profesional;
+                }
+                
+        .tituloArgentina {
+                    
+                        background-color: $titulo-Argentina;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        padding: 0 90px 1px;
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        font-family: $font-family-Argentina;
+                        font-size: $font-size-Argentina;
+                    }
+                
+        .tituloNaif {
+                        
+                    background-color: $titulo-Naif;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 0 90px 1px;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    font-family: $font-family-Naif;
+                    font-size: $font-size-Naif;
+                    }
+                
+        .tituloCustom  {
+                            
+                    background-color: $titulo-Custom;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 0 90px 1px;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    font-family: $font-family-Custom;
+                    font-size: $font-size-Custom;
+                    }
+        
+        .itemProfesional {
+        
+                    background-color: $itemProfesional;
+                    color: black;
+                                       
+                    }
+                       
+        .itemArgentina {
+                           
+                        background-color: $itemArgentina;
+                        color: black;
+                        }
+                       
+        .itemNaif {
+                           
+                    background-color: $itemNaif;
+                    color: black;
+                  }
+        
+        
+        ion-title {
+            background-color:#EECD90;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0 90px 1px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+         }
+        
+         .fondoSegment{
+          background-color:#EECD90;
+         }
+        
+        .fondoMenu {
+        
+            background-color:lightgreen;
+        
+         }
+        
+        .itemMenu {
+            background-color:lightgreen;
+        
+         }
+        
+        .lista {
+            position: absolute;
+            top: 10%;
+        
+         }
 
-
-ion-title {
-    background-color:#EECD90;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 90px 1px;
-    width: 100%;
-    height: 100%;
-    text-align: center;
- }
-
- .fondoSegment{
-  background-color:#EECD90;
- }
-
-.fondoMenu {
-
-    background-color:lightgreen;
-
- }
-
-.itemMenu {
-    background-color:lightgreen;
-
- }
-
-.lista {
-    position: absolute;
-    top: 10%;
-
- }
+        .imagen {
+        
+                background-color: rgb(73, 83, 173);
+                width: 35px;
+                height: 35px;
+                max-width: 100%;
+                max-height: 100%;
+                display: inline-block;
+                position: absolute;
+                right: 0.1%;
+                 
+            }
 
 }

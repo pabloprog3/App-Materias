@@ -1,9 +1,15 @@
 
-<ion-header >
+<ion-header>
 
     <button ion-button round icon-only (click)="salir()">
         <ion-icon name="md-arrow-back"></ion-icon>
-    </button>  
+    </button>
+
+    <button class="imagen" ion-button round icon-only (click)="conf()">
+      <ion-icon name="md-cog"></ion-icon>
+    </button>
+    
+    
     
   <ion-toolbar >
     <ion-segment class="{{titulo}}" name="segment" class="fondoSegment" [(ngModel)]="segmentAlumno" color="secondary" (ionChange)="segmentChanged($event)">
