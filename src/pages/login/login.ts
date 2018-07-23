@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage,ToastController, NavController, NavParams, AlertController, LoadingController, Platform } from 'ionic-angular';
 
-import { Firebase } from '@ionic-native/firebase';
+//import { Firebase } from '@ionic-native/firebase';
 import { LoginServiceProvider } from "../../providers/login-service/login-service";
 import { PersonasServiceProvider } from "../../providers/personas-service/personas-service";
 
@@ -11,8 +11,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from "firebase";
 
 import { MenuPage } from "../menu/menu";
-import { AlumnosFormPage } from '../alumnos-form/alumnos-form';
-import { ConfiguPage } from '../configu/configu';
+//import { AlumnosFormPage } from '../alumnos-form/alumnos-form';
+//import { ConfiguPage } from '../configu/configu';
 import { ConfigProvider } from "../../providers/config/config";
 //import { TestPage } from '../test/test';
 

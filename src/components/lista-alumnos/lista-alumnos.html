@@ -2,10 +2,14 @@
     <ion-item class="fondo">
 
         <p> <img (click)="addNuevoAlumno()" src="assets/imgs/add.png" width="40" height="40" align="left">
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img (click)=tomarAsistencia() src="assets/icon/asistencia.png" width="40" height="40" >
             <img (click)="cargarArchivos()" src="assets/imgs/excel.png" width="40" height="40" align="right">
         </p>
 
     </ion-item>
+
+    <img [src]="evidencia" *ngIf="evidencia!=undefined" width="40" height=40>
 
     <ion-item class="fondo">
         <ion-label>Elegir profesor día actual: {{dia}}</ion-label>

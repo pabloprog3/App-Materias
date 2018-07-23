@@ -74,6 +74,80 @@ export class AlumnoServiceProvider {
     return _alumno;
   }
 
+  private getNameDia(dia:number):string{
+    console.log(dia);
+    let diaStr:string = '';
+    switch (dia) {
+      case 1:
+      diaStr = 'Lunes';
+  break;
+  case 2:
+      diaStr = 'Martes';
+  break;
+  case 3:
+      diaStr = 'Miércoles';
+  break;
+  case 4:
+      diaStr = 'Jueves';
+  break;
+  case 5:
+      diaStr = 'Viernes';
+  break;
+  case 6:
+      diaStr = 'Sábado';
+  break;
+  case 0:
+      diaStr = 'Domingo';
+  break;
+
+  default:
+  break;
+    }
+    console.log(diaStr);
+    return diaStr.toLowerCase();
+  }
+
+  public getAlumnosTomarAsistencia(profesor:string):Array<string>{
+    let date:Date = new Date();
+    let diaStr:string = this.getNameDia(date.getDay());
+    let listaAlumnos:Array<string> = new Array<string>();
+    console.log(diaStr);
+    this.db.list('/materias').subscribe(materias=>{
+      let listaMateriasDia:Array<string> = new Array<string>();
+      materias.forEach(materia => {
+        //console.log(materia);
+        let horario:string = materia.horarios;
+        let _dia:string = horario.substring(0, horario.indexOf(' '));
+        //console.log(_dia);
+        if (_dia.toLowerCase() == diaStr) {
+          listaMateriasDia.push(materia.nombre);
+        }
+      }); //fin foreach materias
+      this.db.list('/alumnos').subscribe(alumnos=>{
+        //console.log(alumnos);
+        alumnos.forEach(alumno => {
+          //console.log(alumno.materias);
+          if (alumno.materias) {
+            let alumnoMaterias:Array<string> = new Array<string>();
+            alumnoMaterias = alumno.materias;
+            alumnoMaterias.forEach(a => {
+              //console.log(a);
+              if (listaMateriasDia.includes(a)) {
+                listaAlumnos.push(alumno.legajo + '-' + alumno.nombre);
+              }
+            });
+          }
+     
+        }); //fin foreach alumnos
+      }); // fin /alumnos
+      //console.log(listaMateriasDia);
+      //console.log(listaAlumnos);
+      //return listaAlumnos;
+    }); // fin /materias
+    //console.log(listaAlumnos);
+    return listaAlumnos;
+  }
+
   public getAlumnosPorMateria(materiaParam:string){
     let alumnos:Array<any> = new Array<any>();
     let listado: Array<any> = new Array<any>();
@@ -98,6 +172,10 @@ export class AlumnoServiceProvider {
 
   public modificarAlumno(alumno:Alumno){
     this.db.app.database().ref('/alumnos/' + alumno.getLegajo()).update(alumno);
+  }
+
+  public setAsistencia(alumnos:any, mes:string, dia:number, materia:string):void{
+    this.db.app.database().ref('/asistencia').child(mes).child(materia).child(dia.toString()).set(alumnos);
   }
 
 

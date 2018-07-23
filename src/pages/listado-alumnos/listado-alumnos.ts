@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ModalOptions, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 
 import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-service";
 
-import { File,FileEntry } from "@ionic-native/file";
+import { File } from "@ionic-native/file";
 import { FilePath } from "@ionic-native/file-path";
 import { FileChooser } from "@ionic-native/file-chooser";
 
@@ -18,8 +18,8 @@ import { ConsultarBajaModifPage } from "../consultar-baja-modif/consultar-baja-m
 })
 export class ListadoAlumnosPage {
 
-  private foto:string;
-  private listado:Array<string>;
+  public foto:string;
+  public listado:Array<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private alumnoDB:AlumnoServiceProvider, public modalCtrl:ModalController,

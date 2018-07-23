@@ -64,7 +64,10 @@ export class DatosAlumnosPage {
     alumno.setLegajo(this.legajo);
     alumno.setCorreo(this.correo);
     alumno.setNombre(this.nombre);
-    alumno.setFoto(this.foto);
+    if (this.foto != undefined) {
+      alumno.setFoto(this.foto);
+    }
+    
     this.alumnoDB.modificarAlumno(alumno);
 
     this.view.dismiss();

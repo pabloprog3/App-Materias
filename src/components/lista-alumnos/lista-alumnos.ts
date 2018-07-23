@@ -12,8 +12,9 @@ import { FileChooser } from "@ionic-native/file-chooser";
 
 import { Alumno } from "../../clases/alumno";
 
+import { Camera, CameraOptions } from "@ionic-native/camera";
 
-
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'lista-alumnos',
@@ -21,12 +22,15 @@ import { Alumno } from "../../clases/alumno";
 })
 export class ListaAlumnosComponent implements OnInit {
 
-  public foto:string;
+public foto:string;
 public  listado:Array<string>;
 public dataMaterias:Array<any>;
 public  listadoProfesores:Array<string>;
 public  date:number = new Date().getDay();
 public  dia:string = '';
+public alumnosAsistencia:Array<string>;
+public evidencia:string = undefined;
+private storageRef = firebase.storage().ref();
 
   @Input() correo:string;
   @Input() nombre:string;
@@ -39,7 +43,8 @@ public  dia:string = '';
     private alumnoDB:AlumnoServiceProvider, public modalCtrl:ModalController,
     public file:File, public fileChooser:FileChooser, public filePath:FilePath,
     public alertCtrl:AlertController, public popoverCtrl:PopoverController,
-    private profesorDB:ProfesorServiceProvider, public toast:ToastController
+    private profesorDB:ProfesorServiceProvider, public toast:ToastController,
+    public camera:Camera
 
   ) {}
 
@@ -230,5 +235,143 @@ public  dia:string = '';
             return materia.toLowerCase().trim();
           }
 
+          async tomarAsistencia(){
+            if (this.profesorSelect=='') {
+             let msjToast =  this.toast.create();
+             msjToast.setMessage("Debe seleccionar un profesor");
+             msjToast.setDuration(1000);
+             msjToast.setPosition("middle");
+             msjToast.present();
+             return;
+            }
 
-}
+            let aviso = this.toast.create();
+            aviso.setPosition('middle');
+            aviso.setMessage('Primero, adjunte la foto de la clase.');
+            aviso.setDuration(3000);
+            aviso.present();
+            
+            let date:Date = new Date();
+            let mes:number = date.getMonth() + 1;
+            let diaStr:string = date.getDate() + '/' + mes + '/' + date.getFullYear();
+            
+            await this.sacarFoto(this.getMesString(mes), date.getDate(), this.getMateriaString(this.getMateriaAsignar(this.profesorSelect)));
+   
+            let alumnos: Array<string> = this.alumnoDB.getAlumnosTomarAsistencia(this.profesorSelect);
+            let alerta = this.alertCtrl.create();
+            alerta.setTitle( 'Tomar asistencia día: ' + diaStr);
+            
+            alumnos.forEach(alumno => {
+              alerta.addInput({
+                type:'checkbox',
+                label: alumno,
+                value: alumno,
+                checked: false
+              });
+            });
+
+          alerta.addButton('Cancelar');
+
+          alerta.addButton({
+            text:'Confirmar',
+            handler: data=>{
+              this.alumnosAsistencia = new Array<string>();
+              this.alumnosAsistencia = data;
+              console.log(this.alumnosAsistencia);
+              this.registrarAsistencia({data:data, foto:this.evidencia}, this.getMesString(mes), date.getDate(), this.getMateriaAsignar(this.profesorSelect));
+  
+            }
+          });
+          alerta.present();
+
+          }
+
+        
+          
+          private registrarAsistencia(alumnos:any, mes:string, dia:number, materia:string):void{
+              this.alumnoDB.setAsistencia(alumnos, mes, dia, materia);
+          }
+
+          private  sacarFoto(mes:string, dia:number, materia:string){
+            //let more:number = this.cont + 1;
+            let options:CameraOptions ={
+              quality: 50,
+              destinationType: this.camera.DestinationType.DATA_URL,
+              encodingType:this.camera.EncodingType.JPEG,
+              mediaType:this.camera.MediaType.PICTURE,
+              correctOrientation:false,
+              saveToPhotoAlbum:true,
+              cameraDirection:this.camera.Direction.BACK
+            };
+      
+            this.camera.getPicture(options).then((imagen)=>{
+              let imagenData = 'data:image/jpeg;base64,'+ imagen;
+              let upload = this.storageRef.child('asistencia/' + materia + '/'+mes+'/'+ dia + '_evidencia.jpg').putString(imagen, 'base64');
+      
+                  upload.then((snapshot=>{
+                        //let objJson = {'foto':snapshot.downloadURL, 'activa':false}
+                        //let arr:Array<string>=new Array<string>();
+                        this.evidencia = snapshot.downloadURL;
+                        //this.fotos.push(JSON.parse(JSON.stringify(objJson)));
+                        //this.dbPersonas.guardarLinkFoto(snapshot.downloadURL, this.legajo, this.perfil, this.fotos);
+      
+                      })
+                  );
+            });
+      
+          }
+
+          private getMesString(mes:number):string{
+            let mesStr:string = '';
+            switch (mes) {
+              case 1:
+                    mesStr = 'Enero'
+              break;
+              case 2:
+                    mesStr = 'Febrero'
+              break;
+              case 3:
+                    mesStr = 'Marzo'
+              break;
+              case 4:
+                    mesStr = 'Abril'
+              break;
+              case 5:
+                    mesStr = 'Mayo'
+              break;
+              case 6:
+                    mesStr = 'Junio'
+              break;
+              case 7:
+                    mesStr = 'Julio'
+              break;
+              case 8:
+                    mesStr = 'Agosto'
+              break;
+              case 9:
+                    mesStr = 'Septiembre'
+              break;
+              case 10:
+                    mesStr = 'Octubre'
+              break;
+              case 11:
+                    mesStr = 'Noviembre'
+              break;
+              case 12:
+                    mesStr = 'Diciembre'
+              break;
+            
+              default:
+                break;
+            }
+            return mesStr.toLowerCase();
+          }
+
+
+        private getMateriaString(profesor:string):string{
+          let materia:string = '';
+          return materia.substring(profesor.indexOf('-')+1);
+        }
+
+
+}// fin clase
