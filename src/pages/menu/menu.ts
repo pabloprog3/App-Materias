@@ -194,7 +194,8 @@ export class MenuPage {
   }
 
   conf(){
-          this.navCtrl.push('ConfiguPage',{logeo:this.correo});
+          this.navCtrl.push('ConfiguPage',{logueo:this.correo});
+          
         }
    
   

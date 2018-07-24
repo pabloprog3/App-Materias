@@ -57,12 +57,23 @@
     <ion-item>
       <ion-label>Tamaño del botón</ion-label>
       <ion-select [(ngModel)]="boton1" okText="Aceptar" cancelText="Cancelar">
-        <ion-option value="botonProfesional1">Grande</ion-option>
-        <ion-option value="botonArgentina1">Mediano</ion-option>
-        <ion-option value="botonNaif1">Pequeño</ion-option>
+        <ion-option value="botonProfesional">Grande</ion-option>
+        <ion-option value="botonArgentina">Mediano</ion-option>
+        <ion-option value="botonNaif">Pequeño</ion-option>
       </ion-select>
     </ion-item>
-</ion-list>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Tamaño de la letra</ion-label>
+      <ion-select [(ngModel)]="texto" okText="Aceptar" cancelText="Cancelar">
+        <ion-option value="botonProfesional">Grande</ion-option>
+        <ion-option value="botonArgentina">Mediano</ion-option>
+        <ion-option value="botonNaif">Pequeño</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
 <label>Correo:</label>{{logeo}}
 

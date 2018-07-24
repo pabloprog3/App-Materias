@@ -23,6 +23,7 @@ export class ConfiguPage {
   boton="botonProfesional";
   boton1="botonProfesional1";
   titulo="tituloProfesional";
+  texto="tituloProfesional";
   logeo="admin@admin.com";
   estilo: FirebaseListObservable<any[]>;
   public Config:Estilo;

@@ -27,6 +27,7 @@ export class LoginPage {
   boton="botonProfesional";
   boton1="botonProfesional1";
   titulo="tituloProfesional";
+  
 
   public correo:string
   public passw: any;
@@ -93,6 +94,7 @@ export class LoginPage {
       loading.present();
       this.loginUsuario.setCorreo(this.correo);
       this.loginUsuario.setClave(this.passw);
+      
       console.log(this.loginUsuario);
       this.auth.loginUser(this.loginUsuario.getCorreo(), this.loginUsuario.getClave().toString())
         .then(user=>{
