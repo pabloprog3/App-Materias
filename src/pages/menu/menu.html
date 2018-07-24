@@ -65,7 +65,7 @@
       <lista-profesores *ngSwitchCase="'abmProfesores'"></lista-profesores>
     </div >
 
-    <div *ngIf="perfil=='administrador'  || perfil=='administrativo' || perfil=='profesor'">
+    <div *ngIf="perfil=='administrativo'">
       <lista-alumnos [perfil]="datos.perfil" *ngSwitchCase="'abmAlumnos'"
                      [correo]="datos.correo"
                      [nombre]="datos.nombre"
@@ -76,49 +76,6 @@
 
 </div>
 
-
-
-  <!--ion-list class="lista">
-
-    <ion-item class="itemMenu">
-      <ion-thumbnail item-start>
-        <img src="assets/imgs/alumno.png">
-      </ion-thumbnail>
-      <h2>Alumnos</h2>
-      <br>
-      <button ion-button color="secondary" (click)="irAPerfil()" item-bottom>Ver</button>
-      <button ion-button color="secondary" (click)="irAListaAlumnos()" item-bottom>ABM</button>
-      <button ion-button color="secondary" (click)="irAFormAlumnosQrPage()" item-bottom>QR</button>
-    </ion-item>
-    <br>
-    <br>
-    <br>
-    <ion-item class="itemMenu">
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/profesor.png">
-        </ion-thumbnail>
-        <h2>Profesores</h2>
-        <br>
-        <button ion-button color="secondary" (click)="irAFormProfesores()" item-bottom>Nuevo</button>
-        <button ion-button color="secondary" (click)="irAPerfil()" item-bottom>Ver</button>
-        <button ion-button color="secondary" (click)="irABMProfesores()" item-bottom>ABM</button>
-        <button ion-button color="secondary" (click)="irAFormAlumnosQrPage()" item-bottom>QR</button-->
-        <!--button ion-button color="secondary" (click)="cargarArchivos()" item-bottom>Cargar Excel</button-->
-    <!--/ion-item>
-    <br>
-    <br>
-    <br>
-    <ion-item class="itemMenu">
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/admin.png">
-        </ion-thumbnail>
-        <h2>Administración de Doc.</h2>
-        <br>
-        <button ion-button color="secondary" item-bottom>Ver</button>
-        <button ion-button color="secondary" (click)="irABMPEncuestas()" item-bottom>ABM de Encuestas</button>
-    </ion-item>
-
-  </ion-list-->
 
 </ion-content>
 

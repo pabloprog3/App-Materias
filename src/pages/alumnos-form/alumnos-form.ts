@@ -131,7 +131,7 @@ export class AlumnosFormPage {
         asign.addInput({
           type:'checkbox',
           label:name.toUpperCase() + ' - ' + aula.toUpperCase(),
-          value:this.nombre + ' - ' + aula,
+          value:name + '-' + aula,
           checked:false
         });
       });

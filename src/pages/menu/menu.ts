@@ -31,7 +31,7 @@ export class MenuPage {
   boton;
   boton1;
   titulo;
-  private logueo:string;
+  public logueo:string;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
