@@ -50,6 +50,7 @@ private storageRef = firebase.storage().ref();
 
 
   ngOnInit(){
+    console.log(this.alumnoDB.getDataAsistencia('programacion web'));
     this.dataMaterias = new Array<any>();
     console.log(this.profesorSelect);
     switch (this.date) {

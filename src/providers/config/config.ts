@@ -36,7 +36,14 @@ export class ConfigProvider {
 
   private truncateCorreo(_correo:string):string{
     let truncado:string = '';
-    truncado = _correo.replace('.','');
+    //truncado = _correo.replace('.','');
+    for (let i = 0; i < _correo.length; i++) {
+      if (_correo[i] == '.') {
+        truncado += _correo[i].replace('.', '');
+      }else{
+        truncado += _correo[i];
+      }
+    }
     console.log(truncado);
     return truncado;
   }
