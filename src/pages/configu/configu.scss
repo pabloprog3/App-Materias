@@ -23,13 +23,22 @@ page-configu {
          font-family: $font-family-Profesional;
          font-size: 20px;
          position:absolute;
-        
-           width: $button-Profesional-width;
-           height: $button-Profesional-height;
-           top:$button-Profesional-top;
-           left:$button-Profesional-left;
+         width: $button-Profesional-width;
+         height: $button-Profesional-height;
+         top:$button-Profesional-top;
+         left:$button-Profesional-left;
   
-    }
+        }
+        .botonGrande {
+            height: $button-Grande-height;
+        }
+        .botonMediano {
+            height: $button-Mediano-height;
+        }
+        
+        .botonPequeño {
+            height: $button-Pequeño-height;
+        }   
 
            
          
@@ -38,15 +47,22 @@ page-configu {
          font-family: $font-family-Argentina;
          font-size: 30px;
          position:absolute;
-       
-            width: $button-Argentina-width;
-            height: $button-Argentina-height;
-            top:$button-Argentina-top;
-            left:$button-Argentina-left;
-         
-         
+         width: $button-Argentina-width;
+         height: $button-Argentina-height;
+         top:$button-Argentina-top;
+         left:$button-Argentina-left;      
          border-radius: 90px 90px 90px 90px;
-    }
+        }
+        .botonGrande {
+            height: $button-Grande-height;
+        }
+        .botonMediano {
+            height: $button-Mediano-height;
+        }
+        
+        .botonPequeño {
+            height: $button-Pequeño-height;
+        }   
     
      
     .botonNaif {
@@ -54,15 +70,22 @@ page-configu {
          font-family: $font-family-Naif;
          font-size: 15px;
          position:absolute;
-        
-            width: $button-Naif-width;
-            height: $button-Naif-height;
-            top:$button-Naif-top;
-            left:$button-Naif-left;
-         
-         
+         width: $button-Naif-width;
+         height: $button-Naif-height;
+         top:$button-Naif-top;
+         left:$button-Naif-left;
          border-radius: 20px;
-    }
+        }
+        .botonGrande {
+            height: $button-Grande-height;
+        }
+        .botonMediano {
+            height: $button-Mediano-height;
+        }
+        
+        .botonPequeño {
+            height: $button-Pequeño-height;
+        }   
     
      
         

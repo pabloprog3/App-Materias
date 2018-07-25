@@ -27,6 +27,8 @@ export class ConfiguPage {
   logeo="admin@admin.com";
   estilo: FirebaseListObservable<any[]>;
   public Config:Estilo;
+  Size="";
+  Font="";
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -40,7 +42,9 @@ export class ConfiguPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfiguPage');
-    this.logeo = this.navParams.get('logeo');
+    this.logeo = this.navParams.data['logeo'];
+    console.log(this.navParams);
+    console.log(this.logeo);
   }
 
   salir(){

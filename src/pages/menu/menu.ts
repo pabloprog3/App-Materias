@@ -52,9 +52,9 @@ export class MenuPage {
     this.datos = this.navParams.data;
     console.log(this.datos);
     this.perfil = this.datos["perfil"];
-    let correo =  this.datos["correo"];
-    console.log(correo);
-   this.config.traerEstiloPorCorreo(correo).subscribe(res=>{
+    this.correo =  this.datos["correo"];
+    console.log(this.correo);
+   this.config.traerEstiloPorCorreo(this.correo).subscribe(res=>{
      console.log(res);
      this.boton=res[0].estiloBtn;
      this.boton1=res[0].estiloBtn1;
@@ -194,7 +194,8 @@ export class MenuPage {
   }
 
   conf(){
-          this.navCtrl.push('ConfiguPage',{logueo:this.correo});
+    console.log(this.correo);
+          this.navCtrl.push('ConfiguPage',{logeo:this.correo});
           
         }
    
