@@ -166,6 +166,29 @@ export class AlumnoServiceProvider {
     return alumnos;
   }
 
+  public getDataAsistencia(materia:string):Array<any>{
+    let data:Array<any> = new Array<any>();
+    let todosAlumnos:Array<string> = new Array<string>();
+    //traer los alumnos de esa materia y dia
+    this.db.list('/alumnos').subscribe(alumnos=>{
+      let materias:Array<string> = new Array<string>();
+      alumnos.forEach(alumno=>{
+        materias = alumno.materias;
+      });
+      materias = alumnos['materias'];
+      console.log(materias);
+    });
+
+    this.db.list('/asistencia').subscribe(asistencia=>{
+      console.log(asistencia);
+      asistencia.forEach(mes => {
+        
+      });
+    });
+
+    return data;
+  }
+
   public borrarAlumno(legajo:string){
     this.db.app.database().ref('/alumnos/' + legajo).remove();
   }
