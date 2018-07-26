@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, AlertController } 
 import { AlumnoServiceProvider } from '../../providers/alumno-service/alumno-service';
 import { Alumno } from '../../clases/alumno';
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
+import { VideoPlayer } from "@ionic-native/video-player";
 
 @IonicPage()
 @Component({
@@ -19,10 +20,12 @@ export class DatosAlumnosPage {
   public foto:string;
   public listaMaterias:Array<string>;
   public dataAlertMaterias:Array<any>;
+  public url_asistencia:string = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/asistencia.mp4?alt=media&token=e7865b9f-d9ea-4817-bd4d-f7b960427bc7';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public alumnoDB:AlumnoServiceProvider, public view:ViewController,
-              public alertCtrl:AlertController, private dbProfesores:ProfesorServiceProvider
+              public alertCtrl:AlertController, private dbProfesores:ProfesorServiceProvider,
+              public videoplayer:VideoPlayer
               
 
   ) {}

@@ -28,7 +28,7 @@ export class AlumnoServiceProvider {
         equalTo:legajo
       }
     }) as FirebaseListObservable<any[]>
-    console.log('materias por alumno: ', this.listaMaterias);
+    //console.log('materias por alumno: ', this.listaMaterias);
     return this.listaMaterias;
   }
 
@@ -39,13 +39,13 @@ export class AlumnoServiceProvider {
         equalTo:correo
       }
     }) as FirebaseListObservable<any[]>
-    console.log('materias por alumno: ', this.listaMaterias);
+    //console.log('materias por alumno: ', this.listaMaterias);
     return this.listaMaterias;
   }
 
   public guardarAlumno(alumno:Alumno, materias?:Array<any>):void{
     alumno.setPerfil('alumno');
-    console.log('alumno service: ', alumno);
+    //console.log('alumno service: ', alumno);
     //this.db.app.database().ref('/alumnos').child(alumno.getLegajo()).push(alumno);
     this.db.app.database().ref('/alumnos/'+alumno.getLegajo()).set(alumno);
     this.db.app.database().ref('/usuarios').child(alumno.getLegajo()).set(alumno);
@@ -75,7 +75,7 @@ export class AlumnoServiceProvider {
   }
 
   private getNameDia(dia:number):string{
-    console.log(dia);
+    //console.log(dia);
     let diaStr:string = '';
     switch (dia) {
       case 1:
@@ -103,7 +103,7 @@ export class AlumnoServiceProvider {
   default:
   break;
     }
-    console.log(diaStr);
+    //console.log(diaStr);
     return diaStr.toLowerCase();
   }
 
@@ -111,7 +111,7 @@ export class AlumnoServiceProvider {
     let date:Date = new Date();
     let diaStr:string = this.getNameDia(date.getDay());
     let listaAlumnos:Array<string> = new Array<string>();
-    console.log(diaStr);
+    //console.log(diaStr);
     this.db.list('/materias').subscribe(materias=>{
       let listaMateriasDia:Array<string> = new Array<string>();
       materias.forEach(materia => {
@@ -167,7 +167,7 @@ export class AlumnoServiceProvider {
   }
 
   public getDataAsistencia(materia:string):Array<any>{
-    let data:Array<any> = new Array<any>();
+    let data:any[] = [];
     let todosAlumnos:Array<string> = new Array<string>();
     //traer los alumnos de esa materia y dia
     this.db.list('/alumnos').subscribe(alumnos=>{
@@ -178,25 +178,51 @@ export class AlumnoServiceProvider {
         materias.forEach(m => {
           //console.log(m);
           if (materia.toLowerCase() == m.toLowerCase()) {
-            todosAlumnos.push(alumno.legajo);
+            todosAlumnos.push(alumno.legajo+'-'+alumno.nombre);
           }
         });//fin foreach materias
       }); //fin foreach alumnos
-      console.log(todosAlumnos);
-    }); //fin subscribe alumnos
-    console.log(todosAlumnos);
+      //console.log(todosAlumnos); // OK
 
-    this.db.list('/asistencia/julio').subscribe(asistencia=>{
-      console.log(asistencia);
-      asistencia.forEach(mes => {
-        console.log(mes);
-        if (mes == 'programacion web') {
-          console.log(' es julio');
-        }
+      todosAlumnos.forEach(t => {
+        //console.log(t);
+        this.db.list('/asistencia/julio/'+materia.toLowerCase()).subscribe(asistencia=>{
+          //console.log(asistencia);
+          asistencia.forEach(dia => {
+            //console.log(dia.$key);
+            let alumnos_asistieron:Array<string> = new Array<string>();
+            alumnos_asistieron = dia.data;
+            //console.log(alumnos_asistieron);
+            if (alumnos_asistieron.includes(t)) {
+              //console.log('asistio');
+              let alu:object = {
+                dia: dia.$key + '/07/2018',
+                legajo: t.substring(0, t.indexOf('-')), 
+                nombre:t.substring(t.indexOf('-')+1),
+                asistio: 'Sí' 
+              };
+              data.push(alu);
+            }else{
+              //console.log('no asistio');
+              let alu:object = {
+                dia: dia.$key + '/07/2018',
+                legajo: t.substring(0, t.indexOf('-')), 
+                nombre:t.substring(t.indexOf('-')+1),
+                asistio: 'No' 
+              };
+              data.push(alu);
+            }
+          });//fin foreach asistencia
+          //console.log(data);
+          // return data;
+        });//fin subscribe /asistencia
       });
-    });
-
+      
+    }); //fin subscribe alumnos
     return data;
+    //console.log(todosAlumnos);
+
+    
   }
 
   public borrarAlumno(legajo:string){

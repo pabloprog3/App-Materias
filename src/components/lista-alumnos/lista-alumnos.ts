@@ -15,6 +15,10 @@ import { Alumno } from "../../clases/alumno";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 
 import * as firebase from 'firebase';
+import * as XLSX from "xlsx";
+//import * as FileSaver from 'file-saver';
+import { VideoPlayer } from '@ionic-native/video-player';
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 
 @Component({
   selector: 'lista-alumnos',
@@ -37,6 +41,7 @@ private storageRef = firebase.storage().ref();
   @Input() perfil:string;
 
   public profesorSelect:string = '';
+  public url_asistencia:string = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/asistencia.mp4?alt=media&token=e7865b9f-d9ea-4817-bd4d-f7b960427bc7';
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
@@ -44,13 +49,13 @@ private storageRef = firebase.storage().ref();
     public file:File, public fileChooser:FileChooser, public filePath:FilePath,
     public alertCtrl:AlertController, public popoverCtrl:PopoverController,
     private profesorDB:ProfesorServiceProvider, public toast:ToastController,
-    public camera:Camera
+    public camera:Camera, public videoplayer:VideoPlayer, public media:StreamingMedia
 
   ) {}
 
 
   ngOnInit(){
-    console.log(this.alumnoDB.getDataAsistencia('programacion web'));
+    console.log(this.alumnoDB.getDataAsistencia('android'));
     this.dataMaterias = new Array<any>();
     console.log(this.profesorSelect);
     switch (this.date) {
@@ -246,12 +251,12 @@ private storageRef = firebase.storage().ref();
              return;
             }
 
-            let aviso = this.toast.create();
+            /*let aviso = this.toast.create();
             aviso.setPosition('middle');
             aviso.setMessage('Primero, adjunte la foto de la clase.');
             aviso.setDuration(3000);
             aviso.present();
-            
+            */
             let date:Date = new Date();
             let mes:number = date.getMonth() + 1;
             let diaStr:string = date.getDate() + '/' + mes + '/' + date.getFullYear();
@@ -261,7 +266,13 @@ private storageRef = firebase.storage().ref();
             let alumnos: Array<string> = this.alumnoDB.getAlumnosTomarAsistencia(this.profesorSelect);
             let alerta = this.alertCtrl.create();
             alerta.setTitle( 'Tomar asistencia día: ' + diaStr);
-            
+            alerta.addButton({
+              text: 'Ver asistencias',
+              handler: val=>{
+                //console.log(val);
+                this.descargarAsistenciaXLSX();
+              }
+            });
             alumnos.forEach(alumno => {
               alerta.addInput({
                 type:'checkbox',
@@ -278,7 +289,7 @@ private storageRef = firebase.storage().ref();
             handler: data=>{
               this.alumnosAsistencia = new Array<string>();
               this.alumnosAsistencia = data;
-              console.log(this.alumnosAsistencia);
+              //console.log(this.alumnosAsistencia);
               this.registrarAsistencia({data:data, foto:this.evidencia}, this.getMesString(mes), date.getDate(), this.getMateriaAsignar(this.profesorSelect));
   
             }
@@ -287,7 +298,67 @@ private storageRef = firebase.storage().ref();
 
           }
 
+          convertirABlob(s){
+            let buf = new ArrayBuffer(s.length);
+            let view = new Uint8Array(buf);
+            for (let i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+          }
         
+          async descargarAsistenciaXLSX(){
+            //console.log(this.alumnoDB.getDataAsistencia('android'));
+            let data = this.alumnoDB.getDataAsistencia('android');
+            //console.log(data);
+            let hoja:XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+            //alert(JSON.stringify(hoja));
+            const libro:XLSX.WorkBook = {
+              Sheets:{
+                'asistencias':hoja
+              },
+              SheetNames: ['asistencias']
+              
+            };
+            //alert(JSON.stringify(libro));
+            let wbout:ArrayBuffer = XLSX.write(libro, {
+              bookType:'xlsx',
+              type:'array'
+              
+            });
+            //const excelBuffer: any = XLSX.write(wbout, { bookType: 'xlsx', type: 'buffer' });
+            //this.saveAsExcelFile(excelBuffer, 'asistencias_julio')
+            const blob = new Blob([wbout], { type: 'application/octet-stream'});
+            const target:string = this.file.externalDataDirectory
+            const dentry = await this.file.resolveDirectoryUrl(target);
+            const url:string = dentry.nativeURL;
+            await this.file.writeFile(url, 'asistencias.xlsx', blob, {replace:true});
+            /*
+            this.getStoragePath().then(url=>{
+              this.file.writeFile(url, "asistencias_julio.xlsx", blob);
+            });*/
+            /*const blob = new Blob([this.convertirABlob(wbout)], { type: 'application/octet-stream'});
+            this.getStoragePath().then(url=>{
+              this.file.writeFile(url, 'asistencias.xlsx', blob, {replace:true});
+            });*/
+          }
+
+          saveAsExcelFile(buffer:any, fileName:string){
+            const data: Blob = new Blob([buffer], {
+              type: 'xlsx'
+            });
+           // FileSaver.saveAs(data, fileName + '.xlsx');
+          }
+
+          getStoragePath(){
+            let file = this.file;
+            return this.file.resolveDirectoryUrl(this.file.externalRootDirectory).then(function(directoryEntry){
+              return file.getDirectory(directoryEntry, "export_materias",{
+                create: true,
+                exclusive:false
+              }).then(function(){
+                return directoryEntry.nativeURL + "export_materias/";
+              });
+            });
+          }
           
           private registrarAsistencia(alumnos:any, mes:string, dia:number, materia:string):void{
               this.alumnoDB.setAsistencia(alumnos, mes, dia, materia);
@@ -374,5 +445,15 @@ private storageRef = firebase.storage().ref();
           return materia.substring(profesor.indexOf('-')+1);
         }
 
+
+        playAsistencia(){
+          //this.videoplayer.play(this.url_asistencia);
+          let optionsMedia: StreamingVideoOptions = {
+            orientation: 'landscape',
+            shouldAutoClose: true,
+            controls:false
+          }
+          this.media.playVideo(this.url_asistencia, optionsMedia);
+        }
 
 }// fin clase

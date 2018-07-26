@@ -3,12 +3,14 @@
 
         <p> <img (click)="addNuevoAlumno()" src="assets/imgs/add.png" width="40" height="40" align="left">
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <img (click)="playAsistencia()" src="assets/icon/videoplayer.jpg" width="40" height="40">
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <img (click)=tomarAsistencia() src="assets/icon/asistencia.png" width="40" height="40" >
             <img (click)="cargarArchivos()" src="assets/imgs/excel.png" width="40" height="40" align="right">
         </p>
 
     </ion-item>
-
+    <!--video webkit-playsinline="true" class="videoLandscape" #trimVideo [src]="url_asistencia"></video-->
     <img [src]="evidencia" *ngIf="evidencia!=undefined" width="40" height=40>
 
     <ion-item class="fondo">
@@ -22,8 +24,6 @@
 
 
     <img src="assets/imgs/Linea.png" width="40" height="10">
-
-
 
     <ion-list>
       <ion-item (click)="abrirModalView(alumno)"  class="fondo" *ngFor="let alumno of listado">

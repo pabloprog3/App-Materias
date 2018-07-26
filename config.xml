@@ -98,5 +98,6 @@
         <variable name="SENDER_ID" value="566483132157" />
     </plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-streaming-media" spec="^2.1.2" />
     <engine name="android" spec="6.4.0" />
 </widget>
