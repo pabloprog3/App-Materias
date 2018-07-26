@@ -15,6 +15,7 @@ import { MenuPage } from "../menu/menu";
 //import { ConfiguPage } from '../configu/configu';
 import { ConfigProvider } from "../../providers/config/config";
 //import { TestPage } from '../test/test';
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 @IonicPage()
 @Component({
@@ -47,7 +48,7 @@ export class LoginPage {
               public alertCtrl:AlertController, public loadingCtrl:LoadingController,
               private auth:LoginServiceProvider, private servicioDB:PersonasServiceProvider,
               public platform:Platform, public authe:AngularFireAuth,
-              private config:ConfigProvider
+              private config:ConfigProvider, private iab:InAppBrowser
   ) {}
 
   ionViewDidLoad() {
@@ -221,7 +222,10 @@ public irTest(){
   //this.navCtrl.push(TestPage);
 }
 
+public api(){
+  this.iab.create('https://campitoutn.000webhostapp.com/api_materias.html').show();
 
+}
 
 
 }

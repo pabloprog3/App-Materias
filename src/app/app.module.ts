@@ -61,6 +61,7 @@ import { LectorQrComponent } from "../components/lector-qr/lector-qr";
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { TestProvider } from '../providers/test/test';
 import { ConfigProvider } from '../providers/config/config';
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 var firebaseAuth  = {
   apiKey: "AIzaSyBjrQu2x_3cZjv1Tdvw_TIYxBMAJ2VQU_M",
@@ -166,7 +167,8 @@ const cloudSettings: CloudSettings = {
     FileChooser,
     FilePath,
     TestProvider,
-    ConfigProvider
+    ConfigProvider,
+    InAppBrowser
 
   ]
 })

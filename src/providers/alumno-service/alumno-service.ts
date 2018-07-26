@@ -174,15 +174,25 @@ export class AlumnoServiceProvider {
       let materias:Array<string> = new Array<string>();
       alumnos.forEach(alumno=>{
         materias = alumno.materias;
-      });
-      materias = alumnos['materias'];
-      console.log(materias);
-    });
+        //console.log(materias);
+        materias.forEach(m => {
+          //console.log(m);
+          if (materia.toLowerCase() == m.toLowerCase()) {
+            todosAlumnos.push(alumno.legajo);
+          }
+        });//fin foreach materias
+      }); //fin foreach alumnos
+      console.log(todosAlumnos);
+    }); //fin subscribe alumnos
+    console.log(todosAlumnos);
 
-    this.db.list('/asistencia').subscribe(asistencia=>{
+    this.db.list('/asistencia/julio').subscribe(asistencia=>{
       console.log(asistencia);
       asistencia.forEach(mes => {
-        
+        console.log(mes);
+        if (mes == 'programacion web') {
+          console.log(' es julio');
+        }
       });
     });
 
