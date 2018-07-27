@@ -12,6 +12,7 @@ export class ProfesorServiceProvider {
 
   private listaMaterias:FirebaseListObservable<any[]>;
   private listaProfesores:FirebaseListObservable<any[]>;
+  private listaAlumnosPorProfesor:FirebaseListObservable<string[]>;
 
   constructor(private db:AngularFireDatabase, private auth:AngularFireAuth) {
 
@@ -56,6 +57,23 @@ export class ProfesorServiceProvider {
       });
     });
     console.log(listaMaterias);
+    return listaMaterias;
+  }
+
+  public getMateriasDelProfesor(correo:string){
+    //let lista:FirebaseListObservable<any[]>;
+    let listaMaterias:string[] = [];
+    this.db.list('/profesores').subscribe(profesores=>{
+      profesores.forEach(profesor => {
+        console.log(profesor);
+        if (profesor["correo"]==correo) {
+          listaMaterias.push(profesor["materias"]);
+          console.log(listaMaterias);
+        }
+      });
+      console.log(listaMaterias);
+      
+    });
     return listaMaterias;
   }
 
@@ -139,6 +157,36 @@ export class ProfesorServiceProvider {
     }); // /materias
     console.log(profesorMateris); //
     return profesorMateris;
+  }
+
+
+  public getAlumnosPorProfesor(correo:string, materia:string):Array<string>{
+    let alumnos:string[] = new Array<string>();
+    //this.listaAlumnosPorProfesor = new FirebaseListObservable<string[]>;
+    this.db.list('/alumnos').subscribe(alumnos=>{
+      alumnos.forEach(a => {
+        console.log(a.materias);
+        if (a.materias!=undefined) {
+          let materias:string[] = a.materias;
+          console.log(materias);
+          materias.forEach(m => {
+            let mat:string = m;
+            console.log(m);
+            console.log(materia);
+            if (mat==materia) {
+              console.log('son iguales');
+              alumnos.push(a.legajo + '-' + a.nombre);
+              //console.log(a.nombre);
+              //this.listaAlumnosPorProfesor.push(a.nombre);
+            }
+          });
+        }
+       
+      });
+      console.log(alumnos);
+  
+    });
+    return alumnos;
   }
 
 }

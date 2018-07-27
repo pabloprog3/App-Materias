@@ -26,7 +26,7 @@ export class MenuPage {
   public perfil:string='';
   public segmentAlumno:string = 'tutorial';
   public segment:string;
-  private correo:string='';
+  public correo:string='';
   fondo;
   boton;
   boton1;
@@ -50,18 +50,18 @@ export class MenuPage {
   ionViewDidLoad() {
 
     this.datos = this.navParams.data;
-    console.log(this.datos);
+    //console.log(this.datos);
     this.perfil = this.datos["perfil"];
     this.correo =  this.datos["correo"];
-    console.log(this.correo);
+    //console.log(this.correo);
    this.config.traerEstiloPorCorreo(this.correo).subscribe(res=>{
-     console.log(res);
+     //console.log(res);
      this.boton=res[0].estiloBtn;
      this.boton1=res[0].estiloBtn1;
      this.fondo=res[0].estiloFondo;
      this.titulo=res[0].estilotitulo;
 
-     console.log(this.fondo);
+     //console.log(this.fondo);
    })
 
     //console.log(this.perfil);

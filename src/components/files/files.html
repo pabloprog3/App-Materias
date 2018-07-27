@@ -1,17 +1,40 @@
 
-          Guardar Info en el celu
+           <ion-item class="fondo">
+                        <ion-label>Materia</ion-label>
+                        <ion-select [(ngModel)]="materiaSelect" (ngModelChange)="seleccionarMateria($event)" >
+                          <ion-option *ngFor="let materia of listadoMaterias">
+                             {{ materia }}
+                          </ion-option>
+                        </ion-select>
+            </ion-item>
+
+      <ion-list *ngIf="listadoAlumnos!=undefined">
+        <ion-item *ngIf="materiaSelect">
+            <ion-title>Alumnos en: {{materiaSelect}}</ion-title>
+        </ion-item>
+        <ion-item class="fondo" *ngFor="let alumno of listadoAlumnos">
+          <h2>{{alumno}}</h2>
+        </ion-item>
+
+      </ion-list>
+
+          
+          
+          <!-- Guardar Info en el celu 
 
 
   <p> Nombre del archivo: </p>
-  <input type="text" class="input" [(ngModel)]="filename" #ctl="ngModel"  ><br>
+  <input type="text" class="input" [(ngModel)]="fileName" #ctl="ngModel"  ><br>
 
 
   <p> File Content </p>
-  <ion-textarea placeholder="Ingrese File Content" class="input" [(ngModel)]="fileContents" ></ion-textarea>
+  <ion-textarea placeholder="Ingrese File Content" class="input" [(ngModel)]="fileContent" ></ion-textarea>
 
   <p> Nombre del directorio: </p>
   <input type="text" class="input" [(ngModel)]="dirName"  ><br>
 
-  <button ion-button (click)="writeToFile(fileName,fileContents,dirName)"> Guardar archivo </button>
+  <button ion-button (click)="writeToFile(fileName,fileContent,dirName)"> Guardar archivo </button>
+
+          -->
 
 

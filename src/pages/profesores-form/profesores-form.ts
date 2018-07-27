@@ -22,19 +22,19 @@ export class ProfesoresFormPage {
 
   ) {}
 
-  private dni:string;
-  private nombre:string;
-  private correo:string;
-  private foto:string;
-  private listaMaterias:Array<string>;
-  private materiaCheck:Array<string>;
-  private profesor:Profesor;
-  private passw:string;
+  public dni:string;
+  public nombre:string;
+  public correo:string;
+  public foto:string;
+  public listaMaterias:Array<string>;
+  public materiaCheck:Array<string>;
+  public profesor:Profesor;
+  public passw:string;
 
   private storageRef = firebase.storage().ref();
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad ProfesoresFormPage');
+    console.log('ionViewDidLoad ProfesoresFormPage');
     this.listaMaterias = new Array<string>();
     this.dbProfesor.traerListadoMaterias().subscribe(lista=>{
       console.log(lista);
