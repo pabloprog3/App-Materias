@@ -173,14 +173,17 @@ export class AlumnoServiceProvider {
     this.db.list('/alumnos').subscribe(alumnos=>{
       let materias:Array<string> = new Array<string>();
       alumnos.forEach(alumno=>{
-        materias = alumno.materias;
-        //console.log(materias);
-        materias.forEach(m => {
-          //console.log(m);
-          if (materia.toLowerCase() == m.toLowerCase()) {
-            todosAlumnos.push(alumno.legajo+'-'+alumno.nombre);
-          }
-        });//fin foreach materias
+        if (alumno.materias != undefined) {
+          materias = alumno.materias;
+          //console.log(materias);
+          materias.forEach(m => {
+            //console.log(m);
+            if (materia.toLowerCase() == m.toLowerCase()) {
+              todosAlumnos.push(alumno.legajo+'-'+alumno.nombre);
+            }
+          });//fin foreach materias
+        }
+   
       }); //fin foreach alumnos
       //console.log(todosAlumnos); // OK
 

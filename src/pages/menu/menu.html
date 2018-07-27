@@ -59,7 +59,7 @@
                 [isLoginSocial]="datos.loginSocial"
       ></perfil>
 
-      <files *ngSwitchCase="'archAlumnos'"></files>
+      <files [correo]="correo" *ngSwitchCase="'archAlumnos'"></files>
 
     <div *ngIf="perfil=='administrador'  || perfil=='administrativo'">
       <lista-profesores *ngSwitchCase="'abmProfesores'"></lista-profesores>

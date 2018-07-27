@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
-import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController,  ModalController, ViewController } from 'ionic-angular';
 
-import { ConsultarBajaModifPage } from "../../pages/consultar-baja-modif/consultar-baja-modif";
+//import { ConsultarBajaModifPage } from "../../pages/consultar-baja-modif/consultar-baja-modif";
 
 @Component({
   selector: 'lista-profesores',
@@ -11,8 +11,8 @@ import { ConsultarBajaModifPage } from "../../pages/consultar-baja-modif/consult
 })
 export class ListaProfesoresComponent implements OnInit {
 
-  private foto:string;
-  private listado:Array<string>;
+  public foto:string;
+  public listado:Array<string>;
 
   constructor(
                 private profesorDB:ProfesorServiceProvider, public modalCtrl:ModalController,
@@ -21,6 +21,7 @@ export class ListaProfesoresComponent implements OnInit {
   ) {}
 
   ngOnInit(){
+    //console.log('component lista-profesores');
     this.foto = '';
     this.profesorDB.getProfesoresLista().subscribe(lista=>{
       this.listado = lista;
