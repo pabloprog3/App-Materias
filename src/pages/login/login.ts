@@ -109,7 +109,9 @@ export class LoginPage {
           this.listaUsuarios.subscribe(lista=>{
             lista.forEach(usuario => {
               //console.log(usuario);
+              console.log('no entro: ',usuario.$key.correo);
               if (usuario.correo == this.loginUsuario.getCorreo()) {
+                  console.log('entro: ',usuario);
                   this.loginUsuario.setPerfil(usuario['perfil']);
                   this.loginUsuario.setNombre(usuario['nombre']);
                   //console.log('set nombre: ', usuario['perfil']);

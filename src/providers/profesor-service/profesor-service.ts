@@ -25,9 +25,10 @@ export class ProfesorServiceProvider {
   }
 
   public guardarProfesor(profesor:Profesor){
+    console.log(profesor);
     profesor.setPerfil('profesor');
     this.db.app.database().ref('/profesores').child(profesor.getDNI()).set(profesor);
-    this.db.app.database().ref('/usuarios').child(profesor.getDNI()).push(profesor);
+    this.db.app.database().ref('/usuarios').child(profesor.getDNI()).set(profesor);
     this.auth.auth.createUserWithEmailAndPassword(profesor.getCorreo(), profesor.getPassword());
   }
 
@@ -64,10 +65,11 @@ export class ProfesorServiceProvider {
     //let lista:FirebaseListObservable<any[]>;
     let listaMaterias:string[] = [];
     this.db.list('/profesores').subscribe(profesores=>{
-      profesores.forEach(profesor => {
+      profesores.forEach((profesor, i) => {
         console.log(profesor);
-        if (profesor["correo"]==correo) {
-          listaMaterias.push(profesor["materias"]);
+        if (profesor.correo.trim()==correo.trim()) {
+          //listaMaterias.push(profesor.materias);
+          listaMaterias = profesor.materias;
           console.log(listaMaterias);
         }
       });

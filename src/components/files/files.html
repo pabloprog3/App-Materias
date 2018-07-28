@@ -2,7 +2,7 @@
            <ion-item class="fondo">
                         <ion-label>Materia</ion-label>
                         <ion-select [(ngModel)]="materiaSelect" (ngModelChange)="seleccionarMateria($event)" >
-                          <ion-option *ngFor="let materia of listadoMaterias">
+                          <ion-option *ngFor="let materia of listadoMaterias; let i = index">
                              {{ materia }}
                           </ion-option>
                         </ion-select>

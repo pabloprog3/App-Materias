@@ -41,8 +41,21 @@ export class FilesComponent implements OnInit {
       console.log(this.listaMaterias);
     });
 
-    this.listadoMaterias = this.profesorDB.getMateriasDelProfesor(this.correo); 
-    console.log(this.listadoMaterias);
+    //this.listadoMaterias = this.profesorDB.getMateriasDelProfesor(this.correo); 
+    //console.log(this.listadoMaterias);
+    let listaMaterias:string[] = [];
+    this.db.list('/profesores').subscribe(profesores=>{
+      profesores.forEach((profesor, i) => {
+        console.log(profesor, '; ', this.correo);
+        if (profesor.correo.trim()==this.correo.trim()) {
+          //listaMaterias.push(profesor.materias);
+          this.listadoMaterias = profesor.materias;
+          console.log(listaMaterias);
+        }
+      });
+      console.log(listaMaterias);
+      
+    });
 
     this.listadoAlumnos = this.profesorDB.getAlumnosPorProfesor(this.correo, 'matematica');
     console.log(this.listadoAlumnos);

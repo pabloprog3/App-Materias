@@ -92,9 +92,11 @@ export class PerfilComponent implements OnInit, OnChanges {
       this.fotos = lista[0]["fotos"];
       console.log(this.fotos);
 
-
-      this.cont = this.fotos.length;
-      console.log(this.cont);
+      if (this.fotos) {
+        this.cont = this.fotos.length;
+        console.log(this.cont);
+      }
+    
 
       if (this.perfil=="administrador" || this.perfil=="administrativo") {
         this.dni="";
