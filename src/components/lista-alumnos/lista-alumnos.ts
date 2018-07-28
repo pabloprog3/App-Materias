@@ -17,7 +17,7 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
 import * as firebase from 'firebase';
 import * as XLSX from "xlsx";
 //import * as FileSaver from 'file-saver';
-import { VideoPlayer } from '@ionic-native/video-player';
+import { VideoPlayer, VideoOptions } from '@ionic-native/video-player';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 
 @Component({
@@ -41,8 +41,9 @@ private storageRef = firebase.storage().ref();
   @Input() perfil:string;
 
   public profesorSelect:string = '';
-  public url_asistencia:string = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/asistencia.mp4?alt=media&token=e7865b9f-d9ea-4817-bd4d-f7b960427bc7';
-
+  //public url_asistencia:string = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/asistencia.mp4?alt=media&token=e7865b9f-d9ea-4817-bd4d-f7b960427bc7';
+  public url_asistencia:string = 'file:///android_asset/www/assets/videos/asistencia.mp4';
+  //public url_asistencia:string = 'file:///android_asset/www/assets/videos/asistencia.mp4';
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     private alumnoDB:AlumnoServiceProvider, public modalCtrl:ModalController,
@@ -447,11 +448,41 @@ private storageRef = firebase.storage().ref();
 
 
         playAsistencia(){
-          //this.videoplayer.play(this.url_asistencia);
+          let videoPlayerOptions:VideoOptions = {
+            volume:0.5
+          }
+          /*
+          this.videoplayer.play(this.url_asistencia, videoPlayerOptions).then(value=>{
+            this.alertCtrl.create({
+              title: 'reproducido',
+              message: value
+            });
+          });
+          */
+          this.alertCtrl.create({
+            title:'si'
+          })
           let optionsMedia: StreamingVideoOptions = {
-            orientation: 'landscape',
+
+            //orientation: 'landscape',
+            errorCallback: err=>{
+            let alerta = this.alertCtrl.create({
+              title:'error: ',
+              message: err
+            })
+            alerta.present();
+          },
+          successCallback: val=>{
+           let alerta = this.alertCtrl.create({
+              title:'echo: ',
+              message: val
+            })
+            alerta.present();
+          },
             shouldAutoClose: true,
             controls:false
+            
+            
           }
           this.media.playVideo(this.url_asistencia, optionsMedia);
         }
