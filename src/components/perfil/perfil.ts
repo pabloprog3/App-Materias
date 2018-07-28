@@ -12,6 +12,8 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
 import {AngularFireDatabase} from 'angularfire2/database';
 import {storage, initializeApp}  from 'firebase';
 import * as firebase from 'firebase';
+import { StreamingMedia, StreamingVideoOptions } from "@ionic-native/streaming-media";
+
 
 @Component({
   selector: 'perfil',
@@ -33,12 +35,13 @@ export class PerfilComponent implements OnInit, OnChanges {
   private fotos: Array<string>;
 
   private storageRef = firebase.storage().ref();
-
+  public url_asistencia:string = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/perfil.mp4?alt=media&token=dc073014-fc5d-40fa-bc39-9e3b1b76b1cb';
 
   constructor(
                 public navCtrl: NavController, public navParams: NavParams,
                 private dbPersonas:PersonasServiceProvider, public camera:Camera,
-                public alertCtrl:AlertController, public platform:Platform
+                public alertCtrl:AlertController, public platform:Platform,
+                public media:StreamingMedia
   )
 
   {}
@@ -193,7 +196,17 @@ export class PerfilComponent implements OnInit, OnChanges {
     }
 
 
+    playPerfil(){
+      let optionsMedia: StreamingVideoOptions = {
 
+        //orientation: 'landscape',
+        shouldAutoClose: true,
+        controls:false
+        
+        
+      }
+      this.media.playVideo(this.url_asistencia, optionsMedia);
+    }
 
 
 

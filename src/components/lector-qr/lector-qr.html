@@ -3,6 +3,9 @@
 
     <br><br><br><br>
 
+    <img *ngIf="perfil=='alumno'" (click)="playLector('alumno')" src="assets/icon/videoplayer.jpg" width="40" height="40">
+    <img *ngIf="perfil=='profesor'" (click)="playLector('profesor')" src="assets/icon/videoplayer.jpg" width="40" height="40">
+
     <div *ngIf="perfil!='alumno' && perfil!='profesor'">
       <ion-input type="text" placeholder="ingrese legajo o dni" [(ngModel)]="dato"></ion-input>
         <ion-list radio-group  [(ngModel)]="tipo" >

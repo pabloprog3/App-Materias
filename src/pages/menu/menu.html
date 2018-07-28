@@ -28,7 +28,7 @@
       </ion-segment-button>
 
       <ion-segment-button value="archAlumnos">
-        <img src="assets/imgs/archAlumnos.png" width="40" height="40">
+        <img *ngIf="perfil=='profesor'" src="assets/imgs/archAlumnos.png" width="40" height="40">
       </ion-segment-button>
         <ion-segment-button value="abmProfesores" >
           <img  *ngIf="perfil=='administrador' || perfil=='administrativo'"  src="assets/imgs/abm_profesores.jpeg" width="40" height="40">
@@ -60,6 +60,8 @@
       ></perfil>
 
       <files [correo]="correo" *ngSwitchCase="'archAlumnos'"></files>
+    
+      
 
     <div *ngIf="perfil=='administrador'  || perfil=='administrativo'">
       <lista-profesores *ngSwitchCase="'abmProfesores'"></lista-profesores>

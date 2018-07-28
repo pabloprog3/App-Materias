@@ -5,6 +5,7 @@ import { AlertController,  } from "ionic-angular";
 import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-service";
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 import { BarcodeScanner, BarcodeScanResult } from "@ionic-native/barcode-scanner";
+import { StreamingMedia, StreamingVideoOptions } from "@ionic-native/streaming-media";
 
 @Component({
   selector: 'lector-qr',
@@ -27,7 +28,8 @@ export class LectorQrComponent implements OnInit {
 
   constructor(
               public barcodeScanner:BarcodeScanner, public alertCtrl:AlertController,
-              private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider
+              private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider,
+              public media:StreamingMedia
 
   ) {}
 
@@ -130,6 +132,24 @@ export class LectorQrComponent implements OnInit {
   }
 
 
+  playLector(perfil:string){
+    let url:string='';
+    if (perfil == 'alumno') {
+        url = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/qralumno.mp4?alt=media&token=69434f0a-95b3-4083-a56f-42459a75159b';
+    } else {
+        url = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/qrprofesor.mp4?alt=media&token=6e8ceb25-c92c-4345-ac81-6fc844c0a952';
+    }
+
+    let optionsMedia: StreamingVideoOptions = {
+
+      //orientation: 'landscape',
+      shouldAutoClose: true,
+      controls:false
+      
+      
+    }
+    this.media.playVideo(url, optionsMedia);
+  }
 
 
 
