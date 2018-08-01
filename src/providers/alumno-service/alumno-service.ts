@@ -85,7 +85,7 @@ export class AlumnoServiceProvider {
       diaStr = 'Martes';
   break;
   case 3:
-      diaStr = 'Miércoles';
+      diaStr = 'Miercoles';
   break;
   case 4:
       diaStr = 'Jueves';
@@ -94,7 +94,7 @@ export class AlumnoServiceProvider {
       diaStr = 'Viernes';
   break;
   case 6:
-      diaStr = 'Sábado';
+      diaStr = 'Sabado';
   break;
   case 0:
       diaStr = 'Domingo';
@@ -108,21 +108,36 @@ export class AlumnoServiceProvider {
   }
 
   public getAlumnosTomarAsistencia(profesor:string):Array<string>{
+    console.log(profesor);
+    let prof_nombre:string = profesor.substring(0, profesor.indexOf('-')).trim();
+    let prof_materia:string = profesor.substr(profesor.indexOf('-')+1).trim();
+    console.log(prof_nombre, ';', prof_materia); 
     let date:Date = new Date();
     let diaStr:string = this.getNameDia(date.getDay());
+    console.log('diaStr: ', diaStr);
     let listaAlumnos:Array<string> = new Array<string>();
     //console.log(diaStr);
+
+    this.db.list('/profesores').subscribe(profesores=>{
+      console.log(profesores);
+      profesores.forEach(profesor => {
+        console.log(profesor);
+      });
+    })
+
     this.db.list('/materias').subscribe(materias=>{
       let listaMateriasDia:Array<string> = new Array<string>();
       materias.forEach(materia => {
-        //console.log(materia);
+        console.log(materia);
         let horario:string = materia.horarios;
         let _dia:string = horario.substring(0, horario.indexOf(' '));
-        //console.log(_dia);
+        console.log(_dia);
         if (_dia.toLowerCase() == diaStr) {
+          console.log('coinciden dias: ', diaStr);
           listaMateriasDia.push(materia.nombre);
         }
       }); //fin foreach materias
+      console.log(listaMateriasDia);
       this.db.list('/alumnos').subscribe(alumnos=>{
         //console.log(alumnos);
         alumnos.forEach(alumno => {

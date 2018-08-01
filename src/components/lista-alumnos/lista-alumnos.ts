@@ -265,15 +265,17 @@ private storageRef = firebase.storage().ref();
             await this.sacarFoto(this.getMesString(mes), date.getDate(), this.getMateriaString(this.getMateriaAsignar(this.profesorSelect)));
    
             let alumnos: Array<string> = this.alumnoDB.getAlumnosTomarAsistencia(this.profesorSelect);
+            console.log(this.alumnoDB.getAlumnosTomarAsistencia(this.profesorSelect));
+            console.log(alumnos);
             let alerta = this.alertCtrl.create();
             alerta.setTitle( 'Tomar asistencia día: ' + diaStr);
-            alerta.addButton({
+            /*alerta.addButton({
               text: 'Ver asistencias',
               handler: val=>{
                 //console.log(val);
                 this.descargarAsistenciaXLSX();
               }
-            });
+            });*/
             alumnos.forEach(alumno => {
               alerta.addInput({
                 type:'checkbox',
