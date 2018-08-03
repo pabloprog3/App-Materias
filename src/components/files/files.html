@@ -13,7 +13,8 @@
             <ion-title>Alumnos en: {{materiaSelect}}</ion-title>
         </ion-item>
         <ion-item class="fondo" *ngFor="let alumno of listadoAlumnos">
-          <h2>{{alumno}}</h2>
+          <h2 float-left>{{alumno}}</h2>
+          <h2 float-right (click)="verAsistencias(alumno)">Ver asistencias</h2>
         </ion-item>
 
       </ion-list>

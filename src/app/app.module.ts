@@ -64,6 +64,7 @@ import { ConfigProvider } from '../providers/config/config';
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { VideoPlayer } from '@ionic-native/video-player';
 import { StreamingMedia } from '@ionic-native/streaming-media';
+import { ChartsModule } from "ng2-charts";
 
 var firebaseAuth  = {
   apiKey: "AIzaSyBjrQu2x_3cZjv1Tdvw_TIYxBMAJ2VQU_M",
@@ -128,7 +129,8 @@ const cloudSettings: CloudSettings = {
      MenuPageModule,
      ConsultarBajaModifPageModule,
      ComponentsModule,
-     CloudModule.forRoot(cloudSettings)
+     CloudModule.forRoot(cloudSettings),
+     ChartsModule
 
   ],
   bootstrap: [IonicApp],

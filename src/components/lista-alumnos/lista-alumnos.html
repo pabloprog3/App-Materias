@@ -13,7 +13,7 @@
     </ion-item>
     
     <!--video webkit-playsinline="true" class="videoLandscape" #trimVideo [src]="url_asistencia"></video-->
-    <img [src]="evidencia" *ngIf="evidencia!=undefined" width="40" height=40>
+    <img [src]="evidencia" *ngIf="evidencia!=undefined && evidencia!=''" width="40" height=40>
 
     <ion-item class="fondo">
         <button ion-button (click)="playAsistencia()">play</button>
@@ -29,14 +29,17 @@
     <img src="assets/imgs/Linea.png" width="40" height="10">
 
     <ion-list>
-      <ion-item (click)="abrirModalView(alumno)"  class="fondo" *ngFor="let alumno of listado">
+      <ion-item class="fondo" *ngFor="let alumno of listado">
 
           <ion-avatar item-start *ngFor="let fotoo of alumno['fotos']">
             <img *ngIf="fotoo.activa" [src]="fotoo.foto">
 
           </ion-avatar>
-        <h2>{{ alumno['nombre']}}</h2>
-        <p>Legajo: {{ alumno['legajo']}}</p>
+          <div float-left (click)="abrirModalView(alumno)" >
+            <h2>{{ alumno['nombre']}}</h2>
+            <p>Legajo: {{ alumno['legajo']}}</p>
+          </div>
+       
       </ion-item>
 
     </ion-list>

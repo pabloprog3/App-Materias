@@ -239,8 +239,49 @@ export class AlumnoServiceProvider {
     }); //fin subscribe alumnos
     return data;
     //console.log(todosAlumnos);
-
     
+  }
+
+  public getAsistenciasTotales(legajo:string, materia:string){
+    let resultado:number=0;
+    let contador_asistencia:number = 0;
+    this.db.list('/asistencia').subscribe(asistencia=>{
+      asistencia.forEach(datas => {
+        datas.asistieron.forEach(alumno => {
+          let _alumno:string = alumno;
+          let _data:string[] = _alumno.split('-');
+          let _legajo:string = _data[0];
+          let _materia:string = _data[3];
+
+          if (materia==_materia && _legajo==legajo) {
+            contador_asistencia += 1;
+            resultado = contador_asistencia;
+          }
+        });
+      });
+    });
+    return resultado;
+  }
+
+  public getFaltasTotales(legajo:string, materia:string){
+    let resultado:number=0;
+    let contador_asistencia:number = 0;
+    this.db.list('/asistencia').subscribe(asistencia=>{
+      asistencia.forEach(datas => {
+        datas.faltaron.forEach(alumno => {
+          let _alumno:string = alumno;
+          let _data:string[] = _alumno.split('-');
+          let _legajo:string = _data[0];
+          let _materia:string = _data[3];
+
+          if (materia==_materia && _legajo==legajo) {
+            contador_asistencia += 1;
+            resultado = contador_asistencia;
+          }
+        });
+      });
+    });
+    return resultado;
   }
 
   public borrarAlumno(legajo:string){
@@ -251,8 +292,9 @@ export class AlumnoServiceProvider {
     this.db.app.database().ref('/alumnos/' + alumno.getLegajo()).update(alumno);
   }
 
-  public setAsistencia(alumnos:any, mes:string, dia:number, materia:string):void{
-    this.db.app.database().ref('/asistencia').child(mes).child(materia).child(dia.toString()).set(alumnos);
+  public setAsistencia(alumnos:any, mes:string, dia:number, materia:string, profesor:string):void{
+    //this.db.app.database().ref('/asistencia').child(mes).child(materia).child(profesor).child(dia.toString()).set(alumnos);
+    this.db.app.database().ref('/asistencia').push(alumnos);
   }
 
 

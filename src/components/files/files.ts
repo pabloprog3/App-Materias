@@ -149,4 +149,13 @@ export class FilesComponent implements OnInit {
 }
     
 
+
+  
+verAsistencias(alumno:string){
+  //console.log(alumno);
+  let legajo:string = alumno.substring(0, alumno.indexOf('-')).trim();
+  let nombre:string = alumno.substring(alumno.indexOf('-')+1).trim();
+  this.navCtrl.push('VerAsistenciasPage', {legajo:legajo, nombre:nombre, materia:this.materiaSelect.trim()});
+}
+
 }
