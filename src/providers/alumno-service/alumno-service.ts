@@ -242,18 +242,20 @@ export class AlumnoServiceProvider {
     
   }
 
-  public getAsistenciasTotales(legajo:string, materia:string){
+  public getAsistenciasTotales(legajo:string, materia:string, profesor:string){
     let resultado:number=0;
     let contador_asistencia:number = 0;
     this.db.list('/asistencia').subscribe(asistencia=>{
       asistencia.forEach(datas => {
         datas.asistieron.forEach(alumno => {
+          //console.log(alumno);
           let _alumno:string = alumno;
           let _data:string[] = _alumno.split('-');
           let _legajo:string = _data[0];
           let _materia:string = _data[3];
+          let _profesor_name:string = _data[4];
 
-          if (materia==_materia && _legajo==legajo) {
+          if (materia==_materia && _legajo==legajo && _profesor_name==profesor) {
             contador_asistencia += 1;
             resultado = contador_asistencia;
           }
@@ -263,9 +265,10 @@ export class AlumnoServiceProvider {
     return resultado;
   }
 
-  public getFaltasTotales(legajo:string, materia:string){
+  public getFaltasTotales(legajo:string, materia:string, profesor:string){
+
     let resultado:number=0;
-    let contador_asistencia:number = 0;
+    let contador_faltas:number = 0;
     this.db.list('/asistencia').subscribe(asistencia=>{
       asistencia.forEach(datas => {
         datas.faltaron.forEach(alumno => {
@@ -273,15 +276,23 @@ export class AlumnoServiceProvider {
           let _data:string[] = _alumno.split('-');
           let _legajo:string = _data[0];
           let _materia:string = _data[3];
-
-          if (materia==_materia && _legajo==legajo) {
-            contador_asistencia += 1;
-            resultado = contador_asistencia;
+          let _profesor_name:string = _data[4];
+          if (materia==_materia && _legajo==legajo && _profesor_name==profesor) {
+            contador_faltas += 1;
+            resultado = contador_faltas;
           }
         });
       });
     });
     return resultado;
+  }
+
+  public promedioAlumnosAll(materia:string):FirebaseListObservable<any[]>{
+
+    let res: FirebaseListObservable<any[]>;
+    res = this.db.list('/asistencia');
+    return res;
+
   }
 
   public borrarAlumno(legajo:string){

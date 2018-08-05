@@ -19,15 +19,15 @@ export class VerAsistenciasPage {
   ) {}
 
   ionViewWillEnter(){
-
+    this.nombre = this.navParams.get('nombre');
+    this.legajo = this.navParams.get('legajo');
+    this.asistencias_total = this.alumnoDB.getAsistenciasTotales(this.legajo, this.navParams.get('materia'), this.navParams.get('profesor'));
+    this.faltas_total = this.alumnoDB.getFaltasTotales(this.legajo, this.navParams.get('materia'), this.navParams.get('profesor'));
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.data);
-    this.nombre = this.navParams.get('nombre');
-    this.legajo = this.navParams.get('legajo');
-    this.asistencias_total = this.alumnoDB.getAsistenciasTotales(this.legajo, this.navParams.get('materia'));
-    this.faltas_total = this.alumnoDB.getFaltasTotales(this.legajo, this.navParams.get('materia'));
+    //console.log(this.navParams.data);
+
   }
 
 }

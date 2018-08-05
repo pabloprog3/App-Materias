@@ -8,6 +8,11 @@
                         </ion-select>
             </ion-item>
 
+        <ion-item text-center>
+          <button ion-button color="danger" round (click)=verPromedioAlumnos()>Promedio general de asistencias</button>
+        </ion-item>
+        
+
       <ion-list *ngIf="listadoAlumnos!=undefined">
         <ion-item *ngIf="materiaSelect">
             <ion-title>Alumnos en: {{materiaSelect}}</ion-title>
@@ -16,7 +21,7 @@
           <h2 float-left>{{alumno}}</h2>
           <h2 float-right (click)="verAsistencias(alumno)">Ver asistencias</h2>
         </ion-item>
-
+ 
       </ion-list>
 
           

@@ -60,9 +60,9 @@ public alumnosFaltaron:Array<string>;
 
   ngOnInit(){
     this.evidencia = '';
-    console.log(this.alumnoDB.getDataAsistencia('android'));
+    //console.log(this.alumnoDB.getDataAsistencia('android'));
     this.dataMaterias = new Array<any>();
-    console.log(this.profesorSelect);
+    //console.log(this.profesorSelect);
     switch (this.date) {
       case 1:
           this.dia = 'Lunes';
@@ -90,7 +90,7 @@ public alumnosFaltaron:Array<string>;
       break;
     }
 
-    console.log(this.dia);
+    //console.log(this.dia);
     this.listado = new Array<string>();
     this.listadoProfesores = new Array<string>();
 
@@ -100,7 +100,7 @@ public alumnosFaltaron:Array<string>;
     });
     this.listadoProfesores = this.profesorDB.getProfesoresPorDia();
 
-    console.log(this.listadoProfesores);
+    //console.log(this.listadoProfesores);
   }
 
 
@@ -118,7 +118,7 @@ public alumnosFaltaron:Array<string>;
 
   }
 
-  private cargarArchivos(){
+  public cargarArchivos(){
     if (this.profesorSelect=='') {
       let toast = this.toast.create({
         message: 'Necesita seleccionar un profesor antes de continuar',
@@ -133,13 +133,18 @@ public alumnosFaltaron:Array<string>;
             this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
-                        this.procesarContenidoCSV(texto);
+                        //this.procesarContenidoCSV(texto);
+                        let alert = this.alertCtrl.create({
+                          title:'texto',
+                          message: texto
+                        });
+                        alert.present();
                     })
               })
 
             })
           }
-      }else{
+      }/*else{
          this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
@@ -149,7 +154,7 @@ public alumnosFaltaron:Array<string>;
 
               })
           })
-      }
+      }*/
 
   }
 

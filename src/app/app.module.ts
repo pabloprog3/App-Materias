@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+/*
 import { MateriasPage } from '../pages/materias/materias';
 import { MateriaPrincipalPage } from '../pages/materia-principal/materia-principal';
 import { PersonasPage } from '../pages/personas/personas';
@@ -22,6 +23,7 @@ import { ProfesorAsistenciaPage } from "../pages/profesor-asistencia/profesor-as
 import { EncuestasHomePage } from "../pages/encuestas-home/encuestas-home";
 import { EnviarEncuestaPage } from "../pages/enviar-encuesta/enviar-encuesta";
 import { EncuestaDetPage } from "../pages/encuesta-det/encuesta-det";
+*/
 import { ConsultarBajaModifPageModule } from "../pages/consultar-baja-modif/consultar-baja-modif.module";
 import { MenuPageModule } from "../pages/menu/menu.module";
 import { TestPage } from "../pages/test/test";
@@ -65,6 +67,8 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { VideoPlayer } from '@ionic-native/video-player';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 import { ChartsModule } from "ng2-charts";
+import { GraficoTodosAlumnosComponent } from '../components/grafico-todos-alumnos/grafico-todos-alumnos';
+import { GrafAsistAlumnosPage } from '../pages/graf-asist-alumnos/graf-asist-alumnos';
 
 var firebaseAuth  = {
   apiKey: "AIzaSyBjrQu2x_3cZjv1Tdvw_TIYxBMAJ2VQU_M",
@@ -100,7 +104,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     LoginPage,
-    TestPage
+    TestPage,
+    GrafAsistAlumnosPage
     //MateriasPage,
     //MateriaPrincipalPage,
     //PersonasPage,
@@ -138,7 +143,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     LoginPage,
-    TestPage
+    TestPage,
+    GrafAsistAlumnosPage
     //MateriasPage,
     //MateriaPrincipalPage,
     //PersonasPage,
