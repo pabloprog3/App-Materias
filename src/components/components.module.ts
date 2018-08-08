@@ -6,6 +6,7 @@ import { ListaProfesoresComponent } from './lista-profesores/lista-profesores';
 import { ListaAlumnosComponent } from './lista-alumnos/lista-alumnos';
 import { FilesComponent } from './files/files';
 import { TutorialComponent } from './tutorial/tutorial';
+//import { GraficoTodosAlumnosComponent } from './grafico-todos-alumnos/grafico-todos-alumnos';
 @NgModule({
 	declarations: [
     LectorQrComponent,
@@ -13,7 +14,8 @@ import { TutorialComponent } from './tutorial/tutorial';
     ListaProfesoresComponent,
     ListaAlumnosComponent,
     FilesComponent,
-    TutorialComponent
+    TutorialComponent,
+    //GraficoTodosAlumnosComponent
   ],
 	imports: [
     IonicModule
@@ -24,7 +26,8 @@ import { TutorialComponent } from './tutorial/tutorial';
     ListaProfesoresComponent,
     ListaAlumnosComponent,
     FilesComponent,
-    TutorialComponent
+    TutorialComponent,
+    //GraficoTodosAlumnosComponent
 
   ],
   schemas:[NO_ERRORS_SCHEMA]

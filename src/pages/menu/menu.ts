@@ -14,7 +14,6 @@ import {LoginPage} from '../../pages/login/login';
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 import { ConfigProvider } from "../../providers/config/config";
 import { ConfiguPage } from '../configu/configu';
-import { AlumnosFormPage } from '../alumnos-form/alumnos-form';
 
 @IonicPage()
 @Component({
@@ -32,8 +31,6 @@ export class MenuPage {
   boton;
   boton1;
   titulo;
-  Font;
-  Size;
   public logueo:string;
 
 
@@ -58,7 +55,7 @@ export class MenuPage {
     this.correo =  this.datos["correo"];
     //console.log(this.correo);
    this.config.traerEstiloPorCorreo(this.correo).subscribe(res=>{
-     
+     //console.log(res);
      this.boton=res[0].estiloBtn;
      this.boton1=res[0].estiloBtn1;
      this.fondo=res[0].estiloFondo;
@@ -75,7 +72,6 @@ export class MenuPage {
 
   private irAFormAlumnos(){
     this.navCtrl.push("AlumnosFormPage");
-    this.navCtrl.push(AlumnosFormPage,{'fondo':this.fondo,'boton':this.boton,'boton1':this.boton1,'titulo':this.titulo,'Size':this.Size,'Font':this.Font});
   }
 
 

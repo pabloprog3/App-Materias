@@ -1,0 +1,22 @@
+
+<ion-header>
+
+  <ion-navbar color="titulo" >
+    <ion-title text-center color="light"> {{materia | uppercase}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color: rgba(20, 15, 15, 0.76)">
+
+  <div style="display: block">
+    <canvas  width="75%" height="75%" *ngIf="pieChartData!=undefined" baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+</ion-content>

@@ -19,6 +19,7 @@ import * as XLSX from "xlsx";
 //import * as FileSaver from 'file-saver';
 import { VideoPlayer, VideoOptions } from '@ionic-native/video-player';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
+//import { Asistencia } from '../../clases/asistencia';
 
 @Component({
   selector: 'lista-alumnos',
@@ -35,6 +36,8 @@ public  dia:string = '';
 public alumnosAsistencia:Array<string>;
 public evidencia:string = undefined;
 private storageRef = firebase.storage().ref();
+public alumnosVinieron:Array<string>;
+public alumnosFaltaron:Array<string>;
 
   @Input() correo:string;
   @Input() nombre:string;
@@ -56,9 +59,10 @@ private storageRef = firebase.storage().ref();
 
 
   ngOnInit(){
-    console.log(this.alumnoDB.getDataAsistencia('android'));
+    this.evidencia = '';
+    //console.log(this.alumnoDB.getDataAsistencia('android'));
     this.dataMaterias = new Array<any>();
-    console.log(this.profesorSelect);
+    //console.log(this.profesorSelect);
     switch (this.date) {
       case 1:
           this.dia = 'Lunes';
@@ -86,7 +90,7 @@ private storageRef = firebase.storage().ref();
       break;
     }
 
-    console.log(this.dia);
+    //console.log(this.dia);
     this.listado = new Array<string>();
     this.listadoProfesores = new Array<string>();
 
@@ -96,7 +100,7 @@ private storageRef = firebase.storage().ref();
     });
     this.listadoProfesores = this.profesorDB.getProfesoresPorDia();
 
-    console.log(this.listadoProfesores);
+    //console.log(this.listadoProfesores);
   }
 
 
@@ -114,7 +118,7 @@ private storageRef = firebase.storage().ref();
 
   }
 
-  private cargarArchivos(){
+  public cargarArchivos(){
     if (this.profesorSelect=='') {
       let toast = this.toast.create({
         message: 'Necesita seleccionar un profesor antes de continuar',
@@ -129,13 +133,18 @@ private storageRef = firebase.storage().ref();
             this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
-                        this.procesarContenidoCSV(texto);
+                        //this.procesarContenidoCSV(texto);
+                        let alert = this.alertCtrl.create({
+                          title:'texto',
+                          message: texto
+                        });
+                        alert.present();
                     })
               })
 
             })
           }
-      }else{
+      }/*else{
          this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
@@ -145,7 +154,7 @@ private storageRef = firebase.storage().ref();
 
               })
           })
-      }
+      }*/
 
   }
 
@@ -242,6 +251,15 @@ private storageRef = firebase.storage().ref();
             return materia.toLowerCase().trim();
           }
 
+          private setterAlumno(check:boolean, alumno:string):any{
+            if (check) {
+              alumno = alumno.concat('-', 'asistio: si');
+            }else{
+              alumno = alumno.concat('-', 'asistio: no');
+            }
+            return alumno;
+          }
+
           async tomarAsistencia(){
             if (this.profesorSelect=='') {
              let msjToast =  this.toast.create();
@@ -258,6 +276,8 @@ private storageRef = firebase.storage().ref();
             aviso.setDuration(3000);
             aviso.present();
             */
+            this.alumnosVinieron = new Array<string>();
+            this.alumnosFaltaron = new Array<string>();
             let date:Date = new Date();
             let mes:number = date.getMonth() + 1;
             let diaStr:string = date.getDate() + '/' + mes + '/' + date.getFullYear();
@@ -265,22 +285,52 @@ private storageRef = firebase.storage().ref();
             await this.sacarFoto(this.getMesString(mes), date.getDate(), this.getMateriaString(this.getMateriaAsignar(this.profesorSelect)));
    
             let alumnos: Array<string> = this.alumnoDB.getAlumnosTomarAsistencia(this.profesorSelect);
+            //console.log(this.alumnoDB.getAlumnosTomarAsistencia(this.profesorSelect));
+            //console.log(alumnos);
             let alerta = this.alertCtrl.create();
             alerta.setTitle( 'Tomar asistencia día: ' + diaStr);
-            alerta.addButton({
+            /*alerta.addButton({
               text: 'Ver asistencias',
               handler: val=>{
                 //console.log(val);
                 this.descargarAsistenciaXLSX();
               }
-            });
+            });*/
+            /*let _alumnos:Array<string> = new Array<string>();
             alumnos.forEach(alumno => {
+              _alumnos.push(alumno.concat('-', 'asistio: '));
+            });
+            */
+
+            let profesor_name:string = this.profesorSelect.substr(0, this.profesorSelect.indexOf('-')).trim().toLowerCase();
+
+            alumnos.forEach((alumno, i) => {
+              let _alumno = alumno.concat('-', date.getDate() + '/' + this.getMesString(mes), '-', this.getMateriaAsignar(this.profesorSelect), '-', profesor_name);
+              
+              console.log(_alumno);
+
               alerta.addInput({
                 type:'checkbox',
                 label: alumno,
-                value: alumno,
-                checked: false
+                value: _alumno,
+                checked: false,
+                handler: data=>{
+                  //console.log(data.checked);
+                  if (data.checked) {
+                    this.alumnosVinieron.push(_alumno);
+                  }else{
+                    if (this.alumnosVinieron.includes(alumno)) {
+                      let idx:number = this.alumnosVinieron.indexOf(alumno);
+                      //console.log(idx);
+                      this.alumnosVinieron.splice(idx, 1);
+                    }
+                  }
+                  //console.log(this.alumnosFaltaron);
+                  console.log(this.alumnosVinieron);
+                }//fin handler
+              
               });
+              console.log(this)
             });
 
           alerta.addButton('Cancelar');
@@ -288,12 +338,40 @@ private storageRef = firebase.storage().ref();
           alerta.addButton({
             text:'Confirmar',
             handler: data=>{
+              let profesor_name:string = this.profesorSelect.substr(0, this.profesorSelect.indexOf('-')).trim().toLowerCase();
+              console.log(profesor_name);
               this.alumnosAsistencia = new Array<string>();
-              this.alumnosAsistencia = data;
+              //this.alumnosAsistencia = data;
+              this.alumnosAsistencia = alumnos;
+
+              this.alumnosAsistencia.forEach((alumno, i) => {
+                //console.log(alumno);
+                alumno = alumno.concat('-', date.getDate() + '/' + this.getMesString(mes), '-', this.getMateriaAsignar(this.profesorSelect), '-', profesor_name);
+                console.log(alumno);
+                this.alumnosAsistencia[i] = alumno;
+              });
+              console.log(this.alumnosAsistencia);
+              //this.alumnosVinieron = this.alumnosAsistencia;
+
+              this.alumnosAsistencia.forEach(alumno => {
+                if (!this.alumnosVinieron.includes(alumno)) {
+                  this.alumnosFaltaron.push(alumno);
+                }
+              });
+
               //console.log(this.alumnosAsistencia);
-              this.registrarAsistencia({data:data, foto:this.evidencia}, this.getMesString(mes), date.getDate(), this.getMateriaAsignar(this.profesorSelect));
+              /*this.alumnosAsistencia.forEach((alumno, i) => {
+                console.log(alumno);
+                
+                alumno = alumno.concat('-', date.getDate() + '/' + this.getMesString(mes), '-', this.getMateriaAsignar(this.profesorSelect), '-', profesor_name);
+                console.log(alumno);
+                this.alumnosAsistencia[i] = alumno;
+              });*/
+              //console.log(this.alumnosAsistencia);
+              this.registrarAsistencia({asistieron:this.alumnosVinieron, faltaron:this.alumnosFaltaron, foto:this.evidencia}, this.getMesString(mes), date.getDate(), this.getMateriaAsignar(this.profesorSelect), profesor_name);
   
             }
+            
           });
           alerta.present();
 
@@ -361,8 +439,8 @@ private storageRef = firebase.storage().ref();
             });
           }
           
-          private registrarAsistencia(alumnos:any, mes:string, dia:number, materia:string):void{
-              this.alumnoDB.setAsistencia(alumnos, mes, dia, materia);
+          private registrarAsistencia(alumnos:any, mes:string, dia:number, materia:string, profesor:string):void{
+              this.alumnoDB.setAsistencia(alumnos, mes, dia, materia, profesor);
           }
 
           private  sacarFoto(mes:string, dia:number, materia:string){
@@ -445,6 +523,7 @@ private storageRef = firebase.storage().ref();
           let materia:string = '';
           return materia.substring(profesor.indexOf('-')+1);
         }
+
 
 
         playAsistencia(){

@@ -25,7 +25,7 @@ export class ProfesorServiceProvider {
   }
 
   public guardarProfesor(profesor:Profesor){
-    console.log(profesor);
+    //console.log(profesor);
     profesor.setPerfil('profesor');
     this.db.app.database().ref('/profesores').child(profesor.getDNI()).set(profesor);
     this.db.app.database().ref('/usuarios').child(profesor.getDNI()).set(profesor);
@@ -40,7 +40,7 @@ export class ProfesorServiceProvider {
         equalTo:dni
       }
     }) as FirebaseListObservable<any[]>
-    console.log('materias por profesor: ', this.listaMaterias);
+    //console.log('materias por profesor: ', this.listaMaterias);
     return this.listaMaterias;
   }
 
@@ -50,14 +50,14 @@ export class ProfesorServiceProvider {
     let listaMaterias:any[];
     this.db.list('/profesores').subscribe(profesores=>{
       profesores.forEach(profesor => {
-        console.log(profesor);
+        //console.log(profesor);
         if (profesor["dni"]==id) {
           listaMaterias = profesor["materias"];
-          console.log(listaMaterias);
+          //console.log(listaMaterias);
         }
       });
     });
-    console.log(listaMaterias);
+    //console.log(listaMaterias);
     return listaMaterias;
   }
 
@@ -66,14 +66,14 @@ export class ProfesorServiceProvider {
     let listaMaterias:string[] = [];
     this.db.list('/profesores').subscribe(profesores=>{
       profesores.forEach((profesor, i) => {
-        console.log(profesor);
+        //console.log(profesor);
         if (profesor.correo.trim()==correo.trim()) {
           //listaMaterias.push(profesor.materias);
           listaMaterias = profesor.materias;
-          console.log(listaMaterias);
+          //console.log(listaMaterias);
         }
       });
-      console.log(listaMaterias);
+      //console.log(listaMaterias);
       
     });
     return listaMaterias;
@@ -134,11 +134,11 @@ export class ProfesorServiceProvider {
     this.db.list('/materias').subscribe(materias=>{
       console.log(materias);
       materias.forEach(materia => {
-        console.log(materia);
+        //console.log(materia);
         let _horario:string = materia.horarios;
-        console.log(_horario);
+        //console.log(_horario);
         let _horario_dia:string = _horario.substring(0, _horario.indexOf(' ')); 
-        console.log(_horario_dia);
+        //console.log(_horario_dia);
         if (_horario_dia.toLowerCase() == dia.toLowerCase()) {
           materiasPorDia.push(materia.nombre);
         }
@@ -147,7 +147,7 @@ export class ProfesorServiceProvider {
       this.db.list('/profesores').subscribe(profesores=>{
         profesores.forEach(profesor => {
           profesor.materias.forEach(materia => {
-            console.log(materia);
+            //console.log(materia);
             let _materia:string = materia;
             if (materiasPorDia.includes(_materia)) {
               profesorMateris.push(profesor.nombre + '-' + _materia);
@@ -157,7 +157,7 @@ export class ProfesorServiceProvider {
       })
 
     }); // /materias
-    console.log(profesorMateris); //
+    //console.log(profesorMateris); //
     return profesorMateris;
   }
 
@@ -167,16 +167,16 @@ export class ProfesorServiceProvider {
     //this.listaAlumnosPorProfesor = new FirebaseListObservable<string[]>;
     this.db.list('/alumnos').subscribe(alumnos=>{
       alumnos.forEach(a => {
-        console.log(a.materias);
+        //console.log(a.materias);
         if (a.materias!=undefined) {
           let materias:string[] = a.materias;
-          console.log(materias);
+          //console.log(materias);
           materias.forEach(m => {
             let mat:string = m;
-            console.log(m);
-            console.log(materia);
+            //console.log(m);
+            //console.log(materia);
             if (mat==materia) {
-              console.log('son iguales');
+              //console.log('son iguales');
               alumnos.push(a.legajo + '-' + a.nombre);
               //console.log(a.nombre);
               //this.listaAlumnosPorProfesor.push(a.nombre);
@@ -185,7 +185,7 @@ export class ProfesorServiceProvider {
         }
        
       });
-      console.log(alumnos);
+      //console.log(alumnos);
   
     });
     return alumnos;

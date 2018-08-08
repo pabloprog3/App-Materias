@@ -85,7 +85,7 @@ export class AlumnoServiceProvider {
       diaStr = 'Martes';
   break;
   case 3:
-      diaStr = 'Miércoles';
+      diaStr = 'Miercoles';
   break;
   case 4:
       diaStr = 'Jueves';
@@ -94,7 +94,7 @@ export class AlumnoServiceProvider {
       diaStr = 'Viernes';
   break;
   case 6:
-      diaStr = 'Sábado';
+      diaStr = 'Sabado';
   break;
   case 0:
       diaStr = 'Domingo';
@@ -108,21 +108,36 @@ export class AlumnoServiceProvider {
   }
 
   public getAlumnosTomarAsistencia(profesor:string):Array<string>{
+    console.log(profesor);
+    let prof_nombre:string = profesor.substring(0, profesor.indexOf('-')).trim();
+    let prof_materia:string = profesor.substr(profesor.indexOf('-')+1).trim();
+    console.log(prof_nombre, ';', prof_materia); 
     let date:Date = new Date();
     let diaStr:string = this.getNameDia(date.getDay());
+    console.log('diaStr: ', diaStr);
     let listaAlumnos:Array<string> = new Array<string>();
     //console.log(diaStr);
+
+    this.db.list('/profesores').subscribe(profesores=>{
+      console.log(profesores);
+      profesores.forEach(profesor => {
+        console.log(profesor);
+      });
+    })
+
     this.db.list('/materias').subscribe(materias=>{
       let listaMateriasDia:Array<string> = new Array<string>();
       materias.forEach(materia => {
-        //console.log(materia);
+        console.log(materia);
         let horario:string = materia.horarios;
         let _dia:string = horario.substring(0, horario.indexOf(' '));
-        //console.log(_dia);
+        console.log(_dia);
         if (_dia.toLowerCase() == diaStr) {
+          console.log('coinciden dias: ', diaStr);
           listaMateriasDia.push(materia.nombre);
         }
       }); //fin foreach materias
+      console.log(listaMateriasDia);
       this.db.list('/alumnos').subscribe(alumnos=>{
         //console.log(alumnos);
         alumnos.forEach(alumno => {
@@ -224,8 +239,60 @@ export class AlumnoServiceProvider {
     }); //fin subscribe alumnos
     return data;
     //console.log(todosAlumnos);
-
     
+  }
+
+  public getAsistenciasTotales(legajo:string, materia:string, profesor:string){
+    let resultado:number=0;
+    let contador_asistencia:number = 0;
+    this.db.list('/asistencia').subscribe(asistencia=>{
+      asistencia.forEach(datas => {
+        datas.asistieron.forEach(alumno => {
+          //console.log(alumno);
+          let _alumno:string = alumno;
+          let _data:string[] = _alumno.split('-');
+          let _legajo:string = _data[0];
+          let _materia:string = _data[3];
+          let _profesor_name:string = _data[4];
+
+          if (materia==_materia && _legajo==legajo && _profesor_name==profesor) {
+            contador_asistencia += 1;
+            resultado = contador_asistencia;
+          }
+        });
+      });
+    });
+    return resultado;
+  }
+
+  public getFaltasTotales(legajo:string, materia:string, profesor:string){
+
+    let resultado:number=0;
+    let contador_faltas:number = 0;
+    this.db.list('/asistencia').subscribe(asistencia=>{
+      asistencia.forEach(datas => {
+        datas.faltaron.forEach(alumno => {
+          let _alumno:string = alumno;
+          let _data:string[] = _alumno.split('-');
+          let _legajo:string = _data[0];
+          let _materia:string = _data[3];
+          let _profesor_name:string = _data[4];
+          if (materia==_materia && _legajo==legajo && _profesor_name==profesor) {
+            contador_faltas += 1;
+            resultado = contador_faltas;
+          }
+        });
+      });
+    });
+    return resultado;
+  }
+
+  public promedioAlumnosAll(materia:string):FirebaseListObservable<any[]>{
+
+    let res: FirebaseListObservable<any[]>;
+    res = this.db.list('/asistencia');
+    return res;
+
   }
 
   public borrarAlumno(legajo:string){
@@ -236,8 +303,9 @@ export class AlumnoServiceProvider {
     this.db.app.database().ref('/alumnos/' + alumno.getLegajo()).update(alumno);
   }
 
-  public setAsistencia(alumnos:any, mes:string, dia:number, materia:string):void{
-    this.db.app.database().ref('/asistencia').child(mes).child(materia).child(dia.toString()).set(alumnos);
+  public setAsistencia(alumnos:any, mes:string, dia:number, materia:string, profesor:string):void{
+    //this.db.app.database().ref('/asistencia').child(mes).child(materia).child(profesor).child(dia.toString()).set(alumnos);
+    this.db.app.database().ref('/asistencia').push(alumnos);
   }
 
 

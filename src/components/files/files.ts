@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { File } from "@ionic-native/file";
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-service";
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 import { AngularFireDatabase } from 'angularfire2/database';
+import { GrafAsistAlumnosPage } from '../../pages/graf-asist-alumnos/graf-asist-alumnos';
+import { GraficoTodosAlumnosComponent } from '../grafico-todos-alumnos/grafico-todos-alumnos';
 
 @Component({
   selector: 'files',
@@ -21,44 +23,47 @@ export class FilesComponent implements OnInit {
   public materiaSelect:string;
   public listadoMaterias:Array<string> = new Array<string>();
   public listadoAlumnos:Array<string> = new Array<string>();
+  private data:any={};
   @Input('correo') correo:string;
+  private profesor:string;
 
   constructor(public navCtrl: NavController, public file:File,
               private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider,
-              public params:NavParams, private db:AngularFireDatabase
+              public params:NavParams, private db:AngularFireDatabase, public modalCtrl:ModalController,
+              public toastCtrl:ToastController
 
   ) {}
 
   ngOnInit(){
-      console.log(this.correo);
+
+      //console.log(this.correo);
     this.alumnoDB.getAlumnosLista().subscribe(lista=>{
       this.listaAlumnos = lista;
-      console.log(this.listaAlumnos);
+
     });
 
     this.profesorDB.traerListadoMaterias().subscribe(lista=>{
       this.listaMaterias = lista;
-      console.log(this.listaMaterias);
+
     });
 
-    //this.listadoMaterias = this.profesorDB.getMateriasDelProfesor(this.correo); 
-    //console.log(this.listadoMaterias);
     let listaMaterias:string[] = [];
     this.db.list('/profesores').subscribe(profesores=>{
       profesores.forEach((profesor, i) => {
-        console.log(profesor, '; ', this.correo);
+        //console.log(profesor);
         if (profesor.correo.trim()==this.correo.trim()) {
           //listaMaterias.push(profesor.materias);
           this.listadoMaterias = profesor.materias;
-          console.log(listaMaterias);
+          this.profesor = profesor.nombre;
+          this.profesor = this.profesor.trim();
         }
       });
-      console.log(listaMaterias);
+      //console.log(listaMaterias);
       
     });
 
     this.listadoAlumnos = this.profesorDB.getAlumnosPorProfesor(this.correo, 'matematica');
-    console.log(this.listadoAlumnos);
+    //console.log(this.listadoAlumnos);
 
   }
 
@@ -116,37 +121,48 @@ export class FilesComponent implements OnInit {
         }
 
 
-        seleccionarMateria(event){
-            //console.log(event);
-            //this.listadoAlumnos = this.profesorDB.getAlumnosPorProfesor(this.correo, event);
-            //console.log(this.listadoAlumnos);
-            let _alumnos:string[] = new Array<string>();
-    //this.listaAlumnosPorProfesor = new FirebaseListObservable<string[]>;
+  seleccionarMateria(event){
+    let _alumnos:string[] = new Array<string>();
     this.db.list('/alumnos').subscribe(alumnos=>{
       alumnos.forEach(a => {
-        console.log(a.materias);
         if (a.materias!=undefined) {
           let materias:string[] = a.materias;
-          console.log(materias);
           materias.forEach(m => {
             let mat:string = m;
-            console.log(m);
-            console.log(event);
             if (mat.trim()==event.trim()) {
-              console.log('son iguales');
               _alumnos.push(a.legajo + '-' + a.nombre);
-              //console.log(a.nombre);
-              //this.listaAlumnosPorProfesor.push(a.nombre);
             }
           });
         }
        
       });
-      console.log(_alumnos);
       this.listadoAlumnos = _alumnos;
-      console.log(this.listadoAlumnos);
     });
 }
     
+
+
+  
+verAsistencias(alumno:string){
+  let legajo:string = alumno.substring(0, alumno.indexOf('-')).trim();
+  let nombre:string = alumno.substring(alumno.indexOf('-')+1).trim();
+  this.navCtrl.push('VerAsistenciasPage', {legajo:legajo, nombre:nombre, materia:this.materiaSelect.trim(), profesor:this.profesor});
+}
+
+verPromedioAlumnos(){
+  if (this.materiaSelect == undefined) {
+    let toast = this.toastCtrl.create({
+      message: 'Seleccione una materia',
+      position: 'middle',
+      duration: 2000
+    });
+    toast.present();
+  }else{
+    //this.data = this.alumnoDB.promedioAlumnosAll(this.materiaSelect.trim());
+    let modal = this.modalCtrl.create(GrafAsistAlumnosPage, {materia:this.materiaSelect.trim(), profesor:this.profesor});
+    modal.present();
+  }
+
+}
 
 }
