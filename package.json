@@ -43,7 +43,6 @@
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-device": "^1.1.7",
-        "cordova-plugin-fcm": "^2.1.2",
         "cordova-plugin-file": "^5.0.0",
         "cordova-plugin-file-opener2": "^2.0.19",
         "cordova-plugin-filechooser": "^1.0.1",
@@ -88,7 +87,6 @@
             "cordova-plugin-file": {},
             "cordova-plugin-file-opener2": {},
             "cordova-plugin-nativeaudio": {},
-            "cordova-plugin-fcm": {},
             "phonegap-plugin-push": {
                 "SENDER_ID": "566483132157"
             },

@@ -133,7 +133,11 @@ public alumnosFaltaron:Array<string>;
             this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
-            
+                        let alert = this.alertCtrl.create({
+                          title: 'alertaa',
+                          message: 'iniciando: ' + texto
+                        });
+                        alert.present();
                         this.procesarContenidoCSV(texto);
                    
                     });
