@@ -67,7 +67,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { VideoPlayer } from '@ionic-native/video-player';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 import { ChartsModule } from "ng2-charts";
-import { GraficoTodosAlumnosComponent } from '../components/grafico-todos-alumnos/grafico-todos-alumnos';
+//import { GraficoTodosAlumnosComponent } from '../components/grafico-todos-alumnos/grafico-todos-alumnos';
 import { GrafAsistAlumnosPage } from '../pages/graf-asist-alumnos/graf-asist-alumnos';
 
 var firebaseAuth  = {
@@ -104,7 +104,7 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     LoginPage,
-    TestPage,
+    //TestPage
     GrafAsistAlumnosPage
     //MateriasPage,
     //MateriaPrincipalPage,
@@ -143,7 +143,7 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     LoginPage,
-    TestPage,
+    //TestPage
     GrafAsistAlumnosPage
     //MateriasPage,
     //MateriaPrincipalPage,

@@ -53,6 +53,11 @@ export class AlumnoServiceProvider {
     this.auth.auth.createUserWithEmailAndPassword(alumno.getCorreo(), alumno.getPassword());
   }
 
+  public guardarAlumnosExcel(alumnos:Array<Alumno>){
+    this.db.app.database().ref('/alumnos').push(alumnos);
+    //this.db.app.database().ref('/ListadoMaterias/').set(materias);
+  }
+
   public getAlumnosLista(){
     this.listaAlumnos = this.db.list('/alumnos') as FirebaseListObservable<any[]>;
     return this.listaAlumnos;

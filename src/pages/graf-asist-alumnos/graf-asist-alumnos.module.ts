@@ -10,6 +10,7 @@ import { ChartsModule } from "ng2-charts";
   imports: [
     IonicPageModule.forChild(GrafAsistAlumnosPage),
     ChartsModule
-  ],
+  ]
+  //exports:[GrafAsistAlumnosPage]
 })
 export class GrafAsistAlumnosPageModule {}

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 
 import {  NavController, NavParams, ModalController, AlertController, 
          PopoverController, ToastController } from 'ionic-angular';
@@ -53,8 +53,8 @@ public alumnosFaltaron:Array<string>;
     public file:File, public fileChooser:FileChooser, public filePath:FilePath,
     public alertCtrl:AlertController, public popoverCtrl:PopoverController,
     private profesorDB:ProfesorServiceProvider, public toast:ToastController,
-    public camera:Camera, public videoplayer:VideoPlayer, public media:StreamingMedia
-
+    public camera:Camera, public videoplayer:VideoPlayer, public media:StreamingMedia,
+    public zone:NgZone
   ) {}
 
 
@@ -133,37 +133,23 @@ public alumnosFaltaron:Array<string>;
             this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
-                        //this.procesarContenidoCSV(texto);
-                        let alert = this.alertCtrl.create({
-                          title:'texto',
-                          message: texto
-                        });
-                        alert.present();
-                    })
-              })
-
-            })
-          }
-      }/*else{
-         this.fileChooser.open().then(path=>{
-              this.filePath.resolveNativePath(path).then(nativePath=>{
-                    this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
-
+            
                         this.procesarContenidoCSV(texto);
-                    })
+                   
+                    });
+              });
 
-              })
-          })
-      }*/
+            });
+          }
+      }
 
   }
 
       private procesarContenidoCSV(_texto:string){
+              let array_alumno:Array<Alumno> = new Array<Alumno>();
               let campoLegajo:string='';
               let campoNombre:string='';
               let campoHorario:string='';
-
-              //let arrayListado:Array<string> = new Array<string>();
 
               let cont:number = 0;
 
@@ -195,9 +181,10 @@ public alumnosFaltaron:Array<string>;
                           alumno.setHorario(campoHorario);
                           alumno.setPerfil('alumno');
                           alumno.setMateria(materia);
-                          this.dataMaterias.push(campoNombre + '-' + this.getMateriaAsignar(this.profesorSelect));
-                          this.alumnoDB.guardarAlumno(alumno, this.dataMaterias);
-
+                          array_alumno.push(alumno);
+                          //this.dataMaterias.push(campoNombre + '-' + this.getMateriaAsignar(this.profesorSelect));
+                          //this.alumnoDB.guardarAlumnosExcel(alumno);
+                     
                           cont = 0;
                           campoLegajo = '';
                           campoNombre='';
@@ -206,6 +193,15 @@ public alumnosFaltaron:Array<string>;
                     }//fin switch
                   }//fin if
                 }//fin for
+                //console.log(array_alumno)
+                array_alumno.forEach(a => {
+                  let alerta = this.alertCtrl.create({
+                    title:'alumno: ' + a.getLegajo(),
+                    message: a.getNombre() + '-' + a.getHorario()
+                  });
+                  alerta.present();
+                });
+                //this.alumnoDB.guardarAlumnosExcel(array_alumno);
                 //this.navCtrl.pop();
       }
 

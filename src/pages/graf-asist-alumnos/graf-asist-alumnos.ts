@@ -54,20 +54,29 @@ export class GrafAsistAlumnosPage {
 
     this.alumnoDB.promedioAlumnosAll(this.materia.trim()).subscribe(asistencia=>{
       asistencia.forEach(datas => {
+        console.log(datas);
         datas.asistieron.forEach(alumno => {
-          if (this.boolMateriasProfesorCoinciden(alumno)) {
-            contador_asistencias += 1;
-          }
-         
+          console.log(alumno);
+          if (alumno!= undefined) {
+            if (this.boolMateriasProfesorCoinciden(alumno)) {
+              contador_asistencias += 1;
+            }
+          } 
         });
       });
+
       asistencia.forEach(datas => {
-        datas.faltaron.forEach(alumno => {
-          if (this.boolMateriasProfesorCoinciden(alumno)) {
-              contador_faltas += 1;
-          }
-         
-        });
+        console.log(datas);
+        if (datas.faltaron != undefined) {
+          datas.faltaron.forEach(alumno => {
+            console.log(alumno);
+            if (alumno != undefined) {
+              if (this.boolMateriasProfesorCoinciden(alumno)) {
+                contador_faltas += 1;
+              }
+            }
+          });
+        }
       });
       //console.log(contador_asistencias, ';', contador_faltas);
       resultadoPreOperacion.asistencias = contador_asistencias;
