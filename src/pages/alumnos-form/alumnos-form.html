@@ -5,7 +5,10 @@
     <ion-title text-center>Alta de Alumno</ion-title>
     <button ion-button round icon-only (click)="salir()">
         <ion-icon name="md-arrow-back"></ion-icon>
-    </button> 
+    </button>
+    <ion-buttons right>
+      <button ion-button full color="dark" (click)="ingresarAlumno()">REGIS.</button> 
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -43,13 +46,11 @@
   </ion-item>
   <br>
   <ion-item class="{{fondo}}" text-center>
-    <button [disabled]="!nombre" ion-button color="primary" (click)="asignarMaterias()">Asignar materias</button>
+    <button [disabled]="!nombre" ion-button class="{{boton}}" (click)="asignarMaterias()">Asignar materias</button>
   </ion-item>
 
 
-<button ion-button class="{{boton}}" class="btnAlumno" block (click)="ingresarAlumno()">
-  REGISTRAR
-</button>
+
 
 
 

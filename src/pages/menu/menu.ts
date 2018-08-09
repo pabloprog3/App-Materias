@@ -55,14 +55,17 @@ export class MenuPage {
     this.correo =  this.datos["correo"];
     //console.log(this.correo);
    this.config.traerEstiloPorCorreo(this.correo).subscribe(res=>{
-     if (res.length > 0) {
-      this.boton=res[0].estiloBtn;
-      this.boton1=res[0].estiloBtn1;
-      this.fondo=res[0].estiloFondo;
-      this.titulo=res[0].estilotitulo;
-     }
-   
+     //console.log(res);
+     this.boton=res[0].estiloBtn;
+     this.boton1=res[0].estiloBtn1;
+     this.fondo=res[0].estiloFondo;
+     this.titulo=res[0].estilotitulo;
+
+     //console.log(this.fondo);
    })
+
+    //console.log(this.perfil);
+    //console.log(this.profesorDB.getProfesoresPorDia());
   }
 
 

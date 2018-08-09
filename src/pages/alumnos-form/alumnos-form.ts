@@ -31,10 +31,14 @@ export class AlumnosFormPage {
   public passw:string;
   public profesores;
   public dataAlertMaterias:Array<any>;
-  fondo;
-  boton;
-  boton1;
-  titulo;
+  
+  fondo="fondoArgentina";
+  boton="botonArgentina";
+  boton1="botonArgentina1";
+  titulo="tituloArgentina";
+  Size="";
+  Font="";
+
   private logueo:string;
 
   private storageRef = firebase.storage().ref();
@@ -49,19 +53,29 @@ export class AlumnosFormPage {
   ionViewDidLoad() {
 
     this.datos = this.navParams.data;
-    console.log(this.datos);
-    this.correo = this.navParams.get('logeo');
-    console.log(this.correo);
+    //console.log(this.datos);
+    //this.correo = this.navParams.get('correo');
+    this.perfil = this.datos["perfil"];
+    this.correo =  this.datos["correo"];
+    //console.log(this.correo);
 
-    this.config.traerEstiloPorCorreo(this.correo).subscribe(res=>{
-      console.log(res);
+    /*this.config.traerEstiloPorCorreo(this.correo).subscribe(res=>{
+      //console.log(res);
       this.boton=res[0].estiloBtn;
       this.boton1=res[0].estiloBtn1;
       this.fondo=res[0].estiloFondo;
       this.titulo=res[0].estilotitulo;
  
-      console.log(this.fondo);
-    });
+      //console.log(this.fondo);
+    });*/
+    if (this.navParams.get('fondo') != undefined || this.navParams.get('fondo') != null) {
+      this.fondo = this.navParams.get('fondo');
+      this.boton = this.navParams.get('boton');
+      this.boton1 = this.navParams.get('boton1');
+      this.titulo = this.navParams.get('titulo');
+      this.Size = this.navParams.get('Size');
+      this.Font = this.navParams.get('Font');
+    }  
 
     this.dataAlertMaterias = new Array<any>();
     this.foto="";
@@ -72,7 +86,7 @@ export class AlumnosFormPage {
     this.materiaCheck = new Array<string>();
     this.alumno = new Alumno();
 
-    console.log(this.datos.logeo)
+    console.log(this.datos.logueo);
   }
 
 
