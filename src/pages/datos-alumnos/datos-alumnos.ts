@@ -18,7 +18,8 @@ export class DatosAlumnosPage {
   public legajo:string;
   public correo:string;
   public foto:string;
-  public listaMaterias:Array<string>;
+  public listaMaterias:Array<any>;
+  public materias:Array<string> = new Array<string>();
   public dataAlertMaterias:Array<any>;
   public url_asistencia:string = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/asistencia.mp4?alt=media&token=e7865b9f-d9ea-4817-bd4d-f7b960427bc7';
 
@@ -42,7 +43,9 @@ export class DatosAlumnosPage {
     this.foto = this.alumno.foto;
     this.alumnoDB.traerListadoMateriasPorAlumno(this.legajo).subscribe(lista=>{
       this.listaMaterias = lista;
+      this.materias = this.listaMaterias[0].materias;
       console.log('this.listaMaterias', this.listaMaterias);
+      console.log(this.materias);
     })
   }
 
@@ -113,6 +116,15 @@ export class DatosAlumnosPage {
       }
     });
     asign.present();
+  }
+
+  quitarMateria(materia:string){
+    console.log(materia);
+    console.log(this.legajo);
+    let idx:number = this.materias.indexOf(materia);
+    this.materias.splice(idx, 1);
+    console.log(this.materias);
+    this.alumnoDB.quitarMateria(this.legajo, this.materias);
   }
 
 }

@@ -37,6 +37,18 @@
   <button [disabled]="!nombre" ion-button color="primary" (click)="asignarMaterias()">Asignar materias</button>
 </ion-item>
 
+<ion-list *ngIf="materias!=undefined" color="celeste">
+
+  <ion-list-header color="muro">
+    Materias actuales
+  </ion-list-header>
+
+  <ion-item *ngFor="let materia of materias" color="celeste">
+    {{materia}}  <button ion-button color="danger" (click)=quitarMateria(materia)>Quitar</button>
+  </ion-item>
+
+</ion-list>
+
 <button ion-button class="btn" full color="light" (click)="cancelarOpe()">
   Cancelar
 </button>

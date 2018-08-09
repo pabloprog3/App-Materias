@@ -126,28 +126,24 @@ public alumnosFaltaron:Array<string>;
         position: 'middle'
       });
       toast.present();
-    }
-      if (this.perfil=='administrador' || this.perfil=='administrativo') {
-          if (this.profesorSelect == '') {
-          }else {
+    }else{
+      let alert = this.alertCtrl.create({
+        title: 'alertaa',
+        message: 'iniciando: ' + this.profesorSelect
+      });
+      alert.present();
             this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
-                        let alert = this.alertCtrl.create({
-                          title: 'alertaa',
-                          message: 'iniciando: ' + texto
-                        });
-                        alert.present();
+               
                         this.procesarContenidoCSV(texto);
                    
                     });
+                });
+
               });
-
-            });
-          }
-      }
-
-  }
+            }
+    }
 
       private procesarContenidoCSV(_texto:string){
               let array_alumno:Array<Alumno> = new Array<Alumno>();

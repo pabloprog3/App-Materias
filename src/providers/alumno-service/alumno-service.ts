@@ -313,5 +313,9 @@ export class AlumnoServiceProvider {
     this.db.app.database().ref('/asistencia').push(alumnos);
   }
 
+  public quitarMateria(legajo:string, materia:string[]){
+    return this.db.app.database().ref('/alumnos/'+legajo).child('materias').set(materia);
+  }
+
 
 }
