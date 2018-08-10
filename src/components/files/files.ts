@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { File } from "@ionic-native/file";
-import { NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ToastController, AlertController } from 'ionic-angular';
 import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-service";
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 import { AngularFireDatabase } from 'angularfire2/database';
 import { GrafAsistAlumnosPage } from '../../pages/graf-asist-alumnos/graf-asist-alumnos';
 import { GraficoTodosAlumnosComponent } from '../grafico-todos-alumnos/grafico-todos-alumnos';
+import { VideoOptions, VideoPlayer } from "@ionic-native/video-player";
 
 @Component({
   selector: 'files',
@@ -26,11 +27,12 @@ export class FilesComponent implements OnInit {
   private data:any={};
   @Input('correo') correo:string;
   private profesor:string;
+  videoOpts:VideoOptions;
 
   constructor(public navCtrl: NavController, public file:File,
               private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider,
               public params:NavParams, private db:AngularFireDatabase, public modalCtrl:ModalController,
-              public toastCtrl:ToastController
+              public toastCtrl:ToastController, public videoPlayer:VideoPlayer, public alertCtrl:AlertController
 
   ) {}
 
@@ -163,6 +165,16 @@ verPromedioAlumnos(){
     modal.present();
   }
 
+}
+
+playVerAsistencias(){
+  this.videoOpts = {volume:1.0};
+    this.videoPlayer.play('file:///android_asset/www/assets/asistencia_profesor.mp4', this.videoOpts).then((val)=>{
+      let alerta = this.alertCtrl.create({
+        title:'Finalizo el tutorial'
+      });
+      alerta.present();
+    });
 }
 
 }

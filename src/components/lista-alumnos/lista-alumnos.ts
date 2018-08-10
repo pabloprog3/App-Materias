@@ -15,7 +15,7 @@ import { Alumno } from "../../clases/alumno";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 
 import * as firebase from 'firebase';
-import * as XLSX from "xlsx";
+//import * as XLSX from "xlsx";
 //import * as FileSaver from 'file-saver';
 import { VideoPlayer, VideoOptions } from '@ionic-native/video-player';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
@@ -26,7 +26,7 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
   templateUrl: 'lista-alumnos.html'
 })
 export class ListaAlumnosComponent implements OnInit {
-
+  videoOpts:VideoOptions;
 public foto:string;
 public  listado:Array<string>;
 public dataMaterias:Array<any>;
@@ -43,6 +43,7 @@ public alumnosFaltaron:Array<string>;
   @Input() nombre:string;
   @Input() perfil:string;
 
+  public textCSV:string = '';
   public profesorSelect:string = '';
   public url_asistencia:string = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/asistencia.mp4?alt=media&token=e7865b9f-d9ea-4817-bd4d-f7b960427bc7';
   //public url_asistencia:string = 'file:///android_asset/www/assets/videos/asistencia.mp4';
@@ -53,7 +54,7 @@ public alumnosFaltaron:Array<string>;
     public file:File, public fileChooser:FileChooser, public filePath:FilePath,
     public alertCtrl:AlertController, public popoverCtrl:PopoverController,
     private profesorDB:ProfesorServiceProvider, public toast:ToastController,
-    public camera:Camera, public videoplayer:VideoPlayer, public media:StreamingMedia,
+    public camera:Camera, public videoPlayer:VideoPlayer, public media:StreamingMedia,
     public zone:NgZone
   ) {}
 
@@ -127,26 +128,30 @@ public alumnosFaltaron:Array<string>;
       });
       toast.present();
     }else{
-      let alert = this.alertCtrl.create({
-        title: 'alertaa',
-        message: 'iniciando: ' + this.profesorSelect
-      });
-      alert.present();
             this.fileChooser.open().then(path=>{
               this.filePath.resolveNativePath(path).then(nativePath=>{
+                this.file.checkFile(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(value=>{
+                  if (value) {
                     this.file.readAsText(this.extraerPath(nativePath), this.extraerNombreArchivo(nativePath)).then(texto=>{
-               
-                        this.procesarContenidoCSV(texto);
-                   
+                      this.textCSV = texto;
+                        this.procesarContenidoCSV(this.textCSV);
                     });
+                  } else {
+                    let alert = this.alertCtrl.create({
+                      title: 'URL invalido',
+                      message: 'El archivo no existe'
+                    });
+                    alert.present();
+                  }
+                });
+                  
                 });
 
               });
             }
     }
 
-      private procesarContenidoCSV(_texto:string){
-              let array_alumno:Array<Alumno> = new Array<Alumno>();
+    public procesarContenidoCSV(_texto:string){
               let campoLegajo:string='';
               let campoNombre:string='';
               let campoHorario:string='';
@@ -181,9 +186,9 @@ public alumnosFaltaron:Array<string>;
                           alumno.setHorario(campoHorario);
                           alumno.setPerfil('alumno');
                           alumno.setMateria(materia);
-                          array_alumno.push(alumno);
-                          //this.dataMaterias.push(campoNombre + '-' + this.getMateriaAsignar(this.profesorSelect));
-                          //this.alumnoDB.guardarAlumnosExcel(alumno);
+                          //array_alumno.push(alumno);
+                          this.dataMaterias.push(campoNombre + '-' + this.getMateriaAsignar(this.profesorSelect));
+                          this.alumnoDB.guardarAlumnosExcel(alumno, this.dataMaterias);
                      
                           cont = 0;
                           campoLegajo = '';
@@ -193,16 +198,6 @@ public alumnosFaltaron:Array<string>;
                     }//fin switch
                   }//fin if
                 }//fin for
-                //console.log(array_alumno)
-                array_alumno.forEach(a => {
-                  let alerta = this.alertCtrl.create({
-                    title:'alumno: ' + a.getLegajo(),
-                    message: a.getNombre() + '-' + a.getHorario()
-                  });
-                  alerta.present();
-                });
-                //this.alumnoDB.guardarAlumnosExcel(array_alumno);
-                //this.navCtrl.pop();
       }
 
           private extraerPath(_path:string):string{
@@ -379,7 +374,7 @@ public alumnosFaltaron:Array<string>;
             for (let i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
             return buf;
           }
-        
+        /*
           async descargarAsistenciaXLSX(){
             //console.log(this.alumnoDB.getDataAsistencia('android'));
             let data = this.alumnoDB.getDataAsistencia('android');
@@ -414,8 +409,9 @@ public alumnosFaltaron:Array<string>;
             this.getStoragePath().then(url=>{
               this.file.writeFile(url, 'asistencias.xlsx', blob, {replace:true});
             });*/
-          }
-
+          //}
+          
+            /*
           saveAsExcelFile(buffer:any, fileName:string){
             const data: Blob = new Blob([buffer], {
               type: 'xlsx'
@@ -434,6 +430,7 @@ public alumnosFaltaron:Array<string>;
               });
             });
           }
+          */
           
           private registrarAsistencia(alumnos:any, mes:string, dia:number, materia:string, profesor:string):void{
               this.alumnoDB.setAsistencia(alumnos, mes, dia, materia, profesor);
@@ -523,7 +520,14 @@ public alumnosFaltaron:Array<string>;
 
 
         playAsistencia(){
-        
+          this.videoOpts = {volume:1.0};
+          this.videoPlayer.play('file:///android_asset/www/assets/asistencia.mp4', this.videoOpts).then((val)=>{
+            let alerta = this.alertCtrl.create({
+              title:'Finalizo el tutorial'
+            });
+            alerta.present();
+          });
+        /*
           let optionsMedia: StreamingVideoOptions = {
 
             //orientation: 'landscape',
@@ -533,6 +537,7 @@ public alumnosFaltaron:Array<string>;
             
           }
           this.media.playVideo(this.url_asistencia, optionsMedia);
+          */
         }
 
 }// fin clase

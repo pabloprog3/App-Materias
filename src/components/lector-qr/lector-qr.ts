@@ -6,6 +6,7 @@ import { AlumnoServiceProvider } from "../../providers/alumno-service/alumno-ser
 import { ProfesorServiceProvider } from "../../providers/profesor-service/profesor-service";
 import { BarcodeScanner, BarcodeScanResult } from "@ionic-native/barcode-scanner";
 import { StreamingMedia, StreamingVideoOptions } from "@ionic-native/streaming-media";
+import { VideoOptions, VideoPlayer } from "@ionic-native/video-player";
 
 @Component({
   selector: 'lector-qr',
@@ -25,11 +26,12 @@ export class LectorQrComponent implements OnInit {
   private dato:string="";
   private tipo:string;
   private listaMateriasProf:any[];
+  videoOpts:VideoOptions;
 
   constructor(
               public barcodeScanner:BarcodeScanner, public alertCtrl:AlertController,
               private alumnoDB:AlumnoServiceProvider, private profesorDB:ProfesorServiceProvider,
-              public media:StreamingMedia
+              public media:StreamingMedia, public videoPlayer:VideoPlayer
 
   ) {}
 
@@ -135,20 +137,18 @@ export class LectorQrComponent implements OnInit {
   playLector(perfil:string){
     let url:string='';
     if (perfil == 'alumno') {
-        url = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/qralumno.mp4?alt=media&token=69434f0a-95b3-4083-a56f-42459a75159b';
+        url = 'file:///android_asset/www/assets/qralumno.mp4';
     } else {
-        url = 'https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/qrprofesor.mp4?alt=media&token=6e8ceb25-c92c-4345-ac81-6fc844c0a952';
+        url = 'file:///android_asset/www/assets/qrprofesor.mp4';
     }
 
-    let optionsMedia: StreamingVideoOptions = {
-
-      //orientation: 'landscape',
-      shouldAutoClose: true,
-      controls:false
-      
-      
-    }
-    this.media.playVideo(url, optionsMedia);
+    this.videoOpts = {volume:1.0};
+    this.videoPlayer.play(url, this.videoOpts).then((val)=>{
+      let alerta = this.alertCtrl.create({
+        title:'Finalizo el tutorial'
+      });
+      alerta.present();
+    });
   }
 
 

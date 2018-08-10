@@ -53,9 +53,9 @@ export class AlumnoServiceProvider {
     this.auth.auth.createUserWithEmailAndPassword(alumno.getCorreo(), alumno.getPassword());
   }
 
-  public guardarAlumnosExcel(alumnos:Array<Alumno>){
-    this.db.app.database().ref('/alumnos').push(alumnos);
-    //this.db.app.database().ref('/ListadoMaterias/').set(materias);
+  public guardarAlumnosExcel(alumno:Alumno, materias?:any[]){
+    this.db.app.database().ref('/alumnos').child(alumno.getLegajo().trim()).set(alumno);
+    //this.db.app.database().ref('/ListadoMaterias').set(materias);
   }
 
   public getAlumnosLista(){
