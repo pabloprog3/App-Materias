@@ -1,0 +1,852 @@
+{
+  "HistoricoAsistencias" : {
+    "-L-UOBRZLRXvyNqJPJ3P" : {
+      "alumnos" : [ {
+        "asistio" : false,
+        "legajo" : "111",
+        "nombreYapellido" : "pepe"
+      }, {
+        "asistio" : false,
+        "legajo" : "3334",
+        "nombreYapellido" : "juan"
+      }, {
+        "asistio" : false,
+        "legajo" : "090129",
+        "nombreYapellido" : "alumno test"
+      } ],
+      "codigo" : 92586,
+      "fecha" : "03-12-2017",
+      "imagen" : ""
+    },
+    "-L-USkwRdID1sJUMvBNH" : {
+      "alumnos" : [ {
+        "asistio" : false,
+        "legajo" : "111",
+        "nombreYapellido" : "pepe"
+      }, {
+        "asistio" : false,
+        "legajo" : "3334",
+        "nombreYapellido" : "juan"
+      }, {
+        "asistio" : false,
+        "legajo" : "090129",
+        "nombreYapellido" : "alumno test"
+      } ],
+      "codigo" : 73423,
+      "fecha" : "02-12-2017",
+      "imagen" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/asistencias%2F49524.jpg?alt=media&token=54d1c562-1898-4106-96d1-ba342c05e444"
+    },
+    "-L0BlbeLp-6CpPUoMmUv" : {
+      "alumnos" : [ {
+        "asistio" : false,
+        "legajo" : "111",
+        "nombreYapellido" : "pepe"
+      }, {
+        "asistio" : true,
+        "legajo" : "3334",
+        "nombreYapellido" : "juan"
+      }, {
+        "asistio" : false,
+        "legajo" : "090129",
+        "nombreYapellido" : "alumno test"
+      } ],
+      "codigo" : 49424,
+      "fecha" : "12-12-2017"
+    },
+    "-L0Bm4VWW6DKXw87tGed" : {
+      "alumnos" : [ {
+        "asistio" : true,
+        "legajo" : "111",
+        "nombreYapellido" : "pepe"
+      }, {
+        "asistio" : true,
+        "legajo" : "3334",
+        "nombreYapellido" : "juan"
+      }, {
+        "asistio" : true,
+        "legajo" : "090129",
+        "nombreYapellido" : "alumno test"
+      } ],
+      "codigo" : 17485,
+      "fecha" : "12-12-2017"
+    },
+    "-L0BmdCa4mv0ylTeWq56" : {
+      "alumnos" : [ {
+        "asistio" : true,
+        "legajo" : "111",
+        "nombreYapellido" : "pepe"
+      }, {
+        "asistio" : false,
+        "legajo" : "3334",
+        "nombreYapellido" : "juan"
+      }, {
+        "asistio" : true,
+        "legajo" : "090129",
+        "nombreYapellido" : "alumno test"
+      } ],
+      "codigo" : 71429,
+      "fecha" : "12-12-2017"
+    },
+    "-L0BmvMuGEIPQqCh9lHi" : {
+      "alumnos" : [ {
+        "asistio" : true,
+        "legajo" : "111",
+        "nombreYapellido" : "pepe"
+      }, {
+        "asistio" : false,
+        "legajo" : "3334",
+        "nombreYapellido" : "juan"
+      }, {
+        "asistio" : false,
+        "legajo" : "090129",
+        "nombreYapellido" : "alumno test"
+      } ],
+      "codigo" : 92336,
+      "fecha" : "12-12-2017",
+      "materia" : "android"
+    },
+    "-L0R_Zt368F0BnFntbEU" : {
+      "alumnos" : [ {
+        "asistio" : true,
+        "legajo" : "111",
+        "nombreYapellido" : "pepe"
+      }, {
+        "asistio" : false,
+        "legajo" : "3334",
+        "nombreYapellido" : "juan"
+      }, {
+        "asistio" : false,
+        "legajo" : "090129",
+        "nombreYapellido" : "alumno test"
+      } ],
+      "ausente" : 2,
+      "codigo" : 57588,
+      "fecha" : "15-12-2017",
+      "presentes" : 1
+    }
+  },
+  "ListadoMaterias" : {
+    "121212" : [ "test1 - lab 4", "test1 - lab 3" ],
+    "122388" : [ "test 11 - lab 5", "test 11 - lab 3" ],
+    "232323" : [ "test2 - lab 4", "test2 - lab 1", "test2 - lab 3" ],
+    "343434" : [ "test3 - lab 4", "test3 - lab 3" ],
+    "777777" : [ "test 8 - lab 5", "test 8 - lab 1" ],
+    "876528" : [ "test 9 - lab 5", "test 9 - lab 3" ],
+    "909012" : [ "test 10 - lab 5", "test 10 - lab 3" ],
+    "123r" : [ "programacion web-lab 4" ]
+  },
+  "administradores" : {
+    "fotos" : [ {
+      "activa" : false,
+      "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=e1666417-f6a4-4fc0-aa94-e0b1df91bcd0"
+    }, {
+      "activa" : true,
+      "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=a3c2a4bc-22b3-461c-815a-97e76bfb06f1"
+    } ]
+  },
+  "administrativos" : {
+    "fotos" : [ {
+      "activa" : false,
+      "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=6e4b1594-c77a-492b-864d-478e9248bedb"
+    } ]
+  },
+  "alumnos" : {
+    "111" : {
+      "correo" : "pepe@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "111",
+      "materias" : [ "pps", "android" ],
+      "nombre" : "Jose Juarez",
+      "passw" : "",
+      "perfil" : ""
+    },
+    "123" : {
+      "correo" : "alumno@alumno.com.ar",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "123",
+      "materias" : [ "pps" ],
+      "nombre" : "Marianita lasorte",
+      "passw" : "",
+      "perfil" : ""
+    },
+    "3334" : {
+      "correo" : "juannc@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "3334",
+      "materias" : [ "android", "matematica", "pps" ],
+      "nombre" : "juan diangelo",
+      "passw" : "",
+      "perfil" : ""
+    },
+    "090129" : {
+      "correo" : "alumno@alumno.com.ar",
+      "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=9642458b-be55-4177-936f-e45c824b8f38",
+      "fotos" : [ {
+        "activa" : true,
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=9642458b-be55-4177-936f-e45c824b8f38"
+      }, {
+        "activa" : false,
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F090129_2.jpg?alt=media&token=829835a7-07e5-4e4f-8f09-4997f3d25689"
+      } ],
+      "legajo" : "090129",
+      "materias" : [ "java", "matematica", "android" ],
+      "nombre" : "alumno test",
+      "passw" : "222222",
+      "perfil" : "alumno"
+    },
+    "121212" : {
+      "correo" : "test1@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "121212",
+      "materias" : [ "programacion web", "matematica", "pps" ],
+      "nombre" : "Romina Garcia",
+      "passw" : "",
+      "perfil" : ""
+    },
+    "122388" : {
+      "correo" : "test11@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "122388",
+      "materias" : [ "pps", "android" ],
+      "nombre" : "Martina Barrientos",
+      "passw" : "",
+      "perfil" : ""
+    },
+    "876528" : {
+      "correo" : "test9@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "876528",
+      "materias" : [ "pps" ],
+      "nombre" : "diego perez",
+      "passw" : "",
+      "perfil" : ""
+    },
+    "909012" : {
+      "correo" : "test10@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "909012",
+      "materias" : [ "programacion 3", "android" ],
+      "nombre" : "Clara Nuit",
+      "passw" : "",
+      "perfil" : ""
+    },
+    "123r" : {
+      "correo" : "Mirota@gmai.com.ar",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "123r",
+      "nombre" : "Matias mirota",
+      "passw" : "1",
+      "perfil" : "alumno"
+    }
+  },
+  "asistencia" : {
+    "-LIvawL3zTRo4qO2wl3n" : {
+      "asistieron" : [ "111-Jose Juarez-2/agosto-android-profesor test", "3334-juan diangelo-2/agosto-android-profesor test", "090129-alumno test-2/agosto-android-profesor test" ],
+      "faltaron" : [ "122388-Martina Barrientos-2/agosto-android-profesor test", "909012-Clara Nuit-2/agosto-android-profesor test" ],
+      "foto" : ""
+    }
+  },
+  "encuesta" : {
+    "-L-HVmQheFhpz72RK1Je" : {
+      "pregunta" : "pregunta",
+      "respuesta1" : "Regular"
+    },
+    "-L-HVpJBlCqIf1eoSaB2" : {
+      "pregunta" : "pregunta",
+      "respuesta1" : "Buena"
+    },
+    "-L-HVuoH7oWTC-1Va7dn" : {
+      "pregunta" : "pregunta",
+      "respuesta1" : "Regular"
+    },
+    "-L-c3mZQ86U5u4b0M36s" : {
+      "codigo" : 58908,
+      "pregunta" : "pregunta1",
+      "respuesta1" : "Mala"
+    },
+    "-L0-TCeKNWMp0a1pCpIa" : {
+      "codigo" : 50285,
+      "pregunta" : "pregunta1",
+      "respuesta1" : "Regular"
+    },
+    "-LE4XO3NzVskJxCaT9va" : {
+      "codigo" : 23816,
+      "pregunta" : "pregunta1",
+      "respuesta1" : "Regular"
+    }
+  },
+  "encuestas" : {
+    "23816" : {
+      "codigo" : 23816,
+      "duracion" : 2,
+      "esModificable" : false,
+      "fechaExp" : "",
+      "fechaI" : "",
+      "opcion1" : "dasd",
+      "opcion2" : "dsa",
+      "opcion3" : "das",
+      "pregunta" : "b"
+    },
+    "50285" : {
+      "codigo" : 50285,
+      "duracion" : 2,
+      "esModificable" : false,
+      "fechaExp" : "",
+      "fechaI" : "",
+      "opcion1" : "Aa",
+      "opcion2" : "S",
+      "opcion3" : "F",
+      "pregunta" : "A"
+    },
+    "58908" : {
+      "codigo" : 58908,
+      "fechaExp" : "",
+      "fechaI" : "",
+      "opcion1" : "1",
+      "opcion2" : "9",
+      "opcion3" : "Ninguno",
+      "pregunta" : "Cuantos parciales aprobaste?"
+    },
+    "71200" : {
+      "codigo" : 71200,
+      "fechaExp" : "",
+      "fechaI" : "",
+      "opcion1" : "si",
+      "opcion2" : "no",
+      "opcion3" : "7",
+      "pregunta" : "¿Estas de acuerdo con el contenido dado?"
+    }
+  },
+  "estilo" : {
+    "admin@admincom" : {
+      "correo" : "admin@admin.com",
+      "estiloBtn" : "botonNaif",
+      "estiloBtn1" : "botonProfesional1",
+      "estiloFondo" : "fondoProfesional",
+      "estilotitulo" : "tituloProfesional"
+    },
+    "administrativo@administrativocom" : {
+      "correo" : "administrativo@administrativo.com",
+      "estiloBtn" : "botonArgentina",
+      "estiloBtn1" : "botonProfesional1",
+      "estiloFondo" : "fondoArgentina",
+      "estilotitulo" : "tituloProfesional"
+    },
+    "alumno@alumnocomar" : {
+      "correo" : "alumno@alumno.com.ar",
+      "estiloBtn" : "botonProfesional",
+      "estiloBtn1" : "botonProfesional1",
+      "estiloFondo" : "fondoArgentina",
+      "estilotitulo" : "tituloProfesional"
+    },
+    "correo" : "",
+    "estiloBtn" : "botonProfesional",
+    "estiloBtn1" : "botonProfesional1",
+    "estiloFondo" : "fondoArgentina",
+    "estilotitulo" : "tituloProfesional"
+  },
+  "fotos" : [ {
+    "activa" : false,
+    "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=013612f6-8958-4576-8882-15f8ed3740e2"
+  }, {
+    "activa" : false,
+    "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=9dc13fc8-990f-42e0-b1ba-3a98eb1f91ce"
+  }, {
+    "activa" : false,
+    "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F_1.jpg?alt=media&token=9642458b-be55-4177-936f-e45c824b8f38"
+  } ],
+  "materias" : [ {
+    "aula" : "lab 4",
+    "horarios" : "lunes 18 a 22",
+    "nombre" : "programacion web",
+    "turnos" : {
+      "mañana" : "Martes de 9:30 a 13:30",
+      "noche" : "Miercoles de 18:30 a 22:30"
+    }
+  }, {
+    "aula" : "lab 5",
+    "horarios" : "jueves 18 a 22",
+    "nombre" : "android",
+    "turnos" : {
+      "mañana" : "Lunes de 9:30 a 13:30",
+      "noche" : "Jueves de 18:30 a 22:30"
+    }
+  }, {
+    "aula" : "lab 1",
+    "horarios" : "viernes 18 a 22",
+    "nombre" : "programacion 3",
+    "turnos" : {
+      "mañana" : "Miercoles de 9:30 a 13:30",
+      "noche" : "Viernes de18:30 a 22:30"
+    }
+  }, {
+    "aula" : "305",
+    "horarios" : "miercoles 18 a 22",
+    "nombre" : "matematica",
+    "turnos" : {
+      "mañana" : "Martes de 9:30a 13:30",
+      "noche" : "Jueves de 18:30 a 22:30"
+    }
+  }, null, null, null, {
+    "aula" : "lab 3",
+    "horarios" : "sabado 8:30 a 12:30",
+    "nombre" : "pps",
+    "turnos" : {
+      "mañana" : "Sabado de 8:30 a 12:30"
+    }
+  } ],
+  "profesores" : {
+    "123" : {
+      "correo" : "Juan@gmail.com",
+      "dni" : "123",
+      "foto" : "",
+      "materias" : [ "matematica" ],
+      "nombre" : "Juan",
+      "passw" : "1",
+      "perfil" : "profesor"
+    },
+    "385629" : {
+      "correo" : "juanperez@hotmail.com",
+      "dni" : "385629",
+      "foto" : "",
+      "materias" : [ "programacion web" ],
+      "nombre" : "Juan Perez",
+      "passw" : "1234567",
+      "perfil" : "profesor"
+    },
+    "1111111" : {
+      "correo" : "Pedro@gmail.com",
+      "dni" : "1111111",
+      "foto" : "",
+      "materias" : [ "android" ],
+      "nombre" : "Pedro",
+      "passw" : "123",
+      "perfil" : "profesor"
+    },
+    "10101010" : {
+      "correo" : "profesor@profesor.com",
+      "dni" : "10101010",
+      "foto" : "",
+      "materias" : [ "matematica", "android" ],
+      "nombre" : "profesor test",
+      "perfil" : "profesor"
+    },
+    "33847222" : {
+      "correo" : "bauss@hotmail.com",
+      "dni" : "33847222",
+      "foto" : "",
+      "materias" : [ "android" ],
+      "nombre" : "cristian baus",
+      "perfil" : "profesor"
+    },
+    "78906543" : {
+      "correo" : "octavios@gmail.com",
+      "dni" : "78906543",
+      "foto" : "",
+      "materias" : [ "programacion 3", "pps" ],
+      "nombre" : "octavio villegas",
+      "passw" : "111111",
+      "perfil" : "profesor"
+    }
+  },
+  "usuarios" : {
+    "0" : {
+      "correo" : "admin@admin.com",
+      "nombre" : "administrador test",
+      "perfil" : "administrador",
+      "sexo" : "Female"
+    },
+    "3" : {
+      "correo" : "administrativo@administrativo.com",
+      "nombre" : "administrativo test",
+      "perfil" : "administrativo",
+      "sexo" : "Female"
+    },
+    "000009" : {
+      "-LITUr6_2rOZ1hzYchMt" : {
+        "correo" : "pepe@gmail.com",
+        "dni" : "000009",
+        "foto" : "",
+        "materias" : [ "programacion 3", "pps" ],
+        "nombre" : "pepe",
+        "passw" : "111111",
+        "perfil" : "profesor"
+      }
+    },
+    "11" : {
+      "-KznAMFpiWIJE5C0tzXw" : {
+        "correo" : "Gonzalo@gmail.com",
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2Fundefined.jpg?alt=media&token=d6cdb4f9-f77e-4d7a-be0e-0aaa0fceb5c7",
+        "legajo" : "11",
+        "materias" : [ "java" ],
+        "nombre" : "Gonzalo",
+        "passw" : "1",
+        "perfil" : "alumno"
+      }
+    },
+    "111" : {
+      "correo" : "pepe@hotmail.com",
+      "foto" : "",
+      "legajo" : "111",
+      "materias" : [ "programacion web", "android", "java", "matematica" ],
+      "nombre" : "pepe",
+      "passw" : "222222",
+      "perfil" : "alumno"
+    },
+    "123" : {
+      "correo" : "profesor@profesor.com",
+      "dni" : "123",
+      "foto" : "",
+      "materias" : [ "matematica" ],
+      "nombre" : "Juan",
+      "passw" : "1",
+      "perfil" : "profesor"
+    },
+    "124" : {
+      "-KzQem40ov4iV4bkPyMh" : {
+        "correo" : "pedro@hotmail.com",
+        "foto" : "",
+        "legajo" : "124",
+        "materias" : [ "android" ],
+        "nombre" : "pedro",
+        "passw" : "123456",
+        "perfil" : "alumno"
+      }
+    },
+    "125" : {
+      "-KzQge5DF4GYd2zeVZfJ" : {
+        "correo" : "mario@gmail.com",
+        "foto" : "",
+        "legajo" : "125",
+        "materias" : [ "android", "matematica" ],
+        "nombre" : "Mario perez",
+        "passw" : "123456",
+        "perfil" : "alumno"
+      }
+    },
+    "126" : {
+      "-KzQgpl7nAOb6qznqWiD" : {
+        "correo" : "claudio@gmail.com",
+        "foto" : "",
+        "legajo" : "126",
+        "materias" : [ "android", "matematica" ],
+        "nombre" : "Claudio",
+        "passw" : "123456",
+        "perfil" : "alumno"
+      }
+    },
+    "127" : {
+      "-KzQh0mS1hxJ7wxJLfjg" : {
+        "correo" : "lucasc@gmail.com",
+        "foto" : "",
+        "legajo" : "127",
+        "materias" : [ "investigacion operativa", "legislacion" ],
+        "nombre" : "Lucas Campos",
+        "passw" : "123456",
+        "perfil" : "alumno"
+      }
+    },
+    "128" : {
+      "-KzQhB1rGeen6_N-ar0-" : {
+        "correo" : "PabloG@gmail.com",
+        "foto" : "",
+        "legajo" : "128",
+        "materias" : [ "programacion web", "ingles 1" ],
+        "nombre" : "Pablo Gonzales",
+        "passw" : "123456",
+        "perfil" : "alumno"
+      },
+      "-KzQhT510-xSa_ZRgRtV" : {
+        "correo" : "diego@hotmail.com",
+        "foto" : "",
+        "legajo" : "128",
+        "materias" : [ "programacion web", "java", "investigacion operativa" ],
+        "nombre" : "Diego Perez",
+        "passw" : "123456789",
+        "perfil" : "alumno"
+      }
+    },
+    "3334" : {
+      "correo" : "juannc@hotmail.com",
+      "foto" : "",
+      "legajo" : "3334",
+      "materias" : [ "java", "matematica", "investigacion operativa" ],
+      "nombre" : "juan",
+      "passw" : "123490",
+      "perfil" : "alumno"
+    },
+    "4444" : {
+      "-KzYHrmWjQx1kXxWE7hj" : {
+        "correo" : "jojo@hotmail.com",
+        "foto" : "",
+        "legajo" : "4444",
+        "materias" : [ "android", "java", "matematica" ],
+        "nombre" : "josesito",
+        "passw" : "222222",
+        "perfil" : "alumno"
+      }
+    },
+    "11111" : {
+      "-KzYqCzLt2AQy5zBPymV" : {
+        "correo" : "probando@yahoo.com.ar",
+        "foto" : "",
+        "legajo" : "11111",
+        "materias" : [ "java", "matematica" ],
+        "nombre" : "probando",
+        "passw" : "343434",
+        "perfil" : "alumno"
+      }
+    },
+    "33332" : {
+      "-KzZzlsOJzIEHe2j0Gu2" : {
+        "correo" : "pablo@pablo.com",
+        "foto" : "",
+        "legajo" : "33332",
+        "materias" : [ "ingles 1", "investigacion operativa", "legislacion" ],
+        "nombre" : "pablo",
+        "passw" : "121212",
+        "perfil" : "alumno"
+      }
+    },
+    "66666" : {
+      "-KzZvif_s7oWJqVW_hvj" : {
+        "correo" : "tres@tres.com.ar",
+        "foto" : "",
+        "legajo" : "66666",
+        "materias" : [ "java", "matematica" ],
+        "nombre" : "probando trres",
+        "passw" : "121212",
+        "perfil" : "alumno"
+      }
+    },
+    "090129" : {
+      "correo" : "alumno@alumno.com.ar",
+      "foto" : "",
+      "legajo" : "090129",
+      "materias" : [ "java", "matematica", "ingles 1" ],
+      "nombre" : "alumno test",
+      "passw" : "222222",
+      "perfil" : "alumno"
+    },
+    "121212" : {
+      "correo" : "test1@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "121212",
+      "nombre" : "test1",
+      "passw" : "111111",
+      "perfil" : "alumno"
+    },
+    "122228" : {
+      "correo" : "lasorte",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "122228",
+      "nombre" : "marianita",
+      "passw" : "111111",
+      "perfil" : "alumno"
+    },
+    "122388" : {
+      "correo" : "test11@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "122388",
+      "nombre" : "test 11",
+      "passw" : "111111",
+      "perfil" : "alumno"
+    },
+    "123456" : {
+      "-KznmdeeWoaAe2v1ukaB" : {
+        "correo" : "Gonzalo@gmail.com",
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2Fundefined.jpg?alt=media&token=e8a4dc0a-6779-4693-9da6-6569f84a0761",
+        "legajo" : "123456",
+        "nombre" : "Gonzalo",
+        "passw" : "111",
+        "perfil" : "alumno"
+      }
+    },
+    "232323" : {
+      "correo" : "test2@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "232323",
+      "nombre" : "test2",
+      "passw" : "111111",
+      "perfil" : "alumno"
+    },
+    "289090" : {
+      "-L-I5uAVdImaNb_NBV63" : {
+        "correo" : "octavio@utn.com.ar",
+        "dni" : "289090",
+        "foto" : "",
+        "nombre" : "Octavio Villegas",
+        "passw" : "333333",
+        "perfil" : "profesor"
+      }
+    },
+    "343434" : {
+      "correo" : "test3@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "343434",
+      "nombre" : "test3",
+      "passw" : "565656",
+      "perfil" : "alumno"
+    },
+    "385629" : {
+      "-L-SAncmDknfdgLvmYQa" : {
+        "correo" : "juanperez@hotmail.com",
+        "dni" : "385629",
+        "foto" : "",
+        "nombre" : "Juan Perez",
+        "passw" : "2356+",
+        "perfil" : "profesor"
+      }
+    },
+    "777777" : {
+      "-LIOwSrc_MQw7QAOMRRu" : {
+        "correo" : "sjdnka@hotmail.com",
+        "dni" : "777777",
+        "foto" : "",
+        "materias" : [ "programacion web", "pps" ],
+        "nombre" : "jose argento",
+        "passw" : "111111",
+        "perfil" : "profesor"
+      },
+      "correo" : "test8@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "777777",
+      "nombre" : "test 8",
+      "passw" : "111111",
+      "perfil" : "alumno"
+    },
+    "876528" : {
+      "correo" : "test9@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "876528",
+      "nombre" : "test 9",
+      "passw" : "111111",
+      "perfil" : "alumno"
+    },
+    "898989" : {
+      "-Kz_15crBfJH6IxlmHzl" : {
+        "correo" : "pablo@pablo.com",
+        "foto" : "",
+        "legajo" : "898989",
+        "materias" : [ "programacion web", "android", "java", "matematica" ],
+        "nombre" : "pablo",
+        "passw" : "121212",
+        "perfil" : "alumno"
+      }
+    },
+    "908766" : {
+      "-LITWqs1UJ4G4kaL9e6s" : {
+        "correo" : "pepe@hotmail.com",
+        "dni" : "908766",
+        "foto" : "",
+        "materias" : [ "matematica", "pps" ],
+        "nombre" : "pepe",
+        "passw" : "111111",
+        "perfil" : "profesor"
+      }
+    },
+    "909012" : {
+      "correo" : "test10@hotmail.com",
+      "foto" : "",
+      "horario" : "",
+      "legajo" : "909012",
+      "nombre" : "test 10",
+      "passw" : "111111",
+      "perfil" : "alumno"
+    },
+    "987600" : {
+      "-KzZtT6_m0KNRgJZ13r_" : {
+        "correo" : "dos@dos.com",
+        "foto" : "",
+        "legajo" : "987600",
+        "materias" : [ "java", "matematica", "ingles 1", "investigacion operativa" ],
+        "nombre" : "probando dos",
+        "passw" : "232323",
+        "perfil" : "alumno"
+      }
+    },
+    "1111111" : {
+      "-KzZ143CC5zL0GO_n7jm" : {
+        "correo" : "prob@prob.com.ar",
+        "foto" : "",
+        "legajo" : "1111111",
+        "nombre" : "probando",
+        "passw" : "222222",
+        "perfil" : "alumno"
+      },
+      "-LITXbm_j-PvGbbHGfdh" : {
+        "correo" : "Pedro@gmail.com",
+        "dni" : "1111111",
+        "foto" : "",
+        "materias" : [ "android" ],
+        "nombre" : "Pedro",
+        "passw" : "123",
+        "perfil" : "profesor"
+      }
+    },
+    "1234567" : {
+      "correo" : "fggff@hot.cim",
+      "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F1234567.jpg?alt=media&token=78a5fdc5-beaf-4426-80e1-b0f4dfa17506",
+      "horario" : "",
+      "legajo" : "1234567",
+      "nombre" : "1234567pedro",
+      "passw" : "12345",
+      "perfil" : "alumno"
+    },
+    "4444444" : {
+      "-Kz_iLskwtTi7YTXQPbl" : {
+        "correo" : "epep@hotmail.com",
+        "dni" : "4444444",
+        "foto" : "",
+        "materias" : [ "android", "java" ],
+        "nombre" : "pepe",
+        "passw" : "232323",
+        "perfil" : "profesor"
+      }
+    },
+    "12100009" : {
+      "correo" : "otro@gmail.com.ar",
+      "dni" : "12100009",
+      "foto" : "",
+      "materias" : [ "matematica", "pps" ],
+      "nombre" : "otroa",
+      "passw" : "111111",
+      "perfil" : "profesor"
+    },
+    "22190190" : {
+      "-KziWb39Pfnl88n9_RBd" : {
+        "correo" : "octavio@gmail.com",
+        "dni" : "22190190",
+        "foto" : "",
+        "materias" : [ "programacion web" ],
+        "nombre" : "Octavio",
+        "passw" : "oct",
+        "perfil" : "profesor"
+      }
+    },
+    "78906543" : {
+      "correo" : "octavios@gmail.com",
+      "dni" : "78906543",
+      "foto" : "",
+      "materias" : [ "programacion 3", "pps" ],
+      "nombre" : "octavio villegas",
+      "passw" : "111111",
+      "perfil" : "profesor"
+    }
+  }
+}
