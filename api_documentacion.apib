@@ -1,0 +1,419 @@
+FORMAT: 1A
+
+HOST: https://tpfinal-8ff7a.firebaseio.com
+
+# IonicTeam: Trabajo Práctico Final
+
+API pública para la gestión de la aplicacion desarrollado con Ionic Framework y Angular
+
+# Group ALUMNOS
+
+### Trae el listado de todos los alumnos [GET /alumnos]
+
++ Response 200 (application/json)
+
+[
+   "111" : {
+      "correo" : "pepe@hotmail.com",
+      "legajo" : "111",
+      "materias" : [ "programacion web", "android", "java", "matematica" ],
+      "nombre" : "pepe",
+      "passw" : "222222",
+      "perfil" : "alumno"
+    },
+    "3334" : {
+      "correo" : "juannc@hotmail.com",
+      "legajo" : "3334",
+      "materias" : [ "java", "matematica", "investigacion operativa" ],
+      "nombre" : "juan",
+      "passw" : "123490",
+      "perfil" : "alumno"
+    },
+    "090129" : {
+      "correo" : "alumno@alumno.com.ar",
+      "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F090129.jpg?alt=media&token=a234f264-932a-4e99-8082-974958ad9ac0",
+      "fotos" : [ {
+        "activa" : true,
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2FKoala.jpg?alt=media&token=4180122e-d0e0-4aad-8c1a-8c47a8fcaa1c"
+      }, {
+        "activa" : false,
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F090129_2.jpg?alt=media&token=829835a7-07e5-4e4f-8f09-4997f3d25689"
+      } ],
+      "legajo" : "090129",
+      "materias" : [ "java", "matematica", "ingles 1" ],
+      "nombre" : "alumno test",
+      "passw" : "222222",
+      "perfil" : "alumno"
+    }
+]
+
++ Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+##Traer un alumno
+
+### Filtrar alumno por el correo [GET /alumnos/{correo}]
+  + Parameters
+    + correo: alumno@alumno.com.ar (string)
+      + Default:
+
+  + Response 200 (application/json)
+
+    "090129" : {
+      "correo" : "alumno@alumno.com.ar",
+      "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F090129.jpg?alt=media&token=a234f264-932a-4e99-8082-974958ad9ac0",
+      "fotos" : [ {
+        "activa" : true,
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2FKoala.jpg?alt=media&token=4180122e-d0e0-4aad-8c1a-8c47a8fcaa1c"
+      }, {
+        "activa" : false,
+        "foto" : "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2F090129_2.jpg?alt=media&token=829835a7-07e5-4e4f-8f09-4997f3d25689"
+      } ],
+      "legajo" : "090129",
+      "materias" : [ "java", "matematica", "ingles 1" ],
+      "nombre" : "alumno test",
+      "perfil" : "alumno"
+    }
+
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+### Guardar un nuevo alumno [POST /alumnos/guardar]
+  + nombre (string) - Nombre completo del alumno
+  + legajo (string) - Número de legajo
+  + materias (array[string]) - Materias inscripto
+  + foto (string) - Foto de perfil inicial
+  + correo (string) - email del alumno
+
+  + Request (application/json)
+
+            {
+                "nombre": "Jose Ramirez",
+                "legajo": "223344"
+                "materias": [
+                    "PPS",
+                    "INGLES",
+                    "JAVA"
+                ],
+                "foto": "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2FKoala.jpg?alt=media&token=4180122e-d0e0-4aad-8c1a-8c47a8fcaa1c",
+                "correo": "jramirez@utnfra.com.ar"
+            }
+
+
+  + Response 200 (application/json)
+
+    + Body
+
+                {
+                   "Alumno registrado exitosamente"
+                }
+
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+
+
+### Actualizar datos del alumno [PUT /alumnos/actualizar/{legajo}]
+  + Parameters
+
+    + legajo:223344 (string)
+
+    + Request (application/json)
+
+            {
+                "nombre": "Jose Ramirez Pereyra",
+                "legajo": "223344"
+                "materias": [
+                    "PPS",
+                ],
+                "foto": "https://firebasestorage.googleapis.com/v0/b/tpfinal-8ff7a.appspot.com/o/alumnos%2FKoala.jpg?alt=media&token=4180122e-d0e0-4aad-8c1a-8c47a8fcaa1c",
+                "correo": "jramirez@utnfra.com.ar"
+            }
+
+
+    + Response 200 (application/json)
+
+    + Body
+
+                {
+                   "Actualizacion correcta"
+                }
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+### Eliminar un alumno [DELETE /alumnos/eliminar/{legajo}]
+  + Parameters
+    + legajo: 3334 (string)
+
+
+  + Response 204 (application/json)
+
+    + Body
+
+                {
+                   "Se ha eliminado el alumno"
+                }
+
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+
+# Group MATERIAS
+
+### Trae el listado de todas las materias de la Facultad [GET /materias]
+
++ Response 200 (application/json)
+
+    [ {
+    "aula" : "lab 4",
+    "horarios" : "lunes 18 a 22",
+    "nombre" : "programacion web",
+    "turnos" : {
+      "mañana" : "Martes de 9:30 a 13:30",
+      "noche" : "Miercoles de 18:30 a 22:30"
+    },
+   {
+    "aula" : "lab 5",
+    "horarios" : "jueves 18 a 22",
+    "nombre" : "android",
+    "turnos" : {
+      "mañana" : "Lunes de 9:30 a 13:30",
+      "noche" : "Jueves de 18:30 a 22:30"
+    },
+   {
+    "aula" : "lab 1",
+    "horarios" : "martes 18 a 22",
+    "nombre" : "programacion 3",
+    "turnos" : {
+      "mañana" : "Miercoles de 9:30 a 13:30",
+      "noche" : "Viernes de18:30 a 22:30"
+    },
+   {
+    "aula" : "305",
+    "horarios" : "miercoles 18 a 22",
+    "nombre" : "matematica",
+    "turnos" : {
+      "mañana" : "Martes de 9:30a 13:30",
+      "noche" : "Jueves de 18:30 a 22:30"
+    },
+  {
+    "aula" : "lab 3",
+    "horarios" : "Sabado 8:30 a 12:30",
+    "nombre" : "pps",
+    "turnos" : {
+      "mañana" : "Sabado de 8:30 a 12:30"
+    }
+   ]
+
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+### Trae las materias registradas por alumno [GET /materias/{legajo}]
+
+  + Parameters
+    + legajo:3334 (string)
+
+
+  + Response 200 (application/json)
+
+
+      [
+        "java",
+        "matematica",
+        "investigacion operativa"
+      ]
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+# Group PROFESORES
+
+### Trae el listado de los profesores [GET /profesores]
+
++ Response 200 (application/json)
+  [
+    {
+       "correo" : "octavio@utn.com.ar",
+        "dni" : "289090",
+        "foto" : "",
+        "nombre" : "Octavio Villegas",
+        "passw" : "333333",
+        "perfil" : "profesor"
+    },
+    {
+        "correo" : "juanperez@hotmail.com",
+        "dni" : "385629",
+        "foto" : "",
+        "nombre" : "Juan Perez",
+        "passw" : "2356+",
+        "perfil" : "profesor"
+    },
+    {
+        "correo" : "epep@hotmail.com",
+        "dni" : "4444444",
+        "foto" : "",
+        "materias" : [ "android", "java" ],
+        "nombre" : "pepe",
+        "passw" : "232323",
+        "perfil" : "profesor"
+    }
+  ]
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+### Traer profesor por DNI [GET /profesores/{dni}]
+   + Parameters
+    + dni: 289090 (string) - DNI del profesor
+
+
+   + Response 200 (application/json)
+    {
+       "correo" : "octavio@utn.com.ar",
+        "dni" : "289090",
+        "foto" : "",
+        "nombre" : "Octavio Villegas",
+        "passw" : "333333",
+        "perfil" : "profesor"
+    }
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+### Actualizar datos del profesor [PUT /profesores/actualizar/{dni}]
+  + Parameters
+    + dni: 289090 (string) - DNI del profesor
+
+  + Request Actualizar Profesor (application/json)
+    {
+
+       "correo" : "octavio@utn.com.ar",
+        "dni" : "289090",
+        "foto" : "https://avatars2.githubusercontent.com/u/13500559?s=460&v=4",
+        "nombre" : "Octavio Villegas",
+        "passw" : "333333",
+        "perfil" : "profesor",
+    }
+
+  + Response 200 (application/json)
+    {
+      "mensaje":"Profesor actualizado correctamente"
+    }
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+### Eliminar profesor [DELETE /profesores/eliminar/{dni}]
+
+  + Parameters
+    + dni: 289090 (string)
+
+  + Response 200 (application/json)
+    {
+      "mensaje": "Profesor eliminado"
+    }
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+
+# Group ASISTENCIAS
+
+### Trae las asistencias del alumno para la materia y profesor [GET /asistencia/{legajo}/{materia}/{profesor}]
+    + Parameters
+    + legajo:3334 (string)
+    + materia: android (string)
+    + profesor: cristianbaus (string)
+
+     + Response 200 (application/json)
+    {
+      {"contador:asistencia": 10}
+    }
+
+    + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+  
+### Trae las faltas del alumno para la materia y profesor [GET /asistencia/{legajo}/{materia}/{profesor}]
+    + Parameters
+    + legajo:3334 (string)
+    + materia: android (string)
+    + profesor: cristianbaus (string)
+
+     + Response 200 (application/json)
+    {
+      "contador:asistencia": 4
+    }
+
+    + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+  
+  ### Trae las faltas y asistencia de todos los alumnos [GET /asistencia]
+
+   + Response 200 (application/json)
+    {
+      "asistieron":[
+          "111-Jose Juarez-2/agosto-android-profesor test",
+          "3334-juan diangelo-2/agosto-android-profesor test"
+      ],
+      "faltaron":[
+          "122388-Martina Barrientos-2/agosto-android-profesor test",
+          "909012-Clara Nuit-2/agosto-android-profesor test"
+      ],
+
+      "foto": "firebase_storage_foto.jpg"
+    }
+
+    + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
+
+    ### Setter de asistencias [POST /asistencia]
+
+  + Request Post asistencia (application/json)
+  {
+    {
+      "122388-Martina Barrientos-2/agosto-android-profesor test"
+    }
+  }
+
+  + Response 200 (application/json)
+    {
+      "mensaje":"asistenciasregistrado correctamente"
+    }
+  + Response 400 (application/json)
+    {
+      {'msjErr':'Ha ocurrido un error en el proceso, reintente más tarde o pongáse en contacto con el Administrador'}
+    }
